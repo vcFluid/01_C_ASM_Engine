@@ -1,4 +1,4 @@
-/*
+ /*
 这个问题的本质是求解一个大型方程组(离散后的1D advection Eqn)
 可以回顾C求解方程组的数学案例
 */
@@ -45,9 +45,9 @@ struct AdvectionSolver1D_t { //定义内容
     void (*FTBS)(solver* self);
     void (*LAX)(solver* self);
     void (*LAX_WENDROFF)(solver* self);
-    void (*WARMING_BEAM)(solver* self);
-    void (*ROE)(solver* self);
-}; //已经命名为solver了就不要写别名了，以防变量污染
+    void (*WARMING_BEAM)(solver* self); 
+    void (*ROE)(solver* self); 
+}; //已经命名为solver了就不要写别名了，以防变量污染  
 
             /*
                 函数指针的定义语法：
@@ -62,6 +62,7 @@ struct AdvectionSolver1D_t { //定义内容
 
 
 /*定义求解方法（函数），通过指向函数的指针实现*/
+
 
 void method_FTBS(solver* self) {
 
