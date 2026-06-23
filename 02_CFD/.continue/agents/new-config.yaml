@@ -1,0 +1,26 @@
+name: Local Continue
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Qwen Coder Autocomplete
+    provider: ollama
+    model: qwen2.5-coder:7b
+    roles:
+      - autocomplete
+    autocompleteOptions:
+      disable: false
+      debounceDelay: 500
+      maxPromptTokens: 2048
+      modelTimeout: 2000
+      onlyMyCode: false
+      useRecentlyEdited: true
+      useRecentlyOpened: true
+    defaultCompletionOptions:
+      temperature: 0.05
+      maxTokens: 96
+      stop:
+        - "\n\nOkay"
+        - "\n\nWait"
+        - "\n\nThe "
+        - "\n\nLooking"
