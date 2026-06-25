@@ -1,0 +1,39 @@
+\section{与半解析解的比较}
+
+\subsection{对比方法}
+
+说明 Project 0 输出与 MacCormack 输出如何对齐，例如统一采样坐标或插值。
+
+\subsection{曲线对比}
+
+\figureplaceholder{数值解与半解析解的密度对比}{fig:compare-density}
+\figureplaceholder{数值解与半解析解的速度对比}{fig:compare-velocity}
+\figureplaceholder{数值解与半解析解的压力对比}{fig:compare-pressure}
+
+\subsection{误差计算}
+
+可以使用离散 $L_1$、$L_2$ 和 $L_\infty$ 误差：
+
+\begin{align}
+L_1 &= \frac{1}{N_x}\sum_{i=1}^{N_x}
+\left|q_i^{\mathrm{num}}-q_i^{\mathrm{ref}}\right|,\\
+L_2 &= \sqrt{\frac{1}{N_x}\sum_{i=1}^{N_x}
+\left(q_i^{\mathrm{num}}-q_i^{\mathrm{ref}}\right)^2},\\
+L_\infty &= \max_i
+\left|q_i^{\mathrm{num}}-q_i^{\mathrm{ref}}\right|.
+\end{align}
+
+\begin{table}[H]
+    \centering
+    \caption{数值解误差}
+    \label{tab:error}
+    \begin{tabular}{lccc}
+        \toprule
+        物理量 & $L_1$ & $L_2$ & $L_\infty$\\
+        \midrule
+        密度 $\rho$ & -- & -- & --\\
+        速度 $u$ & -- & -- & --\\
+        压力 $p$ & -- & -- & --\\
+        \bottomrule
+    \end{tabular}
+\end{table}

@@ -1,0 +1,274 @@
+\section{数值求解方法}
+
+\subsection{守恒量与原始量 - 未知变量储存的策略}
+
+我的程序同时保存守恒量
+$\bm{Q}=[\rho,\rho u,\rho E]^{\mathrm T}$ 和原始量
+$\bm{W}=[\rho,u,p]^{\mathrm T}$ 。其中守恒量是时间推进主状态，
+原始量由守恒量反解，用于声速、CFL、人工粘性、输出和诊断。
+
+原因讨论如下。
+
+虽然本问题求解的是同一组守恒型方程，但根据推进过程中选取的核心变量不同，
+可以采用两种内存储存方案。
+
+\subsubsection{以守恒量 \texorpdfstring{$\bm{Q}$}{Q} 为核心变量}
+
+第一种方案在每个网格点储存
+\begin{equation}
+\bm{Q}=
+\begin{bmatrix}
+\rho & \rho u & \rho E
+\end{bmatrix}^{\mathrm T},
+\end{equation}
+并由数值格式直接更新守恒量。MacCormack、有限体积、Roe 和 HLLC
+等守恒型数值方法天然以 $\bm{Q}$ 作为推进变量。
+
+该方案的基本流程为
+\begin{equation}
+\text{内存分配}
+\longrightarrow
+\bm{Q}
+\longrightarrow
+\text{时间循环}
+\longrightarrow
+\text{更新 }\bm{Q}
+\longrightarrow
+\text{下一时间步}.
+\end{equation}
+
+通量、声速、CFL 条件和人工粘性系数通常需要使用原始量，因此每个时间步还需进行
+\begin{equation}
+\bm{Q}\longrightarrow\bm{W},
+\qquad
+\bm{W}\longrightarrow\bm{F},
+\qquad
+\bm{W}\longrightarrow\mu,
+\end{equation}
+其中 $\mu$ 表示人工粘性系数。控制方程的非线性主要集中在守恒量到原始量的转换、
+矢通量构造和人工粘性系数计算中。
+
+\subsubsection{以原始量 \texorpdfstring{$\bm{W}$}{W} 为核心变量}
+
+第二种方案在每个网格点储存
+\begin{equation}
+\bm{W}=
+\begin{bmatrix}
+\rho & u & p
+\end{bmatrix}^{\mathrm T},
+\end{equation}
+再由 $\bm{W}$ 组合出守恒量 $\bm{Q}(\bm{W})$、通量
+$\bm{F}(\bm{W})$ 和人工粘性系数。其基本流程为
+\begin{equation}
+\text{内存分配}
+\longrightarrow
+\bm{W}
+\longrightarrow
+\bm{Q}(\bm{W}),\ \bm{F}(\bm{W}),\ \mu(\bm{W})
+\longrightarrow
+\text{更新}
+\longrightarrow
+\text{下一时间步}.
+\end{equation}
+
+Project 0 利用特征关系求解 Riemann 问题的半解析解时，主要采用原始量描述左右状态、
+激波、膨胀波和接触间断，因此这种组织方式更符合其理论推导逻辑。
+
+\subsubsection{本程序采用的储存方案}
+
+观察 Euler 方程的守恒形式及 MacCormack 格式可知，时间推进的核心变量天然是
+$\bm{Q}$，因此本程序以第一种方案为基础。同时，在内存允许的情况下，为原始量
+$\bm{W}$ 也分配长期储存空间，但规定
+\begin{equation}
+\bm{Q}\text{ 为主状态},
+\qquad
+\bm{W}\text{ 为由 }\bm{Q}\text{ 同步得到的子状态}.
+\end{equation}
+
+$\bm{W}$ 不使用独立的数值格式推进，而是在 $\bm{Q}$ 更新后重新反解。一个完整时间步为
+\begin{enumerate}[leftmargin=2em]
+    \item 当前主状态 $\bm{Q}^{n}$ 已知；
+    \item 由 $\bm{Q}^{n}$ 反解 $\bm{W}^{n}$；
+    \item 用 $\bm{W}^{n}$ 计算声速、CFL、人工粘性和通量；
+    \item 执行 MacCormack 预测步，得到 $\overline{\bm{Q}}$；
+    \item 由 $\overline{\bm{Q}}$ 反解预测状态对应的原始量；
+    \item 计算预测状态通量 $\overline{\bm{F}}$；
+    \item 执行 MacCormack 校正步，得到 $\bm{Q}^{n+1}$；
+    \item 由 $\bm{Q}^{n+1}$ 同步得到 $\bm{W}^{n+1}$；
+    \item 输出当前状态并进入下一时间步。
+\end{enumerate}
+
+这种实现与仅临时计算 $\bm{W}$ 的第一种方案相比，主要区别是
+$\bm{W}$ 拥有实际的数组储存空间，因此可直接查询、输出和调试。
+代价是需要额外内存，并且必须保证 $\bm{W}$ 始终由最新的 $\bm{Q}$ 同步得到。
+
+\subsection{时间变量储存策略}
+
+\subsubsection{方案 A：全历史存储}
+
+全历史存储为每一个时间层分配空间，保存
+\begin{equation}
+\bm{Q}^{0},\bm{Q}^{1},\ldots,\bm{Q}^{N_t}.
+\end{equation}
+
+该方案可以回看任意时刻、生成动画、进行完整时空分析、检查波传播过程，
+并研究误差随时间的演化。但其内存和文件规模随网格数与时间步数的乘积增长，
+计算时也会产生较大的缓存压力，因此不适合大型 CFD 计算。
+
+例如，当
+\begin{equation}
+N_x=100000,\qquad
+N_t=100000,\qquad
+N_{\mathrm{var}}=3
+\end{equation}
+且每个 \texttt{double} 占用 $8$ 字节时，仅储存三项守恒量就需要
+\begin{equation}
+100000\times100000\times3\times8
+=240\times10^9\ \text{bytes}
+\approx240\ \text{GB}.
+\end{equation}
+
+该方案主要适用于小型算例、快速验证、后处理动画、程序调试和保存全部瞬态。
+
+\subsubsection{方案 B：滚动时间层存储}
+
+滚动存储只保存当前计算需要的少数时间层。对于本程序的 MacCormack 格式，
+内存中主要保留
+\begin{equation}
+\bm{Q}^{n},
+\qquad
+\overline{\bm{Q}},
+\qquad
+\bm{Q}^{n+1}.
+\end{equation}
+
+完成一个时间步后，用 $\bm{Q}^{n+1}$ 覆盖旧的 $\bm{Q}^{n}$，再继续计算。
+这种方式内存需求基本不随总时间步数增加，适合实际 CFD 时间推进。
+
+\subsubsection{滚动存储与快照输出}
+
+方案 B 仍可获得方案 A 的中间过程分析能力。本程序在内存中使用滚动存储，
+同时每隔 $N$ 个时间步将当前流场写入磁盘快照文件：
+\begin{equation}
+\text{内存：滚动时间层}
+\qquad
+\text{磁盘：离散快照}.
+\end{equation}
+
+若未来需要研究某个中间状态，可以
+\begin{enumerate}[leftmargin=2em]
+    \item 找到对应时刻的 snapshot 文件；
+    \item 读入其中保存的 $\bm{Q}$ 或 $\bm{W}$；
+    \item 将该状态作为新的初始条件；
+    \item 从该时间点继续计算。
+\end{enumerate}
+
+因此，本程序采用“内存滚动推进、磁盘按需保存快照”的策略，在控制内存消耗的同时，
+保留对中间过程进行绘图、分析和重新计算的能力。
+
+
+\subsection{空间与时间离散}
+
+计算域离散为 $N_x$ 个节点：
+
+\begin{equation}
+x_i=x_{\min}+i\Delta x,
+\qquad
+\Delta x=\frac{x_{\max}-x_{\min}}{N_x-1}.
+\end{equation}
+
+当前程序并未采用自适应求解域（不是指自适应加密网格，而是指根据dx自适应数值计算域的空间。
+主要原因是：固定计算域和均匀网格便于控制变量，使不同 $\Delta x$、CFL 数和人工粘性参数下的结果能够直接比较；
+
+\subsection{CFL 时间步}
+
+\begin{equation}
+\Delta t
+=
+\mathrm{CFL}
+\frac{\Delta x}
+{\max_i(|u_i|+a_i)},
+\qquad
+a_i=\sqrt{\frac{\gamma p_i}{\rho_i}}.
+\end{equation}
+
+结合 Homework 3 中采用的冯诺依曼稳定性分析，可将离散格式对某一波数扰动的作用
+写成放大因子 $G(k)$。在复平面上，稳定性要求任意波数 $k$ 对应的放大因子均满足
+\begin{equation}
+\left|G(k)\right|\leq 1,
+\qquad \forall\,k,
+\end{equation}
+即所有波数扰动的放大因子轨迹必须位于单位圆内部或单位圆上。CFL 条件正是对
+$\Delta t/\Delta x$ 的限制，使离散格式的放大因子不越出复平面上的单位圆，
+从而保证任意傅里叶扰动不会随时间步进而无限放大。
+
+\subsection{MacCormack 预测--校正格式}
+
+前向通量差分预测、后向通量差分校正：
+
+\begin{align}
+\widetilde{\bm{Q}}_i^{\,n+1}
+&=
+\bm{Q}_i^n
+-
+\frac{\Delta t}{\Delta x}
+\left(
+\bm{F}_{i+1}^n-\bm{F}_i^n
+\right),\\
+\bm{Q}_i^{n+1}
+&=
+\frac{1}{2}
+\left[
+\bm{Q}_i^n+\widetilde{\bm{Q}}_i^{\,n+1}
+-
+\frac{\Delta t}{\Delta x}
+\left(
+\widetilde{\bm{F}}_i^{\,n+1}
+-
+\widetilde{\bm{F}}_{i-1}^{\,n+1}
+\right)
+\right].
+\end{align}
+
+关于格式阶数、差分方向配对方式以及在间断附近出现非物理振荡的原因，此处不赘述，在 文档2-结果与分析 中再作具体讨论
+
+\subsection{人工粘性}
+
+为比较不同物理量对间断位置的识别能力，程序允许在密度 $\rho$、速度 $u$
+和压力 $p$ 之间自由选择人工粘性传感变量。令
+\begin{equation}
+\phi\in\{\rho,u,p\},
+\end{equation}
+则统一采用归一化二阶差分构造传感器：
+\begin{equation}
+\theta_i(\phi)=
+\frac{
+\left|\phi_{i+1}-2\phi_i+\phi_{i-1}\right|
+}{
+\left|\phi_{i+1}\right|
++2\left|\phi_i\right|
++\left|\phi_{i-1}\right|
++\varepsilon
+},
+\end{equation}
+其中 $\varepsilon$ 是防止分母为零的小量。人工粘性强度为
+\begin{equation}
+\mu_i=\beta\,\theta_i(\phi),
+\end{equation}
+其中 $\beta$ 为人工粘性经验系数。
+
+代码中三种选择共用同一套人工粘性算法，仅切换传入传感器的
+$\phi$ 数组，因此可以在其他参数完全相同的条件下，直接比较
+$\rho$、$u$ 和 $p$ 作为开关变量时的数值结果。
+
+\subsection{边界条件}
+
+当前程序使用零梯度外推：
+
+\begin{equation}
+\bm{Q}_0=\bm{Q}_1,
+\qquad
+\bm{Q}_{N_x-1}=\bm{Q}_{N_x-2}.
+\end{equation}
+
+说明这种边界条件适用的前提，以及计算域应足够大以避免波在终止时间前到达边界。

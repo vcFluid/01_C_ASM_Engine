@@ -1,0 +1,65 @@
+\section{程序结构与代码逻辑（伪代码形式呈现）}
+
+\subsection{求解器结构体}
+
+程序使用结构体统一保存：
+
+\begin{itemize}[leftmargin=2em]
+    \item 网格、时间和气体参数；
+    \item 左右初始状态；
+    \item 当前、预测和下一时间层守恒量；
+    \item 当前与预测状态的通量；
+    \item 原始量、声速及人工粘性传感器；
+    \item 内存分配、初始化、推进、输出和释放等方法函数指针。
+\end{itemize}
+
+\begin{lstlisting}[caption={求解器结构体示意}]
+typedef struct Riemann_1D_MacC_solver solver;
+
+struct Riemann_1D_MacC_solver {
+    int nx;
+    double dx, dt, t, t_max, cfl, gamma;
+
+    double *q1, *q2, *q3;
+    double *q1_bar, *q2_bar, *q3_bar;
+    double *q1_next, *q2_next, *q3_next;
+
+    double *rho, *u, *p, *E, *a;
+
+    int  (*allocate)(solver *self);
+    void (*step_maccormack)(solver *self);
+    void (*destroy)(solver *self);
+};
+\end{lstlisting}
+
+\subsection{内存组织}
+
+说明方案 B2.0：内存中只保留当前状态、预测状态和下一状态，计算完成后
+用下一状态覆盖当前状态；中间过程通过定期写出快照文件保存。
+
+\subsection{方法绑定与伪 OOP}
+
+\begin{lstlisting}[caption={方法函数绑定示意}]
+void solver_bind_methods(solver *self) {
+    self->allocate = solver_allocate;
+    self->step_maccormack = solver_step_maccormack;
+    self->destroy = solver_destroy;
+}
+\end{lstlisting}
+
+解释函数指针、\texttt{solver *self} 和
+\texttt{self->member} 的含义。
+
+\subsection{主程序流程}
+
+\begin{enumerate}[leftmargin=2em]
+    \item 创建默认求解器并绑定方法；
+    \item 读取算例、网格和数值参数；
+    \item 为所有数组分配堆内存；
+    \item 初始化 Riemann 左右状态；
+    \item 依据 CFL 计算时间步；
+    \item 执行 MacCormack 预测与校正；
+    \item 更新守恒量和原始量；
+    \item 按间隔输出快照，最终输出结果；
+    \item 释放动态内存。
+\end{enumerate}

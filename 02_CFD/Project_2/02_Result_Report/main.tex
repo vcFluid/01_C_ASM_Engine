@@ -1,0 +1,64 @@
+% !TEX program = xelatex
+\documentclass[UTF8,12pt,a4paper]{ctexart}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!55!black,
+    citecolor=blue!55!black,
+    urlcolor=blue!55!black
+}
+
+\newcommand{\ReportTitle}{一维 Riemann 问题的 MacCormack 数值结果与讨论}
+\newcommand{\ReportAuthor}{填写姓名}
+\newcommand{\ReportCourse}{填写课程名称}
+\newcommand{\ReportDate}{\today}
+
+\newcommand{\figureplaceholder}[2]{
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \parbox[c][5cm][c]{0.82\textwidth}{
+            \centering
+            将图片放入 \texttt{figures/} 后，\\
+            用 \texttt{\textbackslash includegraphics} 替换此占位框。
+        }
+    }
+    \caption{#1}
+    \label{#2}
+\end{figure}
+}
+
+\title{\ReportTitle}
+\author{\ReportAuthor\\\ReportCourse}
+\date{\ReportDate}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+本文展示 MacCormack 格式求解一维 Riemann 问题的数值结果，并与
+Project 0 的半解析结果进行比较。此处填写主要算例、参数研究和最终结论。
+
+\textbf{关键词：} 数值结果；Sod 激波管；人工粘性；CFL；网格收敛性
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/01_setup}
+\input{sections/02_results}
+\input{sections/03_comparison}
+\input{sections/04_discussion}
+\input{sections/05_conclusion}
+
+\end{document}

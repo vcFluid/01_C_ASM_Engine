@@ -7,6 +7,13 @@
 #define OUTPUT_NAME_LEN 128
 
 #define GAMMA 1.4
+
+typedef enum {
+    VISCOSITY_SENSOR_RHO = 1,
+    VISCOSITY_SENSOR_U = 2,
+    VISCOSITY_SENSOR_P = 3
+} ViscositySensorType;
+
 typedef struct Riemann_1D_MacC_solver solver; //这么写语义更明确，未来一眼就知道solver是Riemann_1D求解器，而且后面结构体里方法函数指针的定义要指向solver，所以没法用缩写法
 
 /*
@@ -34,7 +41,7 @@ typedef struct Riemann_1D_MacC_solver solver; //这么写语义更明确，未�
     ② 从main函数中提取主干操作并解耦出来封装成局部私有化函数 static function
     ③ 执行main函数
 */
-struct  {
+struct Riemann_1D_MacC_solver {
     int nx;             //网格总数
     int step_count;    //迭代次数
     int output_interval;    //快照采用频率 (隔多少个时间步骤输出一次流场数据)
@@ -60,6 +67,7 @@ struct  {
 
     double artificial_viscosity_k;  //人工粘性系数
     int use_artificial_viscosity;   //人工粘性系数的开关
+    ViscositySensorType viscosity_sensor_type;
     double rho_floor;               //
     double p_floor;                 //
 
@@ -170,6 +178,33 @@ static double total_energy_density( // 算单位体积流体的总能量（E*rho
 static double *alloc_double_array(size_t n) { //连续开辟空间，具体功能联系solver_allocate看
     return (double *)calloc(n, sizeof(double));
 }
+
+static const double *viscosity_sensor_values(const solver *self) {
+    switch (self->viscosity_sensor_type) {
+        case VISCOSITY_SENSOR_RHO:
+            return self->rho;
+        case VISCOSITY_SENSOR_U:
+            return self->u;
+        case VISCOSITY_SENSOR_P:
+            return self->p;
+        default:
+            return self->rho;
+    }
+}
+
+static const char *viscosity_sensor_name(ViscositySensorType type) {
+    switch (type) {
+        case VISCOSITY_SENSOR_RHO:
+            return "rho";
+        case VISCOSITY_SENSOR_U:
+            return "u";
+        case VISCOSITY_SENSOR_P:
+            return "p";
+        default:
+            return "rho";
+    }
+}
+
 /* 
 老分配内存空间的 malloc 写法
 (double *)malloc(n * sizeof(double));
@@ -328,12 +363,17 @@ void solver_apply_artificial_viscosity(solver *self) { // 算人工粘性
     }
 
     self->update_primitives(self);
+    const double *sensor_values = viscosity_sensor_values(self);
 
     for (int i = 1; i < self->nx - 1; i++) {
-        double denominator = fabs(self->p[i + 1]) + 2.0 * fabs(self->p[i])
-                           + fabs(self->p[i - 1]) + 1.0e-12;
+        double denominator = fabs(sensor_values[i + 1])
+                           + 2.0 * fabs(sensor_values[i])
+                           + fabs(sensor_values[i - 1])
+                           + 1.0e-12;
         self->visc_sensor[i] = self->artificial_viscosity_k
-            * fabs(self->p[i + 1] - 2.0 * self->p[i] + self->p[i - 1])
+            * fabs(sensor_values[i + 1]
+                 - 2.0 * sensor_values[i]
+                 + sensor_values[i - 1])
             / denominator;
     }
 
@@ -542,6 +582,7 @@ static solver solver_create_default(void) {
 
     s.artificial_viscosity_k = 0.25;
     s.use_artificial_viscosity = 1;
+    s.viscosity_sensor_type = VISCOSITY_SENSOR_RHO;
     s.rho_floor = 1.0e-10;
     s.p_floor = 1.0e-10;
 
@@ -549,7 +590,84 @@ static solver solver_create_default(void) {
     return s;
 } //这里考虑交互的话其中需要删掉一些内容
 
-static void ask_output_filename(char *filename, size_t size) { // 用户输入决定最终输出文件名
+static int read_line(char *buffer, size_t size) {
+    if (fgets(buffer, (int)size, stdin) == NULL) {
+        return 0;
+    }
+
+    buffer[strcspn(buffer, "\r\n")] = '\0';
+    return 1;
+}
+
+static int ask_int_range(
+    const char *prompt,
+    int default_value,
+    int min_value,
+    int max_value
+) {
+    char line[INPUT_LINE_LEN];
+    int value = default_value;
+
+    while (1) {
+        printf("%s [%d]: ", prompt, default_value);
+        if (!read_line(line, sizeof(line)) || line[0] == '\0') {
+            return default_value;
+        }
+
+        if (sscanf(line, "%d", &value) == 1 &&
+            value >= min_value &&
+            value <= max_value) {
+            return value;
+        }
+
+        printf("[Input Guard] Please input an integer in [%d, %d].\n",
+               min_value, max_value);
+    }
+}
+
+static double ask_double_min(
+    const char *prompt,
+    double default_value,
+    double min_value
+) {
+    char line[INPUT_LINE_LEN];
+    double value = default_value;
+
+    while (1) {
+        printf("%s [%.6g]: ", prompt, default_value);
+        if (!read_line(line, sizeof(line)) || line[0] == '\0') {
+            return default_value;
+        }
+
+        if (sscanf(line, "%lf", &value) == 1 && value >= min_value) {
+            return value;
+        }
+
+        printf("[Input Guard] Please input a value >= %.6g.\n", min_value);
+    }
+}
+
+static int ask_yes_no(const char *prompt, int default_value) {  // 提高交互性，用户输入Y/N, 转录为 1/0,
+    char line[INPUT_LINE_LEN];
+
+    while (1) {
+        printf("%s [%c]: ", prompt, default_value ? 'y' : 'n');
+        if (!read_line(line, sizeof(line)) || line[0] == '\0') {
+            return default_value;
+        }
+
+        if (line[0] == 'y' || line[0] == 'Y') {
+            return 1;
+        }
+        if (line[0] == 'n' || line[0] == 'N') {
+            return 0;
+        }
+
+        printf("[Input Guard] Please input y or n.\n");
+    }
+}
+
+static void ask_output_filename(char *filename, size_t size) {  // 用户输入决定最终输出的文件名
     char line[OUTPUT_NAME_LEN];
 
     printf("-> Output filename [riemann_maccormack_tecplot.dat]: ");
@@ -561,7 +679,7 @@ static void ask_output_filename(char *filename, size_t size) { // 用户输入�
     snprintf(filename, size, "%s", line);
 }
 
-static void make_snapshot_filename(     // 保存快照，以便未来选取真正值得关注的时间段而不用从头开始
+static void make_snapshot_filename(     // 保存快照，中继节点，以便未来从真正值得关注的时间段开始，而非从头再算
     const char *final_filename,
     int step,
     char *snapshot_filename,
@@ -600,16 +718,11 @@ static void print_banner(void) {
     printf("／￣   |  |　|\n");
     printf("| (￣ヽ＿_ヽ_)__)\n");
     printf("＼二つ                \n");
-    
-    printf("==================================================\n");
-    printf("      1-D Linear Advection CFD Solver made    \n");
-    printf("==================================================\n");
 
     printf("==================================================\n");
     printf("      1-D Euler MacCormack CFD Solver\n");
     printf("==================================================\n");
-    printf("      Data lives in struct. Methods live nearby.\n");
-    printf("      MacCormack predictor-corrector is online.\n");
+    printf("      Data lives in struct. Methods live nearby. -> OOP~!\n");
     printf("==================================================\n\n");
 }
 
@@ -692,13 +805,24 @@ static void configure_numerics(solver *self) {
     self->gamma = ask_double_min("-> gamma", self->gamma, 1.000001);
     self->cfl = ask_double_min("-> target CFL", self->cfl, 1.0e-12);
     self->t_max = ask_double_min("-> total simulation time", self->t_max, 0.0);
-    self->use_artificial_viscosity = 1;
+    self->use_artificial_viscosity =
+        ask_yes_no("-> enable artificial viscosity? (recommended near shocks)",
+                   self->use_artificial_viscosity);
 
     if (self->use_artificial_viscosity) {
         self->artificial_viscosity_k =
             ask_double_min("-> artificial viscosity coefficient k",
                            self->artificial_viscosity_k,
                            0.0);
+        printf("-> artificial viscosity sensor variable:\n");
+        printf("   1 - rho\n");
+        printf("   2 - u\n");
+        printf("   3 - p\n");
+        self->viscosity_sensor_type = (ViscositySensorType)
+            ask_int_range("   Input sensor index",
+                          (int)self->viscosity_sensor_type,
+                          (int)VISCOSITY_SENSOR_RHO,
+                          (int)VISCOSITY_SENSOR_P);
     } else {
         self->artificial_viscosity_k = 0.0;
     }
@@ -724,9 +848,10 @@ static void print_run_summary(solver *self, int case_id, const char *filename) {
            self->left_rho, self->left_u, self->left_p);
     printf("right state  = rho %.6f, u %.6f, p %.6f\n",
            self->right_rho, self->right_u, self->right_p);
-    printf("viscosity    = %s, k %.6f\n",
+    printf("viscosity    = %s, k %.6f, sensor %s\n",
            self->use_artificial_viscosity ? "on" : "off",
-           self->artificial_viscosity_k);
+           self->artificial_viscosity_k,
+           viscosity_sensor_name(self->viscosity_sensor_type));
     printf("snapshots    = every %d steps\n", self->output_interval);
     printf("output       = %s\n", filename);
     printf("--------------------------------------------------\n");
