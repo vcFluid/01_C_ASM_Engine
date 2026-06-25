@@ -1,5 +1,9 @@
 # CFD-oriented C 学习任务线（TODO 草案）
 
+> 这份文件保留原始规划。可执行版已经拆分到
+> [`40_CFD_C_Questline/`](40_CFD_C_Questline/README.md)，当前进度见
+> [`40_CFD_C_Questline/PROGRESS.md`](40_CFD_C_Questline/PROGRESS.md)。
+
 目标：把 C 语言能力逐步连接到 incompressible viscous CFD solver 的实现。
 
 建议节奏：每天完成一个 30–60 分钟的小任务。每个任务都应留下一个可编译的最小程序，必要时附一页以内的笔记。
@@ -134,4 +138,3 @@ p = log(e_h / e_h2) / log(2)
 - [ ] 关联可靠教材、论文或官方文档。
 - [ ] 建立 weekly checkpoint 和复盘模板。
 - [ ] 根据 Gravity 当前 C 水平删减已掌握任务。
-

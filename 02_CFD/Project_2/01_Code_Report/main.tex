@@ -1,0 +1,60 @@
+% !TEX program = xelatex
+\documentclass[UTF8,12pt,a4paper]{ctexart}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!55!black,
+    citecolor=blue!55!black,
+    urlcolor=blue!55!black
+}
+
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue!70!black},
+    commentstyle=\color{green!45!black},
+    stringstyle=\color{red!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    showstringspaces=false
+}
+
+\title{一维 Riemann 问题 MacCormack 求解器：代码逻辑与技术细节}
+\author{邵桂博\\计算流体力学 Project 2}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本文说明 Project 2 的程序架构、状态变量组织、MacCormack 时间推进实现、
+Project 0 精确解程序的进程级耦合，以及 Python 与 Tecplot 组成的自动后处理流程。
+
+\textbf{关键词：} C 语言；程序架构；MacCormack；进程耦合；Tecplot 自动化
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/01_architecture}
+\input{sections/02_solver_state}
+\input{sections/03_time_marching}
+\input{sections/04_process_coupling}
+\input{sections/05_postprocess}
+\input{sections/06_limitations}
+
+\end{document}
