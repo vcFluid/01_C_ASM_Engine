@@ -2,3 +2,24 @@
 
 本章说明 Python 数据整理、双 zone Tecplot 数据生成、自动坐标范围、Tecplot macro
 生成以及 \texttt{tec360.exe -b} 批量出图流程。
+
+\subsection{时间快照与精确解配对}
+
+当 snapshot interval 大于零时，数值求解器定期输出当前流场。每次写出 numerical
+snapshot 后，Project 2 立即通过 OS process 调用 Project 0，在相同时间和相同网格上
+生成 exact snapshot。
+
+\subsection{Tecplot transient dataset}
+
+后处理程序将各时间层写入同一个 Tecplot 数据文件。数值解采用
+\texttt{STRANDID=1}，精确解采用 \texttt{STRANDID=2}，每个 zone 还写入对应的
+\texttt{SOLUTIONTIME}。因此 Tecplot 可以用 Solution Time slider 同步切换两组结果。
+
+\subsection{动画输出}
+
+\texttt{tecplot\_animate.py} 自动生成动画 macro，并通过
+\begin{lstlisting}
+tec360.exe -b export_animation_with_tecplot.mcr
+\end{lstlisting}
+输出密度、速度和压力三个 AVI 文件。动画使用整个时间序列的统一坐标范围，避免逐帧
+自动缩放造成虚假的振幅变化。

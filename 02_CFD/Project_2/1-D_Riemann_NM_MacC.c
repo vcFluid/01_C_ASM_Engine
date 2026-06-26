@@ -5,6 +5,8 @@
 
 #define INPUT_LINE_LEN 128
 #define OUTPUT_NAME_LEN 128
+#define COMMAND_LINE_LEN 1024
+#define EXACT_SOLVER_EXE "_Analysical_Solution_Solver\\riemann_exact.exe"
 
 #define GAMMA 1.4
 
@@ -667,16 +669,93 @@ static int ask_yes_no(const char *prompt, int default_value) {  // 提高交互�
     }
 }
 
-static void ask_output_filename(char *filename, size_t size) {  // 用户输入决定最终输出的文件名
+static void ask_output_filename(
+    char *filename,
+    size_t size,
+    int case_id
+) {  // 用户输入决定最终输出的文件名
     char line[OUTPUT_NAME_LEN];
+    char default_filename[OUTPUT_NAME_LEN];
 
-    printf("-> Output filename [riemann_maccormack_tecplot.dat]: ");
+    snprintf(default_filename, sizeof(default_filename),
+             "runs\\case_%02d_numerical.dat", case_id);
+    printf("-> Output filename [%s]: ", default_filename);
     if (!read_line(line, sizeof(line)) || line[0] == '\0') {
-        snprintf(filename, size, "riemann_maccormack_tecplot.dat");
+        snprintf(filename, size, "%s", default_filename);
         return;
     }
 
     snprintf(filename, size, "%s", line);
+}
+
+static void make_exact_filename(
+    const char *numerical_filename,
+    char *exact_filename,
+    size_t size
+) {
+    const char *dot = strrchr(numerical_filename, '.');
+    const char *slash = strrchr(numerical_filename, '\\');
+    const char *forward_slash = strrchr(numerical_filename, '/');
+    const char *separator = slash;
+
+    if (forward_slash != NULL && (separator == NULL || forward_slash > separator)) {
+        separator = forward_slash;
+    }
+
+    if (dot != NULL && (separator == NULL || dot > separator)) {
+        int prefix_len = (int)(dot - numerical_filename);
+        snprintf(exact_filename, size, "%.*s_exact%s",
+                 prefix_len, numerical_filename, dot);
+    } else {
+        snprintf(exact_filename, size, "%s_exact.dat", numerical_filename);
+    }
+}
+
+static int run_exact_solver(
+    const solver *self,
+    double output_time,
+    const char *exact_filename
+) {
+    char command[COMMAND_LINE_LEN];
+    FILE *exact_executable = fopen(EXACT_SOLVER_EXE, "rb");
+
+    if (exact_executable == NULL) {
+        fprintf(stderr,
+                "[Exact Solver Error] Cannot find %s\n"
+                "Compile it first with:\n"
+                "gcc _Analysical_Solution_Solver\\1-D_Riemann_AM.c "
+                "-std=c11 -O2 -Wall -Wextra "
+                "-o _Analysical_Solution_Solver\\riemann_exact.exe -lm\n",
+                EXACT_SOLVER_EXE);
+        return 0;
+    }
+    fclose(exact_executable);
+
+    snprintf(
+        command,
+        sizeof(command),
+        "\"\"%s\" --batch "
+        "%.17g %.17g %.17g "
+        "%.17g %.17g %.17g "
+        "%.17g %.17g %.17g %.17g %d %.17g \"%s\"\"",
+        EXACT_SOLVER_EXE,
+        self->left_rho, self->left_u, self->left_p,
+        self->right_rho, self->right_u, self->right_p,
+        self->gamma,
+        self->xmin, self->xmax, self->x0,
+        self->nx, output_time,
+        exact_filename
+    );
+
+    printf("[Exact Solver] Launching external Project 0 process...\n");
+    fflush(stdout);
+    if (system(command) != 0) {
+        fprintf(stderr, "[Exact Solver Error] External process failed.\n");
+        return 0;
+    }
+
+    printf("[Exact Output] %s\n", exact_filename);
+    return 1;
 }
 
 static void make_snapshot_filename(     // 保存快照，中继节点，以便未来从真正值得关注的时间段开始，而非从头再算
@@ -730,11 +809,13 @@ static void configure_riemann_case(solver *self, int *case_id) {
     printf("[Step 1] Select Riemann Initial Condition\n");
     printf("1 - Sod shock tube\n");
     printf("2 - Lax shock tube\n");
-    printf("3 - Strong expansion test\n");
-    printf("4 - Contact discontinuity\n");
-    printf("5 - Custom left/right states\n");
+    printf("3 - Subsonic double-expansion test\n");
+    printf("4 - Sjogreen supersonic expansion test\n");
+    printf("5 - Contact discontinuity with double expansion\n");
+    printf("6 - Contact discontinuity with double shock\n");
+    printf("7 - Pure contact discontinuity\n");
 
-    *case_id = ask_int_range("Input case index", 1, 1, 5);
+    *case_id = ask_int_range("Input case index", 1, 1, 7);
 
     if (*case_id == 1) {
         self->left_rho = 1.0;
@@ -755,29 +836,43 @@ static void configure_riemann_case(solver *self, int *case_id) {
     } else if (*case_id == 3) {
         self->left_rho = 1.0;
         self->left_u = -2.0;
+        self->left_p = 4.0;
+        self->right_rho = 1.0;
+        self->right_u = 2.0;
+        self->right_p = 4.0;
+        self->t_max = 0.15;
+    } else if (*case_id == 4) {
+        self->left_rho = 1.0;
+        self->left_u = -2.0;
         self->left_p = 0.4;
         self->right_rho = 1.0;
         self->right_u = 2.0;
         self->right_p = 0.4;
         self->t_max = 0.15;
-    } else if (*case_id == 4) {
+    } else if (*case_id == 5) {
         self->left_rho = 1.0;
-        self->left_u = 0.0;
+        self->left_u = -0.2;
+        self->left_p = 0.5;
+        self->right_rho = 0.5;
+        self->right_u = 0.5;
+        self->right_p = 0.5;
+        self->t_max = 0.2;
+    } else if (*case_id == 6) {
+        self->left_rho = 0.4;
+        self->left_u = 0.5;
         self->left_p = 1.0;
-        self->right_rho = 0.125;
-        self->right_u = 0.0;
-        self->right_p = 1.0;
+        self->right_rho = 1.0;
+        self->right_u = -0.5;
+        self->right_p = 0.9;
         self->t_max = 0.2;
     } else {
-        printf("\n[Custom State] Input LEFT state\n");
-        self->left_rho = ask_double_min("-> rho_L", self->left_rho, 1.0e-12);
-        self->left_u = ask_double_min("-> u_L", self->left_u, -1.0e30);
-        self->left_p = ask_double_min("-> p_L", self->left_p, 1.0e-12);
-
-        printf("\n[Custom State] Input RIGHT state\n");
-        self->right_rho = ask_double_min("-> rho_R", self->right_rho, 1.0e-12);
-        self->right_u = ask_double_min("-> u_R", self->right_u, -1.0e30);
-        self->right_p = ask_double_min("-> p_R", self->right_p, 1.0e-12);
+        self->left_rho = 10.0;
+        self->left_u = 1.0;
+        self->left_p = 2.0;
+        self->right_rho = 1.0;
+        self->right_u = 1.0;
+        self->right_p = 2.0;
+        self->t_max = 0.2;
     }
 
     printf("\n");
@@ -860,6 +955,7 @@ static void print_run_summary(solver *self, int case_id, const char *filename) {
 int main(void) {
     solver my_solver = solver_create_default();
     char output_filename[OUTPUT_NAME_LEN];
+    char exact_filename[OUTPUT_NAME_LEN + 16];
     char snapshot_filename[OUTPUT_NAME_LEN + 32];
     int case_id = 1;
 
@@ -867,7 +963,8 @@ int main(void) {
     configure_riemann_case(&my_solver, &case_id);
     configure_domain_and_grid(&my_solver);
     configure_numerics(&my_solver);
-    ask_output_filename(output_filename, sizeof(output_filename));
+    ask_output_filename(output_filename, sizeof(output_filename), case_id);
+    make_exact_filename(output_filename, exact_filename, sizeof(exact_filename));
     printf("\n");
 
     print_run_summary(&my_solver, case_id, output_filename);
@@ -887,6 +984,14 @@ int main(void) {
                                sizeof(snapshot_filename));
         my_solver.write_tecplot(&my_solver, snapshot_filename);
         printf("[Snapshot] %s\n", snapshot_filename);
+
+        make_exact_filename(snapshot_filename,
+                            exact_filename,
+                            sizeof(exact_filename));
+        if (!run_exact_solver(&my_solver, my_solver.t, exact_filename)) {
+            my_solver.destroy(&my_solver);
+            return 1;
+        }
     }
 
     printf("[Calculating] MacCormack time marching started...\n");
@@ -900,6 +1005,14 @@ int main(void) {
                                    sizeof(snapshot_filename));
             my_solver.write_tecplot(&my_solver, snapshot_filename);
             printf("[Snapshot] %s\n", snapshot_filename);
+
+            make_exact_filename(snapshot_filename,
+                                exact_filename,
+                                sizeof(exact_filename));
+            if (!run_exact_solver(&my_solver, my_solver.t, exact_filename)) {
+                my_solver.destroy(&my_solver);
+                return 1;
+            }
         }
     }
 
@@ -911,6 +1024,12 @@ int main(void) {
 
     printf("[Done] t=%.8f, steps=%d\n", my_solver.t, my_solver.step_count);
     printf("[Output] %s\n", output_filename);
+
+    make_exact_filename(output_filename, exact_filename, sizeof(exact_filename));
+    if (!run_exact_solver(&my_solver, my_solver.t, exact_filename)) {
+        my_solver.destroy(&my_solver);
+        return 1;
+    }
 
     my_solver.destroy(&my_solver);
     return 0;

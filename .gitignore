@@ -11,3 +11,8 @@ Thumbs.db
 **01_C_ASM_Engine_bin/
 **01_C_ASM_Engine_docs/
 **.vscode/
+
+# Python and Tecplot batch artifacts
+**/__pycache__/
+*.pyc
+batch.log

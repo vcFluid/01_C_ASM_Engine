@@ -40,9 +40,9 @@ Tecplot 批量绘图和动画输出组成的后处理流程。
 - [x] 运行 exact solver，生成 `t = 0.2` 的参考解。
 - [ ] 将 exact solution 转换到 `[0,1]` 且间断位置为 `x0 = 0.5`。
 - [x] 检查两份数据的时刻、坐标域和初值是否完全一致。
-- [ ] 计算 `rho/u/p` 的 `L1`、`L2` 和 `L_inf` 误差。
-- [ ] 输出叠加曲线：exact solution 为背景线，numerical solution 为点或前景线。
-- [ ] 保存本次运行参数、误差表和图片。
+- [x] 计算 `rho/u/p` 的 `L1`、`L2` 和 `L_inf` 误差。
+- [x] 输出叠加曲线：exact solution 为背景线，numerical solution 为点或前景线。
+- [x] 保存本次运行参数、误差表和图片。
 
 当前输出：
 
@@ -64,12 +64,12 @@ u_star = 0.927453
 
 - [x] 新建 post-processing 脚本，优先使用 Python。
 - [ ] 用配置文件或命令行参数描述算例，避免反复交互输入。
-- [ ] 自动运行 numerical solver 和 exact solver。
+- [x] Project 2 通过 OS process 自动运行 exact solver。
 - [x] 自动读取 Tecplot ASCII `.dat`。
-- [ ] 自动完成坐标变换、插值和误差计算。
+- [x] 自动完成同网格检查、必要插值和误差计算。
 - [x] 自动生成 Tecplot macro。
 - [x] 调用 `tec360.exe` batch mode 导出 PNG。
-- [ ] 将运行日志、数据、误差和图片保存到独立 case 目录。
+- [x] 将运行日志、数据、误差和图片保存到独立 case 目录。
 
 建议目录：
 
@@ -90,10 +90,11 @@ runs/
 
 - [ ] artificial viscosity: on/off。
 - [ ] sensor: `rho/u/p`。
-- [ ] viscosity coefficient `beta`。
+- [x] viscosity coefficient `beta`。
 - [ ] CFL: `0.2/0.5/0.8`。
 - [ ] grid: `Nx = 101/201/501/1001`。
-- [ ] 汇总误差、稳定性、振荡幅度和间断厚度。
+- [x] 汇总误差、稳定性、total variation、undershoot 和 overshoot。
+- [ ] 定义并汇总接触间断与激波的数值厚度。
 
 ## Tecplot 自动化
 
@@ -124,22 +125,22 @@ PyTecplot 1.6.2
 - [x] 已通过 `tec360.exe -b export_with_tecplot.mcr` 自动导出 `rho/u/p` 图片。
 - [x] 在 Tecplot 不可用期间，使用 Python/Matplotlib 完成正式静态图，同时继续输出
       Tecplot-compatible 数据文件。
-- [ ] 使用 Matplotlib snapshots 完成动画输出。
+- [x] 使用 Tecplot transient dataset 和 macro 完成动画输出。
 
 ## 动画
 
 数值解动画：
 
-- [ ] solver 定期输出 snapshots。
-- [ ] 每个 snapshot 对应一个时间帧。
-- [ ] Tecplot 将各帧导出为 MP4/AVI，或先导出 PNG sequence 再编码为 GIF/MP4。
+- [x] solver 定期输出 snapshots。
+- [x] 每个 snapshot 对应一个时间帧。
+- [x] Tecplot 将各帧导出为 AVI。
 
 精确解动画：
 
-- [ ] exact solver 对每个 snapshot 时间重新生成参考解。
+- [x] exact solver 对每个 snapshot 时间重新生成参考解。
 - [ ] 或利用 Riemann self-similar solution `W(x,t) = W((x-x0)/t)` 批量采样。
-- [ ] 每个数值帧必须匹配同一时刻的 exact frame。
-- [ ] `t = 0` 单独使用初始分段常数状态，避免除以零。
+- [x] 每个数值帧匹配同一时刻的 exact frame。
+- [x] `t = 0` 单独使用初始分段常数状态，避免除以零。
 
 数值解与精确解可以在同一动画中叠加。固定坐标轴范围，避免每帧自动缩放造成
 视觉上的虚假运动或振幅变化。

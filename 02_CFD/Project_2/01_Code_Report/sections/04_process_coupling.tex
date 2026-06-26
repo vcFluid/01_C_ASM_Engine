@@ -4,4 +4,44 @@
 并向其传递相同的左右状态、气体参数、计算域和输出时刻。Project 0 独立生成精确解，
 随后由后处理程序读取数值解与精确解。
 
-本章将讨论该方案的接口、返回状态、文件约定、适用范围及局限性。
+\subsection{调用接口}
+
+Project 0 同时提供两种入口。不带命令行参数时，它保持原有交互运行方式；带
+\texttt{--batch} 参数时，则依次接收左右状态、比热比、计算域、初始间断位置、
+网格点数、输出时刻和输出文件名。
+
+Project 2 通过
+\begin{lstlisting}
+int status = system(command);
+\end{lstlisting}
+请求操作系统启动独立的精确解进程。该过程不是普通函数调用：两个程序具有独立的
+地址空间，输入通过 command-line arguments 传递，结果通过 Tecplot 数据文件传递，
+执行状态通过 process exit status 返回。
+
+\subsection{同网格采样}
+
+Project 2 将自身的
+\[
+x_{\min},\quad x_{\max},\quad x_0,\quad N_x,\quad t_{\max},\quad \gamma
+\]
+及左右初始状态全部传给 Project 0。精确解程序使用
+\[
+x_i=x_{\min}+i\frac{x_{\max}-x_{\min}}{N_x-1}
+\]
+直接采样，因此 numerical 和 exact 两组数据具有相同网格点，不需要在后处理中进行
+空间插值。
+
+\subsection{Windows command-line 引号}
+
+当 executable 或输出路径可能包含空格时，路径必须使用双引号包围。由于
+\texttt{system()} 在 Windows 中通过 \texttt{cmd.exe /c} 执行命令，整条命令还需要
+增加一层外部双引号，避免 \texttt{cmd.exe} 删除 executable 路径的首层引号。
+
+\subsection{错误传递与适用范围}
+
+Project 2 在调用前检查精确解 executable 是否存在，并检查 \texttt{system()} 的返回值。
+Project 0 成功时返回零，参数或文件错误时返回非零值。
+
+该方案保留了两个教学项目的独立编译和独立运行能力，但也引入 executable 路径、
+操作系统和文件接口依赖，并具有进程启动开销。因此它适合低频 benchmark 和课程作业，
+不适合在每个时间步内反复启动外部进程。
