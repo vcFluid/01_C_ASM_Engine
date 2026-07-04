@@ -7,7 +7,7 @@
 - [具体初值条件](#具体初值条件)
 - [目标](#目标)
   - [用MacCormack格式算1-D黎曼问题的数值解](#用maccormack格式算1-d黎曼问题的数值解)
-  - [将数值解与半解析解（精确解）对比](#将数值解与半解析解精确解对比)
+  - [将数值解与半解析解（精确解）（project_0）对比](#将数值解与半解析解精确解对比)
   - [具体细节（采用MacCormack格式）](#具体细节采用maccormack格式)
 - [我对自己(Code)的期望](#我对自己code的期望)
 - [当前代码进度](#当前代码进度)
@@ -29,25 +29,16 @@ $$
 $$
 \mathbf{Q}
 =
-\begin{bmatrix}
-\rho\\
-\rho u\\
-\rho E
-\end{bmatrix},
+(\rho,\ \rho u,\ \rho E)^{\mathrm T},
 \qquad
 \mathbf{F}(\mathbf{Q})
 =
-\begin{bmatrix}
-\rho u\\
-\rho u^2+p\\
-u(\rho E+p)
-\end{bmatrix}.
+(\rho u,\ \rho u^2+p,\ u(\rho E+p))^{\mathrm T}.
 $$
 
 展开成分量形式为
 
 $$
-\left\{
 \begin{aligned}
 \frac{\partial \rho}{\partial t}
 &+
@@ -62,7 +53,6 @@ $$
 \frac{\partial\left[u(\rho E+p)\right]}{\partial x}
 =0.
 \end{aligned}
-\right.
 $$
 
 理想气体状态方程给出总能量闭合关系：
@@ -84,11 +74,7 @@ Riemann initial condition 采用分段常数 primitive variables：
 $$
 \mathbf{W}(x,0)
 =
-\begin{bmatrix}
-\rho\\
-u\\
-p
-\end{bmatrix}
+\left(\rho,\ u,\ p\right)^{\mathrm T}
 =
 \begin{cases}
 \mathbf{W}_L=(\rho_L,u_L,p_L)^{\mathrm T}, & x<x_0,\\
@@ -109,9 +95,8 @@ $$
 | 7 | Pure contact discontinuity | $(10,\ 1.0,\ 2.0)$ | $(1.0,\ 1.0,\ 2.0)$ |
 
 # 目标：
-此前我们用特征线理论，结合数值计算方法求解了其半解析解（Project_0）,学了MacCormack格式后
 ## 用MacCormack格式算1-D黎曼问题的数值解
-## 将数值解与半解析解（精确解）对比
+## 将数值解与半解析解（精确解）（project_0）对比
 ## 具体细节（采用MacCormack格式）
  - 1-Sod问题数值解 + 对比精确解 + 讨论人工粘性的有无对解的影响 + 讨论人工粘性经验参数β对解的影响 + CFL数对解的影响（尤其是注意到人工粘性系数并非CFL的单调函数）
     - 开关函数使用的是密度，可以进一步讨论压力、速度，实际比较不同类型选取的差异
