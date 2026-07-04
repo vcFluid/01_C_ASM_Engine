@@ -52,12 +52,11 @@ E=e+\frac{u^2}{2}=\frac{p}{\rho(\gamma-1)}+\frac{u^2}{2},\qquad p=(\gamma-1)\lef
 Riemann initial conditions:
 
 ```math
-\mathbf{W}(x,0)=
-\begin{cases}
-\mathbf{W}_L=(\rho_L,u_L,p_L)^{\mathrm T}, & x<x_0,\\
-\mathbf{W}_R=(\rho_R,u_R,p_R)^{\mathrm T}, & x\ge x_0.
+\mathbf{W}(x,0)=\mathbf{W}_L=(\rho_L,u_L,p_L)^{\mathrm T},\quad x<x_0.
+```
 
-\end{cases}
+```math
+\mathbf{W}(x,0)=\mathbf{W}_R=(\rho_R,u_R,p_R)^{\mathrm T},\quad x\ge x_0.
 ```
 
 当前 code 内置的 7 组 Riemann 初值条件如下：

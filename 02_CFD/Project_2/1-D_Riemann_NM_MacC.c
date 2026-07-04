@@ -10,10 +10,10 @@
 
 #define GAMMA 1.4
 
-typedef enum {
-    VISCOSITY_SENSOR_RHO = 1,
-    VISCOSITY_SENSOR_U = 2,
-    VISCOSITY_SENSOR_P = 3
+typedef enum {  // 用于判断人工粘性系数用什么算的特征数
+    VISCOSITY_SENSOR_RHO = 1,   // 用密度算
+    VISCOSITY_SENSOR_U = 2,     // 用速度算
+    VISCOSITY_SENSOR_P = 3      // 用压强算
 } ViscositySensorType;
 
 typedef struct Riemann_1D_MacC_solver solver; //这么写语义更明确，未来一眼就知道solver是Riemann_1D求解器，而且后面结构体里方法函数指针的定义要指向solver，所以没法用缩写法
