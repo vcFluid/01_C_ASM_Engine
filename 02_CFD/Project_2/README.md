@@ -17,70 +17,47 @@
 
 本文求解一维无粘可压缩 Euler equations 的守恒形式：
 
-$$
-\frac{\partial \mathbf{Q}}{\partial t}
-+
-\frac{\partial \mathbf{F}(\mathbf{Q})}{\partial x}
-=0,
-$$
+```math
+\frac{\partial \mathbf{Q}}{\partial t}+\frac{\partial \mathbf{F}(\mathbf{Q})}{\partial x}=0.
+```
 
 其中守恒变量和通量分别为
 
-$$
-\mathbf{Q}
-=
-(\rho,\ \rho u,\ \rho E)^{\mathrm T},
-\qquad
-\mathbf{F}(\mathbf{Q})
-=
-(\rho u,\ \rho u^2+p,\ u(\rho E+p))^{\mathrm T}.
-$$
+```math
+\mathbf{Q}=(\rho,\ \rho u,\ \rho E)^{\mathrm T},\qquad \mathbf{F}(\mathbf{Q})=(\rho u,\ \rho u^2+p,\ u(\rho E+p))^{\mathrm T}.
+```
 
 展开成分量形式为
 
-$$
-\begin{aligned}
-\frac{\partial \rho}{\partial t}
-&+
-\frac{\partial(\rho u)}{\partial x}
-=0,\\[4pt]
-\frac{\partial(\rho u)}{\partial t}
-&+
-\frac{\partial(\rho u^2+p)}{\partial x}
-=0,\\[4pt]
-\frac{\partial(\rho E)}{\partial t}
-&+
-\frac{\partial\left[u(\rho E+p)\right]}{\partial x}
-=0.
-\end{aligned}
-$$
+```math
+\frac{\partial \rho}{\partial t}+\frac{\partial(\rho u)}{\partial x}=0,
+```
+
+```math
+\frac{\partial(\rho u)}{\partial t}+\frac{\partial(\rho u^2+p)}{\partial x}=0,
+```
+
+```math
+\frac{\partial(\rho E)}{\partial t}+\frac{\partial[u(\rho E+p)]}{\partial x}=0.
+```
 
 理想气体状态方程给出总能量闭合关系：
 
-$$
-E=e+\frac{u^2}{2}
-=
-\frac{p}{\rho(\gamma-1)}
-+
-\frac{u^2}{2},
-\qquad
-p=(\gamma-1)\left(\rho E-\frac{1}{2}\rho u^2\right).
-$$
+```math
+E=e+\frac{u^2}{2}=\frac{p}{\rho(\gamma-1)}+\frac{u^2}{2},\qquad p=(\gamma-1)\left(\rho E-\frac{1}{2}\rho u^2\right).
+```
 
 # 具体初值条件.
 
 Riemann initial condition 采用分段常数 primitive variables：
 
-$$
-\mathbf{W}(x,0)
-=
-\left(\rho,\ u,\ p\right)^{\mathrm T}
-=
+```math
+\mathbf{W}(x,0)=
 \begin{cases}
 \mathbf{W}_L=(\rho_L,u_L,p_L)^{\mathrm T}, & x<x_0,\\
 \mathbf{W}_R=(\rho_R,u_R,p_R)^{\mathrm T}, & x\ge x_0.
 \end{cases}
-$$
+```
 
 当前 code 内置的 7 组 Riemann 初值条件如下：
 
