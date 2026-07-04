@@ -1,0 +1,577 @@
+run_id,case_name,case,viscosity,sensor,beta,cfl,nx,mode,t_max,status,reason,solution_time,variable,L1,L2,Linf,TV,undershoot,overshoot
+run_0001,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,rho,0.25,0.2,101,1,0.2,completed,completed,0.2,rho,0.009762687077802189,0.02253175854765521,0.12177891701929,0.9404524112,0.0,0.0
+run_0001,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,rho,0.25,0.2,101,1,0.2,completed,completed,0.2,u,0.022214957322003376,0.09293929451655783,0.764848160709203,2.193210104,0.0,0.08565536889079695
+run_0001,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,rho,0.25,0.2,101,1,0.2,completed,completed,0.2,p,0.008871733429198765,0.02543237764902936,0.17981328129305038,1.019283676,0.0,0.0
+run_0002,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,rho,0.25,0.2,201,1,0.2,completed,completed,0.2,rho,0.0063191774812246795,0.01920805440257051,0.13424208131929,0.9414766378,0.0,0.0
+run_0002,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,rho,0.25,0.2,201,1,0.2,completed,completed,0.2,u,0.014635447078456251,0.0866223446260476,0.8728741347092029,2.1526202164,0.0,0.08354274769079695
+run_0002,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,rho,0.25,0.2,201,1,0.2,completed,completed,0.2,p,0.0053315124600358844,0.02160182742708533,0.1957182072930504,1.0039756128000001,0.0,0.0
+run_0003,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,rho,0.25,0.2,501,1,0.2,completed,completed,0.2,rho,0.003824195627745953,0.015895284405231226,0.14043768081929,0.9440910984,0.0,0.0
+run_0003,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,rho,0.25,0.2,501,1,0.2,completed,completed,0.2,u,0.01100107529360204,0.08618835724483769,0.9263002165092029,2.160355014,0.0,0.09474852159079694
+run_0003,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,rho,0.25,0.2,501,1,0.2,completed,completed,0.2,p,0.003355196635562006,0.01984462780633099,0.20297763839305039,1.0072179212,0.0,0.0
+run_0004,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,rho,0.25,0.2,1001,1,0.2,completed,completed,0.2,rho,0.0029913918891843654,0.01498611177168523,0.14057359481929,0.9385351226000002,0.0,0.0
+run_0004,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,rho,0.25,0.2,1001,1,0.2,completed,completed,0.2,u,0.009897431479558363,0.08651426380077099,0.927451611509203,2.1413179793999997,0.0,0.08234267119079697
+run_0004,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,rho,0.25,0.2,1001,1,0.2,completed,completed,0.2,p,0.0027119998074277923,0.0193946287376511,0.20313003909305039,0.9998837987999999,0.0,0.0
+run_0005,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,rho,0.25,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0005,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,rho,0.25,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0005,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,rho,0.25,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0006,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,rho,0.25,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0006,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,rho,0.25,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0006,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,rho,0.25,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0007,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,rho,0.25,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0007,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,rho,0.25,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0007,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,rho,0.25,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0008,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,rho,0.25,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0008,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,rho,0.25,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0008,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,rho,0.25,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0009,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,rho,0.25,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0009,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,rho,0.25,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0009,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,rho,0.25,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0010,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,rho,0.25,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0010,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,rho,0.25,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0010,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,rho,0.25,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0011,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,rho,0.25,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0011,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,rho,0.25,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0011,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,rho,0.25,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0012,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,rho,0.25,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0012,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,rho,0.25,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0012,visc_on_sensor_rho_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,rho,0.25,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0013,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,u,0.25,0.2,101,1,0.2,completed,completed,0.2,rho,0.010241327955832564,0.0235200831292123,0.12814432271929,0.942496844,0.0,0.0
+run_0013,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,u,0.25,0.2,101,1,0.2,completed,completed,0.2,u,0.0243728201642918,0.10534554880200966,0.819867824309203,2.162749727,0.0,0.09441751029079704
+run_0013,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,u,0.25,0.2,101,1,0.2,completed,completed,0.2,p,0.00931558927575473,0.02774326905442308,0.18812909119305038,1.0085812024,0.0,0.0
+run_0014,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,u,0.25,0.2,201,1,0.2,completed,completed,0.2,rho,0.006849156996648511,0.020368604629532754,0.13779356121929,0.9515343007999999,0.0,0.0
+run_0014,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,u,0.25,0.2,201,1,0.2,completed,completed,0.2,u,0.01729280902214031,0.09986780614180406,0.903687196909203,2.1543608432,0.0,0.09306379539079701
+run_0014,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,u,0.25,0.2,201,1,0.2,completed,completed,0.2,p,0.005910710817035884,0.024214229040235378,0.19995023229305037,1.0052958972000001,0.0,0.0
+run_0015,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,u,0.25,0.2,501,1,0.2,completed,completed,0.2,rho,0.004290337335714514,0.01729355537704228,0.14055265201929001,0.9590999787999996,0.0,0.0
+run_0015,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,u,0.25,0.2,501,1,0.2,completed,completed,0.2,u,0.013474850204675665,0.09814259056895619,0.927274285809203,2.1477991628,0.0,0.08665700629079709
+run_0015,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,u,0.25,0.2,501,1,0.2,completed,completed,0.2,p,0.003907701838306409,0.02234795794309536,0.2031065789930504,1.0024780459999998,0.0,0.0
+run_0016,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,u,0.25,0.2,1001,1,0.2,completed,completed,0.2,rho,0.0033873100185529297,0.016340201800614528,0.14057371101929,0.9819851412000002,0.0,0.0
+run_0016,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,u,0.25,0.2,1001,1,0.2,completed,completed,0.2,u,0.012182041166958365,0.09771248603629214,0.927452595409203,2.1425424786000007,0.0,0.090124473590797
+run_0016,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,u,0.25,0.2,1001,1,0.2,completed,completed,0.2,p,0.0032194539893999926,0.021797020535130236,0.20313016919305038,1.0010735512000002,0.0,0.0
+run_0017,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,u,0.25,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0017,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,u,0.25,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0017,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,u,0.25,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0018,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,u,0.25,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0018,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,u,0.25,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0018,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,u,0.25,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0019,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,u,0.25,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0019,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,u,0.25,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0019,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,u,0.25,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0020,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,u,0.25,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0020,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,u,0.25,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0020,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,u,0.25,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0021,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,u,0.25,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0021,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,u,0.25,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0021,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,u,0.25,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0022,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,u,0.25,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0022,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,u,0.25,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0022,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,u,0.25,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0023,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,u,0.25,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0023,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,u,0.25,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0023,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,u,0.25,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0024,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,u,0.25,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0024,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,u,0.25,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0024,visc_on_sensor_u_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,u,0.25,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0025,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,p,0.25,0.2,101,1,0.2,completed,completed,0.2,rho,0.010022298434137239,0.022999692676722836,0.12609540081929,0.9427672374000001,0.0,0.0
+run_0025,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,p,0.25,0.2,101,1,0.2,completed,completed,0.2,u,0.023459637028107733,0.10103643122114192,0.801974692009203,2.1547720114,0.0,0.09147523529079693
+run_0025,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_101_mode_1,1,on,p,0.25,0.2,101,1,0.2,completed,completed,0.2,p,0.009075941844615742,0.026913500193240025,0.18547571489305037,1.0057871436,0.0,0.0
+run_0026,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,p,0.25,0.2,201,1,0.2,completed,completed,0.2,rho,0.006583019077648511,0.01938066427212037,0.13575681371929,0.9478717981999999,0.0,0.0
+run_0026,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,p,0.25,0.2,201,1,0.2,completed,completed,0.2,u,0.015682544782640306,0.09132649653765555,0.886034704309203,2.1415891212000004,0.0,0.08588726319079709
+run_0026,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,p,0.25,0.2,201,1,0.2,completed,completed,0.2,p,0.005551653920674875,0.022518496413812778,0.19754152459305038,1.0001932916,0.0,0.0
+run_0027,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,p,0.25,0.2,501,1,0.2,completed,completed,0.2,rho,0.0038754397367890985,0.015735914066566443,0.14044077841929,0.9706156083999999,0.0,0.0
+run_0027,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,p,0.25,0.2,501,1,0.2,completed,completed,0.2,u,0.011047397089438594,0.08636652372043488,0.926326478209203,2.1592021170000004,0.0,0.09419084879079709
+run_0027,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,p,0.25,0.2,501,1,0.2,completed,completed,0.2,p,0.0033575139444942995,0.019881422834814005,0.2029811157930504,1.0066364699999997,0.0,0.0
+run_0028,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,p,0.25,0.2,1001,1,0.2,completed,completed,0.2,rho,0.002970294024390221,0.014598429871598406,0.14057349881929002,1.0041285050000002,0.0,0.0
+run_0028,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,p,0.25,0.2,1001,1,0.2,completed,completed,0.2,u,0.00958201518993983,0.08489086692056352,0.927450798809203,2.1595660019999996,0.0,0.09375723309079709
+run_0028,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_1001_mode_1,1,on,p,0.25,0.2,1001,1,0.2,completed,completed,0.2,p,0.0026350223191939377,0.019048059935770256,0.20312993159305037,1.0067283684000004,0.0,0.0
+run_0029,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,p,0.25,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0029,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,p,0.25,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0029,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_101_mode_1,1,on,p,0.25,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0030,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,p,0.25,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0030,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,p,0.25,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0030,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,p,0.25,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0031,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,p,0.25,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0031,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,p,0.25,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0031,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,p,0.25,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0032,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,p,0.25,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0032,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,p,0.25,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0032,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_1001_mode_1,1,on,p,0.25,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0033,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,p,0.25,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0033,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,p,0.25,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0033,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_101_mode_1,1,on,p,0.25,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0034,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,p,0.25,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0034,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,p,0.25,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0034,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_201_mode_1,1,on,p,0.25,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0035,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,p,0.25,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0035,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,p,0.25,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0035,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_501_mode_1,1,on,p,0.25,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0036,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,p,0.25,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0036,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,p,0.25,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0036,visc_on_sensor_p_beta_0p25_cfl_0p8_nx_1001_mode_1,1,on,p,0.25,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0037,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,rho,0.5,0.2,101,1,0.2,completed,completed,0.2,rho,0.011013859218157814,0.023640482280224116,0.11904170441929002,0.89367116,0.0,0.0
+run_0037,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,rho,0.5,0.2,101,1,0.2,completed,completed,0.2,u,0.0226589878126103,0.09313704028714993,0.743863544209203,1.9691285949000001,0.0,0.03766633779079709
+run_0037,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,rho,0.5,0.2,101,1,0.2,completed,completed,0.2,p,0.009566620798005401,0.02664264049794219,0.1764813323930504,0.9411667994,0.0,0.0
+run_0038,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,rho,0.5,0.2,201,1,0.2,completed,completed,0.2,rho,0.0073939431863245765,0.02070846556131185,0.13532246291929,0.8954648046,0.0,0.0
+run_0038,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,rho,0.5,0.2,201,1,0.2,completed,completed,0.2,u,0.01714747751932629,0.09536489649177511,0.882459025809203,1.9479582723999997,0.0,0.03693389169079708
+run_0038,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,rho,0.5,0.2,201,1,0.2,completed,completed,0.2,p,0.0063047164378901505,0.023912176226860024,0.1970461552930504,0.9337924160000002,0.0,0.0
+run_0039,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,rho,0.5,0.2,501,1,0.2,completed,completed,0.2,rho,0.0048038531168440625,0.018073397347543447,0.14053242171929,0.8961588255999999,0.0,0.0
+run_0039,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,rho,0.5,0.2,501,1,0.2,completed,completed,0.2,u,0.014530915640388404,0.10102882557176598,0.927102968909203,1.9468623504000002,0.0,0.03782027669079702
+run_0039,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,rho,0.5,0.2,501,1,0.2,completed,completed,0.2,p,0.004350948058409903,0.02314184730181487,0.20308390999305037,0.9333746118,0.0,0.0
+run_0040,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,rho,0.5,0.2,1001,1,0.2,completed,completed,0.2,rho,0.003893937501811928,0.017399758918916004,0.14057371221929,0.8935407294000001,0.0,0.0
+run_0040,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,rho,0.5,0.2,1001,1,0.2,completed,completed,0.2,u,0.01370555478279748,0.10320520883533836,0.9274526055092029,1.9353646508000002,0.0,0.03346894739079709
+run_0040,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,rho,0.5,0.2,1001,1,0.2,completed,completed,0.2,p,0.003687711994901611,0.02305195327305286,0.20313017059305039,0.9292968462000001,0.0,0.0
+run_0041,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,rho,0.5,0.5,101,1,0.2,completed,completed,0.2,rho,0.010796019773432001,0.022568001309164365,0.12054541461929,0.9121831138000002,0.0,0.0
+run_0041,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,rho,0.5,0.5,101,1,0.2,completed,completed,0.2,u,0.021063077672555563,0.08957867589922869,0.7564975715092029,2.0204267448000004,0.0,0.05744293569079706
+run_0041,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,rho,0.5,0.5,101,1,0.2,completed,completed,0.2,p,0.008899497126337755,0.024791310543858188,0.1784624506930504,0.9602452750000001,0.0,0.0
+run_0042,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,rho,0.5,0.5,201,1,0.2,completed,completed,0.2,rho,0.0067517606467347975,0.01928912652699001,0.13469546551929001,0.9077199176000001,0.0,0.0
+run_0042,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,rho,0.5,0.5,201,1,0.2,completed,completed,0.2,u,0.014639245664604884,0.08657341609176099,0.876948075609203,1.9961084011999999,0.0,0.05377741389079704
+run_0042,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,rho,0.5,0.5,201,1,0.2,completed,completed,0.2,p,0.005508401633559048,0.021535171494376698,0.19628416259305037,0.9508423260000001,0.0,0.0
+run_0043,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,rho,0.5,0.5,501,1,0.2,completed,completed,0.2,rho,0.004117286450549923,0.016267063374341185,0.14050095441929,0.9077182586000001,0.0,0.0
+run_0043,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,rho,0.5,0.5,501,1,0.2,completed,completed,0.2,u,0.011603879024815444,0.08886584927178441,0.9268365039092029,2.0000564623999995,0.0,0.058207086690796994
+run_0043,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,rho,0.5,0.5,501,1,0.2,completed,completed,0.2,p,0.0035805551136968193,0.02035825436345585,0.2030486412930504,0.9518601709999998,0.0,0.0
+run_0044,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,rho,0.5,0.5,1001,1,0.2,completed,completed,0.2,rho,0.0032279751496822454,0.015443197118230735,0.14057369891929,0.9081372126,0.0,0.0
+run_0044,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,rho,0.5,0.5,1001,1,0.2,completed,completed,0.2,u,0.010599004900713197,0.089830405157768,0.9274524926092029,2.0026976844,0.0,0.06013344329079706
+run_0044,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,rho,0.5,0.5,1001,1,0.2,completed,completed,0.2,p,0.002917383986813729,0.02008051915478014,0.20313015559305037,0.9527051529999999,0.0,0.0
+run_0045,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,rho,0.5,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0045,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,rho,0.5,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0045,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,rho,0.5,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0046,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,rho,0.5,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0046,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,rho,0.5,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0046,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,rho,0.5,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0047,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,rho,0.5,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0047,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,rho,0.5,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0047,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,rho,0.5,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0048,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,rho,0.5,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0048,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,rho,0.5,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0048,visc_on_sensor_rho_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,rho,0.5,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0049,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,u,0.5,0.2,101,1,0.2,completed,completed,0.2,rho,0.012825724055391277,0.026582424331256387,0.13092464521929,0.8931554808,0.0,0.0
+run_0049,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,u,0.5,0.2,101,1,0.2,completed,completed,0.2,u,0.029591259099346533,0.1190738706010543,0.8446598777092029,1.9406457803000001,0.0,0.035610090490797
+run_0049,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,u,0.5,0.2,101,1,0.2,completed,completed,0.2,p,0.011385313938005397,0.03149141658986124,0.1917204091930504,0.931301927,0.0,0.0
+run_0050,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,u,0.5,0.2,201,1,0.2,completed,completed,0.2,rho,0.008716180951601468,0.023195743626819275,0.13912531031929,0.8950310145999999,0.0,0.0
+run_0050,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,u,0.5,0.2,201,1,0.2,completed,completed,0.2,u,0.022539542532326293,0.11677794127075254,0.915138383909203,1.9390846172,0.0,0.03453812809079704
+run_0050,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,u,0.5,0.2,201,1,0.2,completed,completed,0.2,p,0.007611715405820657,0.028151055442288138,0.20149128829305038,0.9307385758,0.0,0.0
+run_0051,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,u,0.5,0.2,501,1,0.2,completed,completed,0.2,rho,0.005471763492886219,0.020080462268610624,0.14057013161929,0.9036738477999998,0.0,0.0
+run_0051,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,u,0.5,0.2,501,1,0.2,completed,completed,0.2,u,0.018484390198054562,0.11693771695538309,0.927422290309203,1.9446950243999999,0.0,0.037224053090797016
+run_0051,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,u,0.5,0.2,501,1,0.2,completed,completed,0.2,p,0.005268196706374126,0.026496828656556934,0.20312616019305038,0.9326707901999999,0.0,0.0
+run_0052,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,u,0.5,0.2,1001,1,0.2,completed,completed,0.2,rho,0.004416159374016285,0.01920005121328928,0.14057371371929,0.9266875539999999,0.0,0.0
+run_0052,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,u,0.5,0.2,1001,1,0.2,completed,completed,0.2,u,0.017122193717315375,0.11710685076567671,0.927452617709203,1.9446421141999999,0.0,0.03722883179079706
+run_0052,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,u,0.5,0.2,1001,1,0.2,completed,completed,0.2,p,0.004463718778980208,0.026045835481094824,0.20313017219305038,0.9326451635999999,0.0,0.0
+run_0053,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,u,0.5,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0053,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,u,0.5,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0053,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,u,0.5,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0054,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,u,0.5,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0054,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,u,0.5,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0054,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,u,0.5,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0055,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,u,0.5,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0055,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,u,0.5,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0055,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,u,0.5,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0056,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,u,0.5,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0056,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,u,0.5,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0056,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,u,0.5,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0057,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,u,0.5,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0057,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,u,0.5,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0057,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,u,0.5,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0058,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,u,0.5,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0058,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,u,0.5,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0058,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,u,0.5,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0059,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,u,0.5,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0059,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,u,0.5,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0059,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,u,0.5,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0060,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,u,0.5,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0060,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,u,0.5,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0060,visc_on_sensor_u_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,u,0.5,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0061,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,p,0.5,0.2,101,1,0.2,completed,completed,0.2,rho,0.012177989263391276,0.025014164691330144,0.12434646771929,0.8937740752,0.0,0.0
+run_0061,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,p,0.5,0.2,101,1,0.2,completed,completed,0.2,u,0.025773408160346532,0.10309898162895129,0.7883321237092029,1.9426779804999998,0.0,0.03621724469079701
+run_0061,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_101_mode_1,1,on,p,0.5,0.2,101,1,0.2,completed,completed,0.2,p,0.010495879123005399,0.028527849675877775,0.1833966198930504,0.9318987770000001,0.0,0.0
+run_0062,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,p,0.5,0.2,201,1,0.2,completed,completed,0.2,rho,0.007984538979832399,0.021184588805529626,0.13631994411929,0.8955287996,0.0,0.0
+run_0062,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,p,0.5,0.2,201,1,0.2,completed,completed,0.2,u,0.018499235947826292,0.09935222746198834,0.891061299409203,1.9315864160000003,0.0,0.031671283890796986
+run_0062,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,p,0.5,0.2,201,1,0.2,completed,completed,0.2,p,0.006711340690890155,0.024711376965566238,0.1982296974930504,0.9279162625999998,0.0,0.0
+run_0063,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,p,0.5,0.2,501,1,0.2,completed,completed,0.2,rho,0.00482402133234614,0.01778776741547533,0.14052360631929,0.9122546876000003,0.0,0.0
+run_0063,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,p,0.5,0.2,501,1,0.2,completed,completed,0.2,u,0.014419695652654557,0.09975686744204848,0.927028303509203,1.9461967273999998,0.0,0.03806020409079702
+run_0063,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,p,0.5,0.2,501,1,0.2,completed,completed,0.2,p,0.004363146824629722,0.02288307786870475,0.2030740290930504,0.9330164706,0.0,0.0
+run_0064,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,p,0.5,0.2,1001,1,0.2,completed,completed,0.2,rho,0.003786151701584859,0.016836512850607305,0.14057370801929,0.9364595462,0.0,0.0
+run_0064,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,p,0.5,0.2,1001,1,0.2,completed,completed,0.2,u,0.013101129141597096,0.10018343489884572,0.927452569809203,1.9448652698000002,0.0,0.03756134629079699
+run_0064,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_1001_mode_1,1,on,p,0.5,0.2,1001,1,0.2,completed,completed,0.2,p,0.0035714131233525064,0.0224062620535336,0.20313016579305038,0.9325356228,0.0,0.0
+run_0065,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,p,0.5,0.5,101,1,0.2,completed,completed,0.2,rho,0.01043115447651798,0.022904263807557727,0.12584010021929,0.9118348669999999,0.0,0.0
+run_0065,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,p,0.5,0.5,101,1,0.2,completed,completed,0.2,u,0.0223900966922918,0.09887820703296167,0.801188313909203,2.0020139876,0.0,0.058142082190797084
+run_0065,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_101_mode_1,1,on,p,0.5,0.5,101,1,0.2,completed,completed,0.2,p,0.008951553150032716,0.02641970322204094,0.18532727249305037,0.9523546707999999,0.0,0.0
+run_0066,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,p,0.5,0.5,201,1,0.2,completed,completed,0.2,rho,0.006729822759762709,0.01926945024107125,0.13607085991929,0.909536918,0.0,0.0
+run_0066,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,p,0.5,0.5,201,1,0.2,completed,completed,0.2,u,0.01538567652373234,0.09094849401634203,0.888871029109203,1.9823091002,0.0,0.05176065019079701
+run_0066,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,p,0.5,0.5,201,1,0.2,completed,completed,0.2,p,0.005580558002744373,0.022372670965168553,0.1979297846930504,0.9453836234,0.0,0.0
+run_0067,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,p,0.5,0.5,501,1,0.2,completed,completed,0.2,rho,0.004024929530865245,0.015899835873406987,0.14048653581929,0.9262598203999998,0.0,0.0
+run_0067,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,p,0.5,0.5,501,1,0.2,completed,completed,0.2,u,0.01133010394434903,0.08778011743457222,0.926714357509203,2.0002073608,0.0,0.059172989190797054
+run_0067,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,p,0.5,0.5,501,1,0.2,completed,completed,0.2,p,0.0034784826353776955,0.02013366713362167,0.2030324716930504,0.9517517003999999,0.0,0.0
+run_0068,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,p,0.5,0.5,1001,1,0.2,completed,completed,0.2,rho,0.0030995551978860937,0.014829405264337276,0.14057365981929001,0.9355099367999998,0.0,0.0
+run_0068,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,p,0.5,0.5,1001,1,0.2,completed,completed,0.2,u,0.010034893314761588,0.08692008443102656,0.927452161809203,1.9789205552,0.0,0.04952583549079703
+run_0068,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_1001_mode_1,1,on,p,0.5,0.5,1001,1,0.2,completed,completed,0.2,p,0.002777558525868067,0.019458483764712847,0.20313011189305039,0.9442542856000004,0.0,0.0
+run_0069,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,p,0.5,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0069,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,p,0.5,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0069,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_101_mode_1,1,on,p,0.5,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0070,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,p,0.5,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0070,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,p,0.5,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0070,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_201_mode_1,1,on,p,0.5,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0071,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,p,0.5,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0071,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,p,0.5,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0071,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_501_mode_1,1,on,p,0.5,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0072,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,p,0.5,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0072,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,p,0.5,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0072,visc_on_sensor_p_beta_0p5_cfl_0p8_nx_1001_mode_1,1,on,p,0.5,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0073,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,rho,0.75,0.2,101,1,0.2,completed,completed,0.2,rho,0.012153594865988094,0.024141830760974176,0.11296798511929002,0.8788402134,0.0,0.0
+run_0073,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,rho,0.75,0.2,101,1,0.2,completed,completed,0.2,u,0.023388328108295633,0.0878487310516378,0.695790673909203,1.8875712058,0.0,0.00883217529079705
+run_0073,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,rho,0.75,0.2,101,1,0.2,completed,completed,0.2,p,0.010491802428466458,0.02686627625892623,0.16861099969305038,0.9132964076999999,0.0,0.0
+run_0074,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,rho,0.75,0.2,201,1,0.2,completed,completed,0.2,rho,0.00814179332935661,0.021088359947526735,0.13354755301929,0.8812136556000002,0.0,0.0
+run_0074,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,rho,0.75,0.2,201,1,0.2,completed,completed,0.2,u,0.017935577328328206,0.09432015824651842,0.867335318409203,1.8813977301999996,0.0,0.010665433990797002
+run_0074,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,rho,0.75,0.2,201,1,0.2,completed,completed,0.2,p,0.006940970508356684,0.024308826315636564,0.19493742389305038,0.9110429866,0.0,0.0
+run_0075,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,rho,0.75,0.2,501,1,0.2,completed,completed,0.2,rho,0.00532836242217043,0.018689135585192,0.14051255631929,0.8814011838000001,0.0,0.0
+run_0075,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,rho,0.75,0.2,501,1,0.2,completed,completed,0.2,u,0.01572414808918994,0.10402193250409905,0.926934725509203,1.8784520444000001,0.0,0.010521011090797061
+run_0075,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,rho,0.75,0.2,501,1,0.2,completed,completed,0.2,p,0.004835901425658045,0.023960657418442045,0.2030616440930504,0.9099316260000001,0.0,0.0
+run_0076,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,rho,0.75,0.2,1001,1,0.2,completed,completed,0.2,rho,0.0043116576233831775,0.01811271212134442,0.14057371211929,0.8808882806000002,0.0,0.0
+run_0076,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,rho,0.75,0.2,1001,1,0.2,completed,completed,0.2,u,0.015015403670699016,0.10757308334877488,0.927452604309203,1.8765923330000005,0.0,0.009868879790797092
+run_0076,visc_on_sensor_rho_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,rho,0.75,0.2,1001,1,0.2,completed,completed,0.2,p,0.004101622793236613,0.024066801885447898,0.20313017039305037,0.9092387022000001,0.0,0.0
+run_0077,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,rho,0.75,0.5,101,1,0.2,completed,completed,0.2,rho,0.010820618564157813,0.022931663438032143,0.11726764911929,0.8911316650000001,0.0,0.0
+run_0077,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,rho,0.75,0.5,101,1,0.2,completed,completed,0.2,u,0.02115273326884654,0.08796807135840842,0.729886739609203,1.9316360512,0.0,0.03275123029079707
+run_0077,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,rho,0.75,0.5,101,1,0.2,completed,completed,0.2,p,0.009152149746422379,0.025316074055075796,0.17422670629305037,0.9280943928,0.0,0.0
+run_0078,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,rho,0.75,0.5,201,1,0.2,completed,completed,0.2,rho,0.0071729902622282215,0.019977624396801286,0.13466113251929002,0.8913733112,0.0,0.0
+run_0078,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,rho,0.75,0.5,201,1,0.2,completed,completed,0.2,u,0.015785728607658985,0.09021469880323366,0.876849549409203,1.9263806552000002,0.0,0.031252809090797085
+run_0078,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,rho,0.75,0.5,201,1,0.2,completed,completed,0.2,p,0.0059455493934574815,0.022687776722586626,0.19626660899305037,0.9263122352,0.0,0.0
+run_0079,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,rho,0.75,0.5,501,1,0.2,completed,completed,0.2,rho,0.004599238396551164,0.017301642526744654,0.14052110171929,0.8901549712,0.0,0.0
+run_0079,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,rho,0.75,0.5,501,1,0.2,completed,completed,0.2,u,0.013311289955150823,0.09571396946835552,0.927007116809203,1.9199219384000001,0.0,0.028752006790797036
+run_0079,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,rho,0.75,0.5,501,1,0.2,completed,completed,0.2,p,0.004061621398284452,0.021942661303048026,0.2030712247930504,0.9240706620000002,0.0,0.0
+run_0080,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,rho,0.75,0.5,1001,1,0.2,completed,completed,0.2,rho,0.0036859378471453454,0.016608360927932934,0.14057371141929,0.8910322482000003,0.0,0.0
+run_0080,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,rho,0.75,0.5,1001,1,0.2,completed,completed,0.2,u,0.012454821931196711,0.0977587696691989,0.9274525986092029,1.9242096081999998,0.0,0.031076930890796994
+run_0080,visc_on_sensor_rho_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,rho,0.75,0.5,1001,1,0.2,completed,completed,0.2,p,0.0033983184584864975,0.021844318516130716,0.20313016969305037,0.9254963742000003,0.0,0.0
+run_0081,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,rho,0.75,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0081,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,rho,0.75,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0081,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,rho,0.75,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0082,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,rho,0.75,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0082,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,rho,0.75,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0082,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,rho,0.75,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0083,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,rho,0.75,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0083,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,rho,0.75,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0083,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,rho,0.75,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0084,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,rho,0.75,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0084,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,rho,0.75,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0084,visc_on_sensor_rho_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,rho,0.75,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0085,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,u,0.75,0.2,101,1,0.2,completed,completed,0.2,rho,0.01460102971027708,0.02784753504592204,0.12958607641929,0.8780822889000001,0.0,0.0
+run_0085,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,u,0.75,0.2,101,1,0.2,completed,completed,0.2,u,0.03258601451734654,0.12085352659765188,0.833605736109203,1.8760984361000002,0.0,0.009624418390797085
+run_0085,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,u,0.75,0.2,101,1,0.2,completed,completed,0.2,p,0.01305918810114439,0.03298517000567232,0.1901178415930504,0.9091574723999999,0.0,0.0
+run_0086,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,u,0.75,0.2,201,1,0.2,completed,completed,0.2,rho,0.009689239455593647,0.024034525179303188,0.13889526611929,0.881225685,0.0,0.0
+run_0086,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,u,0.75,0.2,201,1,0.2,completed,completed,0.2,u,0.024975430776752298,0.12078945353669239,0.913186776809203,1.8775174638,0.0,0.010503470490797029
+run_0086,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,u,0.75,0.2,201,1,0.2,completed,completed,0.2,p,0.008716013894807698,0.029500519916206835,0.2012296561930504,0.9096828830000001,0.0,0.0
+run_0087,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,u,0.75,0.2,501,1,0.2,completed,completed,0.2,rho,0.006107597617388551,0.020995997041124457,0.14056942411929,0.886619788,0.0,0.0
+run_0087,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,u,0.75,0.2,501,1,0.2,completed,completed,0.2,u,0.02071183562141852,0.12286341414568407,0.9274162998092029,1.875020994,0.0,0.009238325390797053
+run_0087,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,u,0.75,0.2,501,1,0.2,completed,completed,0.2,p,0.006024943124402967,0.027922790410104027,0.2031253676930504,0.9088047091999999,0.0,0.0
+run_0088,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,u,0.75,0.2,1001,1,0.2,completed,completed,0.2,rho,0.004913280780672052,0.020164040283767608,0.14057371371929,0.9024037644000001,0.0,0.0
+run_0088,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,u,0.75,0.2,1001,1,0.2,completed,completed,0.2,u,0.019249411148797867,0.12370318671302921,0.927452617809203,1.8750531001999993,0.0,0.009282589790796991
+run_0088,visc_on_sensor_u_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,u,0.75,0.2,1001,1,0.2,completed,completed,0.2,p,0.005081121078599774,0.027538119744158478,0.20313017219305038,0.9088079480000001,0.0,0.0
+run_0089,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,u,0.75,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0089,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,u,0.75,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0089,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,u,0.75,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0090,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,u,0.75,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0090,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,u,0.75,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0090,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,u,0.75,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0091,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,u,0.75,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0091,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,u,0.75,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0091,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,u,0.75,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0092,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,u,0.75,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0092,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,u,0.75,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0092,visc_on_sensor_u_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,u,0.75,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0093,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,u,0.75,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0093,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,u,0.75,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0093,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,u,0.75,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0094,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,u,0.75,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0094,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,u,0.75,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0094,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,u,0.75,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0095,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,u,0.75,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0095,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,u,0.75,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0095,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,u,0.75,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0096,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,u,0.75,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0096,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,u,0.75,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0096,visc_on_sensor_u_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,u,0.75,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0097,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,p,0.75,0.2,101,1,0.2,completed,completed,0.2,rho,0.013729577608683418,0.025882497709420676,0.12019194651929,0.8794444028,0.0,0.0
+run_0097,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,p,0.75,0.2,101,1,0.2,completed,completed,0.2,u,0.027124602913347815,0.09985806511942534,0.7543519588092029,1.8793365874999999,0.0,0.011327315490797019
+run_0097,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_101_mode_1,1,on,p,0.75,0.2,101,1,0.2,completed,completed,0.2,p,0.011666216427466455,0.029138184187591995,0.17812577099305038,0.9101248311,0.0,0.0
+run_0098,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,p,0.75,0.2,201,1,0.2,completed,completed,0.2,rho,0.008723730791775323,0.02160310685664664,0.13484267641929001,0.8812813414,0.0,0.0
+run_0098,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,p,0.75,0.2,201,1,0.2,completed,completed,0.2,u,0.019535843878252933,0.09875926653120518,0.878428230209203,1.8783256904,0.0,0.010866278290797005
+run_0098,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_201_mode_1,1,on,p,0.75,0.2,201,1,0.2,completed,completed,0.2,p,0.007435600839218728,0.025203181019006475,0.1964865314930504,0.9097848422000001,0.0,0.0
+run_0099,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,p,0.75,0.2,501,1,0.2,completed,completed,0.2,rho,0.005275109074506901,0.018273748584142515,0.14049493571929,0.8954907986000001,0.0,0.0
+run_0099,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,p,0.75,0.2,501,1,0.2,completed,completed,0.2,u,0.01555289455858917,0.10216310994303264,0.9267854654092029,1.8777078342,0.0,0.010646706990797061
+run_0099,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_501_mode_1,1,on,p,0.75,0.2,501,1,0.2,completed,completed,0.2,p,0.004856416600851355,0.023585826099093016,0.2030418873930504,0.9095448304000001,0.0,0.0
+run_0100,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,p,0.75,0.2,1001,1,0.2,completed,completed,0.2,rho,0.00412521007099972,0.01739134178549055,0.14057370421929,0.9169476442000003,0.0,0.0
+run_0100,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,p,0.75,0.2,1001,1,0.2,completed,completed,0.2,u,0.014248494488065042,0.1037136447419661,0.927452537409203,1.8754688921999998,0.0,0.009502399290796992
+run_0100,visc_on_sensor_p_beta_0p75_cfl_0p2_nx_1001_mode_1,1,on,p,0.75,0.2,1001,1,0.2,completed,completed,0.2,p,0.003959663603099113,0.02324429392759489,0.2031301615930504,0.908768049,0.0,0.0
+run_0101,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,p,0.75,0.5,101,1,0.2,completed,completed,0.2,rho,0.011742202987853143,0.02438626185162059,0.12381333591929,0.8910036598,0.0,0.0
+run_0101,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,p,0.75,0.5,101,1,0.2,completed,completed,0.2,u,0.023955058877511922,0.09913821706575025,0.7842792001092029,1.9273704485999998,0.0,0.032598237390797036
+run_0101,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_101_mode_1,1,on,p,0.75,0.5,101,1,0.2,completed,completed,0.2,p,0.009861514125001065,0.027407374911054605,0.1827696065930504,0.9265133700000001,0.0,0.0
+run_0102,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,p,0.75,0.5,201,1,0.2,completed,completed,0.2,rho,0.007497149650844954,0.020355098909849684,0.13585297571929,0.8996519606000002,0.0,0.0
+run_0102,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,p,0.75,0.5,201,1,0.2,completed,completed,0.2,u,0.016930621916658988,0.09432149077917446,0.887098321109203,1.924748488,0.0,0.03153048489079702
+run_0102,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_201_mode_1,1,on,p,0.75,0.5,201,1,0.2,completed,completed,0.2,p,0.006242441850887985,0.02350559288370312,0.1976841144930504,0.9256081926000002,0.0,0.0
+run_0103,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,p,0.75,0.5,501,1,0.2,completed,completed,0.2,rho,0.004550515731106625,0.016906732537571287,0.14050382411929,0.9179792466,0.0,0.0
+run_0103,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,p,0.75,0.5,501,1,0.2,completed,completed,0.2,u,0.013018804717350568,0.0938520352121878,0.9268607803092029,1.9238419302,0.0,0.031203678890797004
+run_0103,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_501_mode_1,1,on,p,0.75,0.5,501,1,0.2,completed,completed,0.2,p,0.004012603092665257,0.021560162312963295,0.2030518563930504,0.9252786298000001,0.0,0.0
+run_0104,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,p,0.75,0.5,1001,1,0.2,completed,completed,0.2,rho,0.003543132802284496,0.015928287073445443,0.14057369901929,0.9296712142000001,0.0,0.0
+run_0104,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,p,0.75,0.5,1001,1,0.2,completed,completed,0.2,u,0.011714714770496584,0.0939570744080695,0.927452492909203,1.9198833141999998,0.0,0.02918910489079707
+run_0104,visc_on_sensor_p_beta_0p75_cfl_0p5_nx_1001_mode_1,1,on,p,0.75,0.5,1001,1,0.2,completed,completed,0.2,p,0.003243381085690799,0.02103098389388281,0.20313015569305037,0.9239008036000003,0.0,0.0
+run_0105,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,p,0.75,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0105,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,p,0.75,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0105,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_101_mode_1,1,on,p,0.75,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0106,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,p,0.75,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0106,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,p,0.75,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0106,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_201_mode_1,1,on,p,0.75,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0107,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,p,0.75,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0107,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,p,0.75,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0107,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_501_mode_1,1,on,p,0.75,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0108,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,p,0.75,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0108,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,p,0.75,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0108,visc_on_sensor_p_beta_0p75_cfl_0p8_nx_1001_mode_1,1,on,p,0.75,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0109,visc_on_sensor_rho_beta_1_cfl_0p2_nx_101_mode_1,1,on,rho,1.0,0.2,101,1,0.2,completed,completed,0.2,rho,0.013089229409596486,0.02448146382785868,0.10609695611929001,0.875178681,0.0,0.0
+run_0109,visc_on_sensor_rho_beta_1_cfl_0p2_nx_101_mode_1,1,on,rho,1.0,0.2,101,1,0.2,completed,completed,0.2,u,0.024093153585515753,0.08192850085734237,0.6431311089092029,1.8669773216,0.0,0.0011382083907970353
+run_0109,visc_on_sensor_rho_beta_1_cfl_0p2_nx_101_mode_1,1,on,rho,1.0,0.2,101,1,0.2,completed,completed,0.2,p,0.011290580177668439,0.026895511926476528,0.1595235863930504,0.9062465741000001,0.0,0.0
+run_0110,visc_on_sensor_rho_beta_1_cfl_0p2_nx_201_mode_1,1,on,rho,1.0,0.2,201,1,0.2,completed,completed,0.2,rho,0.008639341561313147,0.02099817000382363,0.13008651571929,0.8763067345999999,0.0,0.0
+run_0110,visc_on_sensor_rho_beta_1_cfl_0p2_nx_201_mode_1,1,on,rho,1.0,0.2,201,1,0.2,completed,completed,0.2,u,0.017976070234846236,0.08903065895327407,0.837913575409203,1.8588232436,0.0,0.00029433369079701066
+run_0110,visc_on_sensor_rho_beta_1_cfl_0p2_nx_201_mode_1,1,on,rho,1.0,0.2,201,1,0.2,completed,completed,0.2,p,0.007354281268888177,0.023869449746975947,0.19074132109305036,0.9034261528,0.0,0.0
+run_0111,visc_on_sensor_rho_beta_1_cfl_0p2_nx_501_mode_1,1,on,rho,1.0,0.2,501,1,0.2,completed,completed,0.2,rho,0.0055792272646376425,0.01856902233425028,0.14042248981929,0.8767837966,0.0,0.0
+run_0111,visc_on_sensor_rho_beta_1_cfl_0p2_nx_501_mode_1,1,on,rho,1.0,0.2,501,1,0.2,completed,completed,0.2,u,0.015644374434827513,0.10144628797426487,0.9261717272092029,1.8569574438,0.0,0.00041443329079704494
+run_0111,visc_on_sensor_rho_beta_1_cfl_0p2_nx_501_mode_1,1,on,rho,1.0,0.2,501,1,0.2,completed,completed,0.2,p,0.005016572727838766,0.023608737401446922,0.20296061879305038,0.9026638471999999,0.0,0.0
+run_0112,visc_on_sensor_rho_beta_1_cfl_0p2_nx_1001_mode_1,1,on,rho,1.0,0.2,1001,1,0.2,completed,completed,0.2,rho,0.004465534488087419,0.018014733231151936,0.14057369521929,0.8765733034000002,0.0,0.0
+run_0112,visc_on_sensor_rho_beta_1_cfl_0p2_nx_1001_mode_1,1,on,rho,1.0,0.2,1001,1,0.2,completed,completed,0.2,u,0.014951571022703386,0.10610710092748288,0.927452460909203,1.8563115711999998,0.0,0.00040752689079703863
+run_0112,visc_on_sensor_rho_beta_1_cfl_0p2_nx_1001_mode_1,1,on,rho,1.0,0.2,1001,1,0.2,completed,completed,0.2,p,0.004194956457807069,0.02382543331782559,0.20313015139305038,0.9023866524,0.0,0.0
+run_0113,visc_on_sensor_rho_beta_1_cfl_0p5_nx_101_mode_1,1,on,rho,1.0,0.5,101,1,0.2,completed,completed,0.2,rho,0.011341824140602296,0.023182928028382337,0.11256441211929,0.883032993,0.0,0.0
+run_0113,visc_on_sensor_rho_beta_1_cfl_0p5_nx_101_mode_1,1,on,rho,1.0,0.5,101,1,0.2,completed,completed,0.2,u,0.021250737273847815,0.08398374230782102,0.693722899809203,1.8952707462,0.0,0.017274049590797036
+run_0113,visc_on_sensor_rho_beta_1_cfl_0p5_nx_101_mode_1,1,on,rho,1.0,0.5,101,1,0.2,completed,completed,0.2,p,0.009555270454966451,0.025441739372829723,0.16822116939305037,0.9158100829999999,0.0,0.0
+run_0114,visc_on_sensor_rho_beta_1_cfl_0p5_nx_201_mode_1,1,on,rho,1.0,0.5,201,1,0.2,completed,completed,0.2,rho,0.007547649466546816,0.020193999773636437,0.13327214951929,0.8831726092000001,0.0,0.0
+run_0114,visc_on_sensor_rho_beta_1_cfl_0p5_nx_201_mode_1,1,on,rho,1.0,0.5,201,1,0.2,completed,completed,0.2,u,0.01621869346966026,0.08926561335475533,0.865237189209203,1.8890025448,0.0,0.015035432590797093
+run_0114,visc_on_sensor_rho_beta_1_cfl_0p5_nx_201_mode_1,1,on,rho,1.0,0.5,201,1,0.2,completed,completed,0.2,p,0.006303184470446688,0.022922018872251405,0.19463458619305038,0.9135614256000001,0.0,0.0
+run_0115,visc_on_sensor_rho_beta_1_cfl_0p5_nx_501_mode_1,1,on,rho,1.0,0.5,501,1,0.2,completed,completed,0.2,rho,0.0049063136420297426,0.017685892839011053,0.14049990711929,0.8833731748000001,0.0,0.0
+run_0115,visc_on_sensor_rho_beta_1_cfl_0p5_nx_501_mode_1,1,on,rho,1.0,0.5,501,1,0.2,completed,completed,0.2,u,0.013959605395152357,0.09746014707116647,0.926827625009203,1.8879989867999998,0.0,0.015097422790797066
+run_0115,visc_on_sensor_rho_beta_1_cfl_0p5_nx_501_mode_1,1,on,rho,1.0,0.5,501,1,0.2,completed,completed,0.2,p,0.004333806824451354,0.022448971337715805,0.20304746739305038,0.9131504172000002,0.0,0.0
+run_0116,visc_on_sensor_rho_beta_1_cfl_0p5_nx_1001_mode_1,1,on,rho,1.0,0.5,1001,1,0.2,completed,completed,0.2,rho,0.003948566379802954,0.017073584952134544,0.14057371081929002,0.8831714499999999,0.0,0.0
+run_0116,visc_on_sensor_rho_beta_1_cfl_0p5_nx_1001_mode_1,1,on,rho,1.0,0.5,1001,1,0.2,completed,completed,0.2,u,0.013258754400298247,0.10059932945000485,0.9274525934092029,1.8875495879999993,0.0,0.015071003190797017
+run_0116,visc_on_sensor_rho_beta_1_cfl_0p5_nx_1001_mode_1,1,on,rho,1.0,0.5,1001,1,0.2,completed,completed,0.2,p,0.003653282079481956,0.022506270724091466,0.20313016899305036,0.9129319532000001,0.0,0.0
+run_0117,visc_on_sensor_rho_beta_1_cfl_0p8_nx_101_mode_1,1,on,rho,1.0,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0117,visc_on_sensor_rho_beta_1_cfl_0p8_nx_101_mode_1,1,on,rho,1.0,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0117,visc_on_sensor_rho_beta_1_cfl_0p8_nx_101_mode_1,1,on,rho,1.0,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0118,visc_on_sensor_rho_beta_1_cfl_0p8_nx_201_mode_1,1,on,rho,1.0,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0118,visc_on_sensor_rho_beta_1_cfl_0p8_nx_201_mode_1,1,on,rho,1.0,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0118,visc_on_sensor_rho_beta_1_cfl_0p8_nx_201_mode_1,1,on,rho,1.0,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0119,visc_on_sensor_rho_beta_1_cfl_0p8_nx_501_mode_1,1,on,rho,1.0,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0119,visc_on_sensor_rho_beta_1_cfl_0p8_nx_501_mode_1,1,on,rho,1.0,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0119,visc_on_sensor_rho_beta_1_cfl_0p8_nx_501_mode_1,1,on,rho,1.0,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0120,visc_on_sensor_rho_beta_1_cfl_0p8_nx_1001_mode_1,1,on,rho,1.0,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0120,visc_on_sensor_rho_beta_1_cfl_0p8_nx_1001_mode_1,1,on,rho,1.0,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0120,visc_on_sensor_rho_beta_1_cfl_0p8_nx_1001_mode_1,1,on,rho,1.0,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0121,visc_on_sensor_u_beta_1_cfl_0p2_nx_101_mode_1,1,on,u,1.0,0.2,101,1,0.2,completed,completed,0.2,rho,0.01606791415041688,0.028746096129010197,0.12731829571929001,0.8749999975,0.0,0.0
+run_0121,visc_on_sensor_u_beta_1_cfl_0p2_nx_101_mode_1,1,on,u,1.0,0.2,101,1,0.2,completed,completed,0.2,u,0.03466934219103186,0.11924626704269425,0.814725352909203,1.8567022932000004,0.0,0.0008307438907970699
+run_0121,visc_on_sensor_u_beta_1_cfl_0p2_nx_101_mode_1,1,on,u,1.0,0.2,101,1,0.2,completed,completed,0.2,p,0.014412454593327465,0.03378393643963427,0.18734167739305038,0.9026763237000001,0.0,0.0
+run_0122,visc_on_sensor_u_beta_1_cfl_0p2_nx_201_mode_1,1,on,u,1.0,0.2,201,1,0.2,completed,completed,0.2,rho,0.010528573748161126,0.024395368505045575,0.13821020781929,0.8763475350000001,0.0,0.0
+run_0122,visc_on_sensor_u_beta_1_cfl_0p2_nx_201_mode_1,1,on,u,1.0,0.2,201,1,0.2,completed,completed,0.2,u,0.026158527003844967,0.1199866056183235,0.9073551576092029,1.8562555128,0.0,0.0005493855907970913
+run_0122,visc_on_sensor_u_beta_1_cfl_0p2_nx_201_mode_1,1,on,u,1.0,0.2,201,1,0.2,completed,completed,0.2,p,0.009489330316649235,0.02986408952680408,0.20044491609305037,0.9025006584,0.0,0.0
+run_0123,visc_on_sensor_u_beta_1_cfl_0p2_nx_501_mode_1,1,on,u,1.0,0.2,501,1,0.2,completed,completed,0.2,rho,0.006501603553907914,0.021240349218423382,0.14056431741929,0.8773412414000001,0.0,0.0
+run_0123,visc_on_sensor_u_beta_1_cfl_0p2_nx_501_mode_1,1,on,u,1.0,0.2,501,1,0.2,completed,completed,0.2,u,0.021463505951625987,0.12336409611195101,0.927373062909203,1.8553500278,0.0,0.00012976869079706077
+run_0123,visc_on_sensor_u_beta_1_cfl_0p2_nx_501_mode_1,1,on,u,1.0,0.2,501,1,0.2,completed,completed,0.2,p,0.006416438745940163,0.0281908654088875,0.20311964769305038,0.9021747156,0.0,0.0
+run_0124,visc_on_sensor_u_beta_1_cfl_0p2_nx_1001_mode_1,1,on,u,1.0,0.2,1001,1,0.2,completed,completed,0.2,rho,0.005139422340685498,0.02036952889521219,0.14057371371929,0.8866978195999999,0.0,0.0
+run_0124,visc_on_sensor_u_beta_1_cfl_0p2_nx_1001_mode_1,1,on,u,1.0,0.2,1001,1,0.2,completed,completed,0.2,u,0.01986135480170186,0.12470485632525379,0.927452617709203,1.8555891284,0.0,0.00026772659079699057
+run_0124,visc_on_sensor_u_beta_1_cfl_0p2_nx_1001_mode_1,1,on,u,1.0,0.2,1001,1,0.2,completed,completed,0.2,p,0.005338097397315718,0.02781853438654603,0.20313017219305038,0.9022508124,0.0,0.0
+run_0125,visc_on_sensor_u_beta_1_cfl_0p5_nx_101_mode_1,1,on,u,1.0,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0125,visc_on_sensor_u_beta_1_cfl_0p5_nx_101_mode_1,1,on,u,1.0,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0125,visc_on_sensor_u_beta_1_cfl_0p5_nx_101_mode_1,1,on,u,1.0,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0126,visc_on_sensor_u_beta_1_cfl_0p5_nx_201_mode_1,1,on,u,1.0,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0126,visc_on_sensor_u_beta_1_cfl_0p5_nx_201_mode_1,1,on,u,1.0,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0126,visc_on_sensor_u_beta_1_cfl_0p5_nx_201_mode_1,1,on,u,1.0,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0127,visc_on_sensor_u_beta_1_cfl_0p5_nx_501_mode_1,1,on,u,1.0,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0127,visc_on_sensor_u_beta_1_cfl_0p5_nx_501_mode_1,1,on,u,1.0,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0127,visc_on_sensor_u_beta_1_cfl_0p5_nx_501_mode_1,1,on,u,1.0,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0128,visc_on_sensor_u_beta_1_cfl_0p5_nx_1001_mode_1,1,on,u,1.0,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0128,visc_on_sensor_u_beta_1_cfl_0p5_nx_1001_mode_1,1,on,u,1.0,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0128,visc_on_sensor_u_beta_1_cfl_0p5_nx_1001_mode_1,1,on,u,1.0,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0129,visc_on_sensor_u_beta_1_cfl_0p8_nx_101_mode_1,1,on,u,1.0,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0129,visc_on_sensor_u_beta_1_cfl_0p8_nx_101_mode_1,1,on,u,1.0,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0129,visc_on_sensor_u_beta_1_cfl_0p8_nx_101_mode_1,1,on,u,1.0,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0130,visc_on_sensor_u_beta_1_cfl_0p8_nx_201_mode_1,1,on,u,1.0,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0130,visc_on_sensor_u_beta_1_cfl_0p8_nx_201_mode_1,1,on,u,1.0,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0130,visc_on_sensor_u_beta_1_cfl_0p8_nx_201_mode_1,1,on,u,1.0,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0131,visc_on_sensor_u_beta_1_cfl_0p8_nx_501_mode_1,1,on,u,1.0,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0131,visc_on_sensor_u_beta_1_cfl_0p8_nx_501_mode_1,1,on,u,1.0,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0131,visc_on_sensor_u_beta_1_cfl_0p8_nx_501_mode_1,1,on,u,1.0,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0132,visc_on_sensor_u_beta_1_cfl_0p8_nx_1001_mode_1,1,on,u,1.0,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0132,visc_on_sensor_u_beta_1_cfl_0p8_nx_1001_mode_1,1,on,u,1.0,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0132,visc_on_sensor_u_beta_1_cfl_0p8_nx_1001_mode_1,1,on,u,1.0,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0133,visc_on_sensor_p_beta_1_cfl_0p2_nx_101_mode_1,1,on,p,1.0,0.2,101,1,0.2,completed,completed,0.2,rho,0.014839613529183417,0.02643309954159981,0.11507504971929,0.8749999977,0.0,0.0
+run_0133,visc_on_sensor_p_beta_1_cfl_0p2_nx_101_mode_1,1,on,p,1.0,0.2,101,1,0.2,completed,completed,0.2,u,0.02821558545253187,0.09493342065936257,0.713369714809203,1.8581152013,0.0,0.0014223362907970216
+run_0133,visc_on_sensor_p_beta_1_cfl_0p2_nx_101_mode_1,1,on,p,1.0,0.2,101,1,0.2,completed,completed,0.2,p,0.012651050793327465,0.029361025660256997,0.1715137128930504,0.9029970927,0.0,0.0
+run_0134,visc_on_sensor_p_beta_1_cfl_0p2_nx_201_mode_1,1,on,p,1.0,0.2,201,1,0.2,completed,completed,0.2,rho,0.00929667791627802,0.021622589969941316,0.13196017961929002,0.8763506096,0.0,0.0
+run_0134,visc_on_sensor_p_beta_1_cfl_0p2_nx_201_mode_1,1,on,p,1.0,0.2,201,1,0.2,completed,completed,0.2,u,0.019740991199512264,0.09397287145447794,0.8538274651092029,1.8566136822,0.0,0.0006606230907970634
+run_0134,visc_on_sensor_p_beta_1_cfl_0p2_nx_201_mode_1,1,on,p,1.0,0.2,201,1,0.2,completed,completed,0.2,p,0.007935055097287185,0.024861653491319764,0.1930264725930504,0.9024375456,0.0,0.0
+run_0135,visc_on_sensor_p_beta_1_cfl_0p2_nx_501_mode_1,1,on,p,1.0,0.2,501,1,0.2,completed,completed,0.2,rho,0.005450601490258443,0.0180714991249444,0.14037243161929,0.8845755089999999,0.0,0.0
+run_0135,visc_on_sensor_p_beta_1_cfl_0p2_nx_501_mode_1,1,on,p,1.0,0.2,501,1,0.2,completed,completed,0.2,u,0.01543203690382675,0.09909160243536318,0.925747441809203,1.8556672570000001,0.0,0.00026016659079708404
+run_0135,visc_on_sensor_p_beta_1_cfl_0p2_nx_501_mode_1,1,on,p,1.0,0.2,501,1,0.2,completed,completed,0.2,p,0.005037830209058045,0.023141236645476904,0.2029044082930504,0.9020855502,0.0,0.0
+run_0136,visc_on_sensor_p_beta_1_cfl_0p2_nx_1001_mode_1,1,on,p,1.0,0.2,1001,1,0.2,completed,completed,0.2,rho,0.004206924321651385,0.017177720922130983,0.14057358511929,0.9027682882,0.0,0.0
+run_0136,visc_on_sensor_p_beta_1_cfl_0p2_nx_1001_mode_1,1,on,p,1.0,0.2,1001,1,0.2,completed,completed,0.2,u,0.014051560062836081,0.10148223858178376,0.9274515293092029,1.8559656848000003,0.0,0.00043786969079706584
+run_0136,visc_on_sensor_p_beta_1_cfl_0p2_nx_1001_mode_1,1,on,p,1.0,0.2,1001,1,0.2,completed,completed,0.2,p,0.004028904900905426,0.02284499270220015,0.20313002819305037,0.9021797054000003,0.0,0.0
+run_0137,visc_on_sensor_p_beta_1_cfl_0p5_nx_101_mode_1,1,on,p,1.0,0.5,101,1,0.2,completed,completed,0.2,rho,0.012703822490238941,0.024849557808362458,0.12034888651929002,0.8812727702,0.0,0.0
+run_0137,visc_on_sensor_p_beta_1_cfl_0p5_nx_101_mode_1,1,on,p,1.0,0.5,101,1,0.2,completed,completed,0.2,u,0.02479663571384654,0.09608894387088596,0.756500180109203,1.8863174265999998,0.0,0.01455953639079699
+run_0137,visc_on_sensor_p_beta_1_cfl_0p5_nx_101_mode_1,1,on,p,1.0,0.5,101,1,0.2,completed,completed,0.2,p,0.010648934061283383,0.027713048306421666,0.1784346316930504,0.9124778125999999,0.0,0.0
+run_0138,visc_on_sensor_p_beta_1_cfl_0p5_nx_201_mode_1,1,on,p,1.0,0.5,201,1,0.2,completed,completed,0.2,rho,0.00795728914140075,0.020623024771960364,0.13462952581929,0.8841239260000001,0.0,0.0
+run_0138,visc_on_sensor_p_beta_1_cfl_0p5_nx_201_mode_1,1,on,p,1.0,0.5,201,1,0.2,completed,completed,0.2,u,0.017579503645660265,0.0934221226558262,0.876833615909203,1.8846844000000003,0.0,0.013794046390797066
+run_0138,visc_on_sensor_p_beta_1_cfl_0p5_nx_201_mode_1,1,on,p,1.0,0.5,201,1,0.2,completed,completed,0.2,p,0.006732028401446684,0.023753330253982335,0.19625778189305038,0.9118828296,0.0,0.0
+run_0139,visc_on_sensor_p_beta_1_cfl_0p5_nx_501_mode_1,1,on,p,1.0,0.5,501,1,0.2,completed,completed,0.2,rho,0.004825728793338156,0.017207955131130707,0.14046974331929002,0.9011249408,0.0,0.0
+run_0139,visc_on_sensor_p_beta_1_cfl_0p5_nx_501_mode_1,1,on,p,1.0,0.5,501,1,0.2,completed,completed,0.2,u,0.013653007564818513,0.09501672519732937,0.926572125809203,1.8863096990000006,0.0,0.01478354039079699
+run_0139,visc_on_sensor_p_beta_1_cfl_0p5_nx_501_mode_1,1,on,p,1.0,0.5,501,1,0.2,completed,completed,0.2,p,0.004316499509314162,0.021950587734191108,0.20301364249305037,0.9124263948,0.0,0.0
+run_0140,visc_on_sensor_p_beta_1_cfl_0p5_nx_1001_mode_1,1,on,p,1.0,0.5,1001,1,0.2,completed,completed,0.2,rho,0.0037573544971006454,0.016289999093522665,0.14057368691929,0.9192989119999997,0.0,0.0
+run_0140,visc_on_sensor_p_beta_1_cfl_0p5_nx_1001_mode_1,1,on,p,1.0,0.5,1001,1,0.2,completed,completed,0.2,u,0.012383344253997862,0.09607843940863885,0.927452391209203,1.8874322569999995,0.0,0.015242309890797001
+run_0140,visc_on_sensor_p_beta_1_cfl_0p5_nx_1001_mode_1,1,on,p,1.0,0.5,1001,1,0.2,completed,completed,0.2,p,0.0034801443272970676,0.021541237144547254,0.20313014219305037,0.9127918086000004,0.0,0.0
+run_0141,visc_on_sensor_p_beta_1_cfl_0p8_nx_101_mode_1,1,on,p,1.0,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0141,visc_on_sensor_p_beta_1_cfl_0p8_nx_101_mode_1,1,on,p,1.0,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0141,visc_on_sensor_p_beta_1_cfl_0p8_nx_101_mode_1,1,on,p,1.0,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0142,visc_on_sensor_p_beta_1_cfl_0p8_nx_201_mode_1,1,on,p,1.0,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0142,visc_on_sensor_p_beta_1_cfl_0p8_nx_201_mode_1,1,on,p,1.0,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0142,visc_on_sensor_p_beta_1_cfl_0p8_nx_201_mode_1,1,on,p,1.0,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0143,visc_on_sensor_p_beta_1_cfl_0p8_nx_501_mode_1,1,on,p,1.0,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0143,visc_on_sensor_p_beta_1_cfl_0p8_nx_501_mode_1,1,on,p,1.0,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0143,visc_on_sensor_p_beta_1_cfl_0p8_nx_501_mode_1,1,on,p,1.0,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0144,visc_on_sensor_p_beta_1_cfl_0p8_nx_1001_mode_1,1,on,p,1.0,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0144,visc_on_sensor_p_beta_1_cfl_0p8_nx_1001_mode_1,1,on,p,1.0,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0144,visc_on_sensor_p_beta_1_cfl_0p8_nx_1001_mode_1,1,on,p,1.0,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0145,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,rho,1.5,0.2,101,1,0.2,completed,completed,0.2,rho,0.014661017485442202,0.025249389409330417,0.09488223195761686,0.8749999139,0.0,0.0
+run_0145,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,rho,1.5,0.2,101,1,0.2,completed,completed,0.2,u,0.025806344825699823,0.07315938348420564,0.5468114979092029,1.8619593589999999,0.0,0.0011108589907969924
+run_0145,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,rho,1.5,0.2,101,1,0.2,completed,completed,0.2,p,0.012736977289529449,0.027169074682056652,0.14158000099305038,0.9043297679,0.0,0.0
+run_0146,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,rho,1.5,0.2,201,1,0.2,completed,completed,0.2,rho,0.009381674484802961,0.02059385793457715,0.11994253831929,0.8750405148,0.0,0.0
+run_0146,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,rho,1.5,0.2,201,1,0.2,completed,completed,0.2,u,0.017588441921938903,0.07613407540483845,0.753780475009203,1.852599763,0.0,0.0
+run_0146,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,rho,1.5,0.2,201,1,0.2,completed,completed,0.2,p,0.007911432169688369,0.022514683599840525,0.17800966169305038,0.9013529502000001,0.0,0.0
+run_0147,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,rho,1.5,0.2,501,1,0.2,completed,completed,0.2,rho,0.005814521546004116,0.01775072472196863,0.13972473521929,0.8753438922000001,0.0,0.0
+run_0147,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,rho,1.5,0.2,501,1,0.2,completed,completed,0.2,u,0.01445122544506509,0.09164320994585883,0.920250806409203,1.8506185938000002,0.0,0.0
+run_0147,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,rho,1.5,0.2,501,1,0.2,completed,completed,0.2,p,0.005073068742548476,0.021960436317742502,0.20217406589305037,0.9005262908000001,0.0,0.0
+run_0148,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,rho,1.5,0.2,1001,1,0.2,completed,completed,0.2,rho,0.004520143501047515,0.01717999174368519,0.14057135981929,0.8752167225999998,0.0,0.0
+run_0148,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,rho,1.5,0.2,1001,1,0.2,completed,completed,0.2,u,0.013720404509922556,0.09848257554075146,0.927432688409203,1.849959146,0.0,0.0
+run_0148,visc_on_sensor_rho_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,rho,1.5,0.2,1001,1,0.2,completed,completed,0.2,p,0.004096186150037978,0.02234156055165444,0.20312753579305037,0.9002480322000003,0.0,0.0
+run_0149,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,rho,1.5,0.5,101,1,0.2,completed,completed,0.2,rho,0.012613135286596487,0.023782116025990972,0.10292896591929002,0.875955598,0.0,0.0
+run_0149,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,rho,1.5,0.5,101,1,0.2,completed,completed,0.2,u,0.02244892849701576,0.07668837279878415,0.6210215090092029,1.8648763818999998,0.0,0.0032703321907970873
+run_0149,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,rho,1.5,0.5,101,1,0.2,completed,completed,0.2,p,0.010760315234668439,0.02574502765549744,0.15549319019305038,0.9054462117000001,0.0,0.0
+run_0150,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,rho,1.5,0.5,201,1,0.2,completed,completed,0.2,rho,0.008280763694813148,0.02020028126831146,0.12807311551929002,0.8769410254000001,0.0,0.0
+run_0150,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,rho,1.5,0.5,201,1,0.2,completed,completed,0.2,u,0.016434931910254205,0.08276283588598182,0.8211588629092029,1.8607874958,0.0,0.0017371783907970118
+run_0150,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,rho,1.5,0.5,201,1,0.2,completed,completed,0.2,p,0.006915544113957675,0.0225250756331029,0.18828777029305038,0.904065961,0.0,0.0
+run_0151,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,rho,1.5,0.5,501,1,0.2,completed,completed,0.2,rho,0.005286208837945915,0.01766629322189003,0.14034726871929,0.8773635482,0.0,0.0
+run_0151,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,rho,1.5,0.5,501,1,0.2,completed,completed,0.2,u,0.014090460160390703,0.09495376719880914,0.925534950909203,1.8597872324000004,0.0,0.0018520779907970075
+run_0151,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,rho,1.5,0.5,501,1,0.2,completed,completed,0.2,p,0.004633954512666562,0.02218824607636608,0.20287623179305037,0.9036075972,0.0,0.0
+run_0152,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,rho,1.5,0.5,1001,1,0.2,completed,completed,0.2,rho,0.004200666190702976,0.017082346498400732,0.14057364111929,0.8770486555999999,0.0,0.0
+run_0152,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,rho,1.5,0.5,1001,1,0.2,completed,completed,0.2,u,0.013409787335618439,0.0995562326766767,0.9274520030092029,1.8585737650000003,0.0,0.0015181391907970188
+run_0152,visc_on_sensor_rho_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,rho,1.5,0.5,1001,1,0.2,completed,completed,0.2,p,0.0038334762232546085,0.02239026988719154,0.2031300908930504,0.9031472972000001,0.0,0.0
+run_0153,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,rho,1.5,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0153,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,rho,1.5,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0153,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,rho,1.5,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0154,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,rho,1.5,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0154,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,rho,1.5,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0154,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,rho,1.5,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0155,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,rho,1.5,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0155,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,rho,1.5,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0155,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,rho,1.5,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0156,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,rho,1.5,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0156,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,rho,1.5,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0156,visc_on_sensor_rho_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,rho,1.5,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0157,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,u,1.5,0.2,101,1,0.2,completed,completed,0.2,rho,0.018225602466416878,0.03002778402971711,0.12233305681928999,0.8749999184999999,0.0,0.0
+run_0157,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,u,1.5,0.2,101,1,0.2,completed,completed,0.2,u,0.038083460099899984,0.11455707360363646,0.773807972609203,1.8504892377000002,0.0,0.0
+run_0157,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,u,1.5,0.2,101,1,0.2,completed,completed,0.2,p,0.016692822395549475,0.034934054182693644,0.1811346109930504,0.9003632632,0.0,0.0
+run_0158,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,u,1.5,0.2,201,1,0.2,completed,completed,0.2,rho,0.011814666237889633,0.02482717466499197,0.13607922761929,0.875,0.0,0.0
+run_0158,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,u,1.5,0.2,201,1,0.2,completed,completed,0.2,u,0.027362638245437,0.11485115664680452,0.889213236909203,1.849774611,0.0,0.0
+run_0158,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,u,1.5,0.2,201,1,0.2,completed,completed,0.2,p,0.010614673485079738,0.029849619063690002,0.1979739061930504,0.9003236028,0.0,0.0
+run_0159,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,u,1.5,0.2,501,1,0.2,completed,completed,0.2,rho,0.007038211430068572,0.02116902832018523,0.14052746671929,0.8750307406,0.0,0.0
+run_0159,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,u,1.5,0.2,501,1,0.2,completed,completed,0.2,u,0.02163456012012972,0.11983281395934514,0.927061028109203,1.8491264583999998,0.0,0.0
+run_0159,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,u,1.5,0.2,501,1,0.2,completed,completed,0.2,p,0.006835498199158767,0.0277617491454246,0.20307835969305038,0.9001013768,0.0,0.0
+run_0160,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,u,1.5,0.2,1001,1,0.2,completed,completed,0.2,rho,0.005368837266963168,0.02014839502357009,0.14057371071929,0.8751728598,0.0,0.0
+run_0160,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,u,1.5,0.2,1001,1,0.2,completed,completed,0.2,u,0.01971388988335385,0.12196644208158205,0.927452592509203,1.8489997912000002,0.0,0.0
+run_0160,visc_on_sensor_u_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,u,1.5,0.2,1001,1,0.2,completed,completed,0.2,p,0.005507817055745482,0.027352020308426993,0.20313016889305038,0.9000538526,0.0,0.0
+run_0161,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,u,1.5,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0161,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,u,1.5,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0161,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,u,1.5,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0162,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,u,1.5,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0162,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,u,1.5,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0162,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,u,1.5,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0163,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,u,1.5,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0163,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,u,1.5,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0163,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,u,1.5,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0164,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,u,1.5,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0164,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,u,1.5,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0164,visc_on_sensor_u_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,u,1.5,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0165,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,u,1.5,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0165,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,u,1.5,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0165,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,u,1.5,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0166,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,u,1.5,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0166,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,u,1.5,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0166,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,u,1.5,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0167,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,u,1.5,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0167,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,u,1.5,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0167,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,u,1.5,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0168,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,u,1.5,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0168,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,u,1.5,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0168,visc_on_sensor_u_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,u,1.5,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0169,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,p,1.5,0.2,101,1,0.2,completed,completed,0.2,rho,0.016794632958677613,0.027507874254342708,0.10444161911929001,0.8749999276,0.0,0.0
+run_0169,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,p,1.5,0.2,101,1,0.2,completed,completed,0.2,u,0.03020639584406793,0.0858951101969948,0.6315915721092029,1.8521119622,0.0,0.0
+run_0169,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_101_mode_1,1,on,p,1.5,0.2,101,1,0.2,completed,completed,0.2,p,0.014286835056890454,0.029679375747671485,0.1574491491930504,0.9009101118,0.0,0.0
+run_0170,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,p,1.5,0.2,201,1,0.2,completed,completed,0.2,rho,0.010350684434386893,0.021547963915937336,0.12348694491928999,0.875,0.0,0.0
+run_0170,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,p,1.5,0.2,201,1,0.2,completed,completed,0.2,u,0.01957787269943827,0.08204458995688042,0.782767896309203,1.8504951099999998,0.0,0.0
+run_0170,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_201_mode_1,1,on,p,1.5,0.2,201,1,0.2,completed,completed,0.2,p,0.008605725398318687,0.023691301069746887,0.1825218126930504,0.9003638686000001,0.0,0.0
+run_0171,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,p,1.5,0.2,501,1,0.2,completed,completed,0.2,rho,0.005703981611006849,0.017199668078066666,0.13941536851929,0.8753360898,0.0,0.0
+run_0171,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,p,1.5,0.2,501,1,0.2,completed,completed,0.2,u,0.014208586147731246,0.0884521660951386,0.917618701209203,1.8498001624,0.0,0.0
+run_0171,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_501_mode_1,1,on,p,1.5,0.2,501,1,0.2,completed,completed,0.2,p,0.0051067127866782505,0.021350978877959864,0.2018229593930504,0.9001019964000001,0.0,0.0
+run_0172,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,p,1.5,0.2,1001,1,0.2,completed,completed,0.2,rho,0.004182120650518695,0.016148848614701283,0.14056485921929002,0.8857813583999999,0.0,0.0
+run_0172,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,p,1.5,0.2,1001,1,0.2,completed,completed,0.2,u,0.01264652798465525,0.09242797000800103,0.927377649809203,1.8496761812,0.0,0.0
+run_0172,visc_on_sensor_p_beta_1p5_cfl_0p2_nx_1001_mode_1,1,on,p,1.5,0.2,1001,1,0.2,completed,completed,0.2,p,0.0039002862688407094,0.02107445705157404,0.20312025449305038,0.9000529420000002,0.0,0.0
+run_0173,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,p,1.5,0.5,101,1,0.2,completed,completed,0.2,rho,0.014342134494291808,0.02570407062608242,0.11233104381929002,0.8751847198,0.0,0.0
+run_0173,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,p,1.5,0.5,101,1,0.2,completed,completed,0.2,u,0.026117554133347817,0.08880320047752949,0.692963193309203,1.8609180809000003,0.0,0.0028400361907970906
+run_0173,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_101_mode_1,1,on,p,1.5,0.5,101,1,0.2,completed,completed,0.2,p,0.011967215978466457,0.02801608398360673,0.16807003409305038,0.9038981047,0.0,0.0
+run_0174,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,p,1.5,0.5,201,1,0.2,completed,completed,0.2,rho,0.008871802360585119,0.0207694322725718,0.12985544131929,0.8766821488000001,0.0,0.0
+run_0174,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,p,1.5,0.5,201,1,0.2,completed,completed,0.2,u,0.017873107979920234,0.0867095544914867,0.8361255078092029,1.8581609232,0.0,0.0014355012907970588
+run_0174,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_201_mode_1,1,on,p,1.5,0.5,201,1,0.2,completed,completed,0.2,p,0.007402756631787188,0.023317334498867078,0.19047773899305037,0.902933789,0.0,0.0
+run_0175,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,p,1.5,0.5,501,1,0.2,completed,completed,0.2,rho,0.0051572222211508124,0.01708558213097137,0.14022274801929,0.8814811098000002,0.0,0.0
+run_0175,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,p,1.5,0.5,501,1,0.2,completed,completed,0.2,u,0.013641010274856856,0.09134394328200031,0.924479659809203,1.8583050395999996,0.0,0.0015633006907970204
+run_0175,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_501_mode_1,1,on,p,1.5,0.5,501,1,0.2,completed,completed,0.2,p,0.004595393049940773,0.021468313618108963,0.20273627649305037,0.9029607651999999,0.0,0.0
+run_0176,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,p,1.5,0.5,1001,1,0.2,completed,completed,0.2,rho,0.0039300581731952205,0.01611889560287664,0.14057308651929,0.8919909948,0.0,0.0
+run_0176,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,p,1.5,0.5,1001,1,0.2,completed,completed,0.2,u,0.0123061047789178,0.09370181681961215,0.9274473076092029,1.8586078700000002,0.0,0.0017423095907970199
+run_0176,visc_on_sensor_p_beta_1p5_cfl_0p5_nx_1001_mode_1,1,on,p,1.5,0.5,1001,1,0.2,completed,completed,0.2,p,0.0036197324063739437,0.021148486185906677,0.2031294696930504,0.9030609658000001,0.0,0.0
+run_0177,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,p,1.5,0.8,101,1,0.2,completed,completed,0.2,rho,0.011003043661974988,0.023020796458989724,0.12647025051929,0.896451605,0.0,0.0
+run_0177,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,p,1.5,0.8,101,1,0.2,completed,completed,0.2,u,0.022105578205107737,0.09812211399391568,0.807899020809203,1.9215942132000001,0.0,0.025510501890797066
+run_0177,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_101_mode_1,1,on,p,1.5,0.8,101,1,0.2,completed,completed,0.2,p,0.009088082289032717,0.026255477935795447,0.18629452639305039,0.924823062,0.0,0.0
+run_0178,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,p,1.5,0.8,201,1,0.2,completed,completed,0.2,rho,0.007017788494701617,0.019332477664030307,0.13595831141929002,0.8878465786,0.0,0.0
+run_0178,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,p,1.5,0.8,201,1,0.2,completed,completed,0.2,u,0.015247756811157065,0.09000476344288454,0.887756135709203,1.9000611224000001,0.0,0.020279153590797017
+run_0178,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_201_mode_1,1,on,p,1.5,0.8,201,1,0.2,completed,completed,0.2,p,0.005704791798545518,0.02221173671422097,0.1977783154930504,0.9170826338000002,0.0,0.0
+run_0179,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,p,1.5,0.8,501,1,0.2,completed,completed,0.2,rho,0.004250942272288987,0.01608843097438398,0.14050760301929,0.8906971134000001,0.0,0.0
+run_0179,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,p,1.5,0.8,501,1,0.2,completed,completed,0.2,u,0.011565400706015442,0.0883178026016762,0.9268928294092029,1.8976506059999998,0.0,0.02020523169079702
+run_0179,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_501_mode_1,1,on,p,1.5,0.8,501,1,0.2,completed,completed,0.2,p,0.003612579233152415,0.02023819903261151,0.2030560958930504,0.9159644011999999,0.0,0.0
+run_0180,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,p,1.5,0.8,1001,1,0.2,completed,completed,0.2,rho,0.003258216692992335,0.015027923725447949,0.14057370241929001,0.8963382401999997,0.0,0.0
+run_0180,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,p,1.5,0.8,1001,1,0.2,completed,completed,0.2,u,0.010311931244794664,0.08794505043616854,0.9274525220092029,1.9011045227999996,0.0,0.021759006590796992
+run_0180,visc_on_sensor_p_beta_1p5_cfl_0p8_nx_1001_mode_1,1,on,p,1.5,0.8,1001,1,0.2,completed,completed,0.2,p,0.002887458355970496,0.019666264042620465,0.20313015949305038,0.9172829988000002,0.0,0.0
+run_0181,visc_off_sensor_none_beta_0_cfl_0p2_nx_101_mode_1,1,off,none,0.0,0.2,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0181,visc_off_sensor_none_beta_0_cfl_0p2_nx_101_mode_1,1,off,none,0.0,0.2,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0181,visc_off_sensor_none_beta_0_cfl_0p2_nx_101_mode_1,1,off,none,0.0,0.2,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0182,visc_off_sensor_none_beta_0_cfl_0p2_nx_201_mode_1,1,off,none,0.0,0.2,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0182,visc_off_sensor_none_beta_0_cfl_0p2_nx_201_mode_1,1,off,none,0.0,0.2,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0182,visc_off_sensor_none_beta_0_cfl_0p2_nx_201_mode_1,1,off,none,0.0,0.2,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0183,visc_off_sensor_none_beta_0_cfl_0p2_nx_501_mode_1,1,off,none,0.0,0.2,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0183,visc_off_sensor_none_beta_0_cfl_0p2_nx_501_mode_1,1,off,none,0.0,0.2,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0183,visc_off_sensor_none_beta_0_cfl_0p2_nx_501_mode_1,1,off,none,0.0,0.2,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0184,visc_off_sensor_none_beta_0_cfl_0p2_nx_1001_mode_1,1,off,none,0.0,0.2,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0184,visc_off_sensor_none_beta_0_cfl_0p2_nx_1001_mode_1,1,off,none,0.0,0.2,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0184,visc_off_sensor_none_beta_0_cfl_0p2_nx_1001_mode_1,1,off,none,0.0,0.2,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0185,visc_off_sensor_none_beta_0_cfl_0p5_nx_101_mode_1,1,off,none,0.0,0.5,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0185,visc_off_sensor_none_beta_0_cfl_0p5_nx_101_mode_1,1,off,none,0.0,0.5,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0185,visc_off_sensor_none_beta_0_cfl_0p5_nx_101_mode_1,1,off,none,0.0,0.5,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0186,visc_off_sensor_none_beta_0_cfl_0p5_nx_201_mode_1,1,off,none,0.0,0.5,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0186,visc_off_sensor_none_beta_0_cfl_0p5_nx_201_mode_1,1,off,none,0.0,0.5,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0186,visc_off_sensor_none_beta_0_cfl_0p5_nx_201_mode_1,1,off,none,0.0,0.5,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0187,visc_off_sensor_none_beta_0_cfl_0p5_nx_501_mode_1,1,off,none,0.0,0.5,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0187,visc_off_sensor_none_beta_0_cfl_0p5_nx_501_mode_1,1,off,none,0.0,0.5,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0187,visc_off_sensor_none_beta_0_cfl_0p5_nx_501_mode_1,1,off,none,0.0,0.5,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0188,visc_off_sensor_none_beta_0_cfl_0p5_nx_1001_mode_1,1,off,none,0.0,0.5,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0188,visc_off_sensor_none_beta_0_cfl_0p5_nx_1001_mode_1,1,off,none,0.0,0.5,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0188,visc_off_sensor_none_beta_0_cfl_0p5_nx_1001_mode_1,1,off,none,0.0,0.5,1001,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0189,visc_off_sensor_none_beta_0_cfl_0p8_nx_101_mode_1,1,off,none,0.0,0.8,101,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0189,visc_off_sensor_none_beta_0_cfl_0p8_nx_101_mode_1,1,off,none,0.0,0.8,101,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0189,visc_off_sensor_none_beta_0_cfl_0p8_nx_101_mode_1,1,off,none,0.0,0.8,101,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0190,visc_off_sensor_none_beta_0_cfl_0p8_nx_201_mode_1,1,off,none,0.0,0.8,201,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0190,visc_off_sensor_none_beta_0_cfl_0p8_nx_201_mode_1,1,off,none,0.0,0.8,201,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0190,visc_off_sensor_none_beta_0_cfl_0p8_nx_201_mode_1,1,off,none,0.0,0.8,201,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0191,visc_off_sensor_none_beta_0_cfl_0p8_nx_501_mode_1,1,off,none,0.0,0.8,501,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0191,visc_off_sensor_none_beta_0_cfl_0p8_nx_501_mode_1,1,off,none,0.0,0.8,501,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0191,visc_off_sensor_none_beta_0_cfl_0p8_nx_501_mode_1,1,off,none,0.0,0.8,501,1,0.2,failed,solver returned 1,,p,,,,,,
+run_0192,visc_off_sensor_none_beta_0_cfl_0p8_nx_1001_mode_1,1,off,none,0.0,0.8,1001,1,0.2,failed,solver returned 1,,rho,,,,,,
+run_0192,visc_off_sensor_none_beta_0_cfl_0p8_nx_1001_mode_1,1,off,none,0.0,0.8,1001,1,0.2,failed,solver returned 1,,u,,,,,,
+run_0192,visc_off_sensor_none_beta_0_cfl_0p8_nx_1001_mode_1,1,off,none,0.0,0.8,1001,1,0.2,failed,solver returned 1,,p,,,,,,

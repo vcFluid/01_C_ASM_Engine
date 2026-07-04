@@ -1,0 +1,67 @@
+# Case 7 Pure Contact ????
+
+?????????????????????????????????
+
+## 1. ????
+
+```text
+runs/Solution_07_Pure_Contact/case7_pure_contact_study
+  baseline/
+  matrix/
+  beta_sweep_profiles/ ?????? beta_profiles/
+```
+
+## 2. ????
+
+```text
+case   = 7
+sensor = rho
+beta   = 0.5
+CFL    = 0.5
+Nx     = 501
+mode   = 1
+```
+
+## 3. ????
+
+| variable | L1 | L2 | Linf |
+|---|---|---|---|
+| rho | 6.695606e-02 | 4.431332e-01 | 5.264330e+00 |
+| u | 6.165206e-10 | 9.687686e-10 | 1.522273e-09 |
+| p | 3.017485e-09 | 4.741521e-09 | 7.450581e-09 |
+
+## 4. ????????
+
+| status | count |
+|---|---|
+| completed | 192 |
+
+## 5. ???????
+
+| status | count |
+|---|---|
+| completed | 12 |
+
+## 6. beta profile, rho
+
+| beta | status | rho L1 | rho Linf |
+|---|---|---|---|
+| 0.0 | completed | 9.725143e-02 | 5.502495e+00 |
+| 0.25 | completed | 6.228683e-02 | 5.386958e+00 |
+| 0.5 | completed | 6.695606e-02 | 5.264330e+00 |
+| 0.75 | completed | 7.250537e-02 | 5.131114e+00 |
+| 1.0 | completed | 7.748344e-02 | 5.024502e+00 |
+| 1.5 | completed | 8.614066e-02 | 4.876224e+00 |
+
+## 7. ??? L1 ????
+
+| variable | L1 | viscosity | sensor | beta | CFL | Nx |
+|---|---|---|---|---|---|---|
+| rho | 3.816052e-02 | on | rho | 0.5 | 0.8 | 1001 |
+| u | 6.165206e-10 | on | rho | 0.25 | 0.2 | 101 |
+| p | 3.017485e-09 | on | rho | 0.25 | 0.2 | 101 |
+
+## 8. ????????
+
+- ???????????????????????????????
+- ??????????????????MacCormack ??????????????

@@ -1,0 +1,29 @@
+========================================
+1-D Euler Filtered MacCormack Solver 02
+========================================
+
+case: 1-Sod 2-Lax 3-SubExp 4-Sjogreen 5-ContactExp 6-ContactShock 7-Contact
+case [1]: xmin [0]: xmax [1]: x0 [0.5]: nx [501]: gamma [1.4]: CFL [0.5]: t_max [0.2]: MacCormack: 1-FTBS/FTFS 2-FTFS/FTBS 3-alt-FTBS-first 4-alt-FTFS-first
+mode [1]: artificial viscosity [y]: beta [0.5]: sensor: 1-rho 2-u 3-p
+sensor [1]: snapshot interval [0]: output file [runs\case_01_numerical_02.dat]: [Step 4] Final Check Before Launch
+case_id      = 1
+domain       = [0.000000, 1.000000], x0 = 0.500000
+grid         = nx 201, dx 0.0050000000
+time         = t_max 0.200000, CFL 0.500000
+gas          = gamma 1.400000
+left state   = rho 1.000000, u 0.000000, p 1.000000
+right state  = rho 0.125000, u 0.000000, p 0.100000
+MacCormack   = fixed predictor FTBS / corrector FTFS
+filter       = on, beta 0.750000, sensor p, eps 1.0e-06
+snapshots    = every 0 steps
+output       = runs\Solution_01_Sod\case1_sod_study\matrix\run_0102\numerical.dat
+--------------------------------------------------
+The solution of p_mid is: 0.303130 
+The solution of u_mid is: 0.927453 
+Left is expansion wave, rho_mid_L is: 0.426319 
+Right is shock wave, rho_mid_R is: 0.265574 
+Z_R-Z_L = 2.935372
+x_min = 0.000000
+x_max = 1.000000
+Tecplot data generated successfully!
+Validation -> p_mid: 0.303130, u_mid: 0.927453

@@ -1,0 +1,4 @@
+run_id,case_name,case,viscosity,sensor,beta,cfl,nx,mode,t_max,status,reason,solution_time,variable,L1,L2,Linf,TV,undershoot,overshoot
+run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_4,1,on,rho,0.5,0.5,501,4,0.2,completed,completed,0.2,rho,0.0037327650016137142,0.015425529630283541,0.14036853361929,0.9012444726,0.0,0.0
+run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_4,1,on,rho,0.5,0.5,501,4,0.2,completed,completed,0.2,u,0.01010235704055133,0.08204725131548403,0.9257142902092029,1.9704670112000005,0.0,0.04715921139079704
+run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_4,1,on,rho,0.5,0.5,501,4,0.2,completed,completed,0.2,p,0.0031699668649503845,0.018981703073975748,0.20289998979305038,0.9410275052000002,0.0,0.0

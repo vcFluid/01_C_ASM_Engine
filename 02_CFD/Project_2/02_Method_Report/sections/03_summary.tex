@@ -1,0 +1,14 @@
+\section{本部分小结}
+
+本报告主要说明了本项目采用的数学模型和数值方法。计算中以守恒量
+\(\bm Q\) 作为时间推进变量，原始量 \(\bm W\) 由守恒量反算得到，用于计算声速、
+CFL 条件、人工粘性和输出结果。时间推进采用 MacCormack 预测--校正格式，
+并在预测步之前加入人工粘性滤波，以减弱间断附近的非物理振荡。具体代码实现和数值结果分别在代码报告和结果报告中说明。
+
+\section*{参考资料}
+
+\begin{enumerate}[leftmargin=2em]
+    \item R. W. MacCormack, The effect of viscosity in hypervelocity impact cratering, AIAA Paper 69-354, 1969.
+    \item G. A. Sod, A survey of several finite difference methods for systems of nonlinear hyperbolic conservation laws, Journal of Computational Physics, 1978.
+    \item E. F. Toro, Riemann Solvers and Numerical Methods for Fluid Dynamics, Springer, 2009.
+\end{enumerate}

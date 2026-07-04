@@ -1,0 +1,21 @@
+[Error] Nonphysical state after MacCormack predictor.
+========================================
+1-D Euler Filtered MacCormack Solver 02
+========================================
+
+case: 1-Sod 2-Lax 3-SubExp 4-Sjogreen 5-ContactExp 6-ContactShock 7-Contact
+case [1]: xmin [0]: xmax [1]: x0 [0.5]: nx [501]: gamma [1.4]: CFL [0.5]: t_max [0.15]: MacCormack: 1-FTBS/FTFS 2-FTFS/FTBS 3-alt-FTBS-first 4-alt-FTFS-first
+mode [1]: artificial viscosity [y]: beta [0.5]: sensor: 1-rho 2-u 3-p
+sensor [1]: snapshot interval [0]: output file [runs\case_04_numerical_02.dat]: [Step 4] Final Check Before Launch
+case_id      = 4
+domain       = [0.000000, 1.000000], x0 = 0.500000
+grid         = nx 101, dx 0.0100000000
+time         = t_max 0.150000, CFL 0.800000
+gas          = gamma 1.400000
+left state   = rho 1.000000, u -2.000000, p 0.400000
+right state  = rho 1.000000, u 2.000000, p 0.400000
+MacCormack   = fixed predictor FTBS / corrector FTFS
+filter       = on, beta 0.750000, sensor rho, eps 1.0e-06
+snapshots    = every 0 steps
+output       = runs\Solution_04_Sjogreen_Supersonic_Expansion\case4_sjogreen_supersonic_expansion_study\matrix\run_0081\numerical.dat
+--------------------------------------------------

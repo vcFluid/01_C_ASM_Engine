@@ -1,0 +1,5 @@
+case,case_name,nx,cfl,beta,sensor,mode,mode_name,mode_type,rho_L1,u_L1,p_L1
+1,Sod,501,0.5,0.5,rho,1,FTBS predictor and FTFS corrector,fixed direction,4.117286e-3,1.160388e-2,3.580555e-3
+1,Sod,501,0.5,0.5,rho,2,FTFS predictor and FTBS corrector,fixed direction,3.495325e-3,8.858318e-3,2.895035e-3
+1,Sod,501,0.5,0.5,rho,3,alternate with FTBS first,alternating direction,3.768057e-3,1.014959e-2,3.200490e-3
+1,Sod,501,0.5,0.5,rho,4,alternate with FTFS first,alternating direction,3.732765e-3,1.010236e-2,3.169967e-3

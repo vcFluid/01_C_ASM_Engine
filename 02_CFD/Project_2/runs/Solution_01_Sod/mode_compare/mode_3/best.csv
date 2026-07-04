@@ -1,0 +1,10 @@
+variable,metric,value,viscosity,sensor,beta,cfl,nx,mode,run_id,case_name
+rho,L1,0.003768056599949301,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+rho,L2,0.015377367419228648,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+rho,Linf,0.14036732391929,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+u,L1,0.010149591712749798,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+u,L2,0.0819227711234851,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+u,Linf,0.925703675809203,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+p,L1,0.0032004897809645326,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+p,L2,0.018935597205275708,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3
+p,Linf,0.2028986264930504,on,rho,0.5,0.5,501,3,run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_3

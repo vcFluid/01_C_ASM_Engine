@@ -1,0 +1,33 @@
+{
+  "case": 1,
+  "xmin": 0.0,
+  "xmax": 1.0,
+  "x0": 0.5,
+  "gamma": 1.4,
+  "t_max": 0.2,
+  "mode": 2,
+  "betas": [
+    0.5
+  ],
+  "sensors": [
+    "rho"
+  ],
+  "cfls": [
+    0.5
+  ],
+  "nxs": [
+    501
+  ],
+  "include_viscosity_off": false,
+  "reference": {
+    "beta": 0.5,
+    "sensor": "rho",
+    "cfl": 0.5,
+    "nx": 501
+  },
+  "error_definition": {
+    "L1": "trapezoidal integral of absolute pointwise error",
+    "L2": "sqrt(trapezoidal integral of squared pointwise error)",
+    "Linf": "maximum absolute pointwise error"
+  }
+}

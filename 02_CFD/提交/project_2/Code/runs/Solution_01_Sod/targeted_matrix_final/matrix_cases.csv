@@ -1,0 +1,41 @@
+run_id,case_name,case,viscosity,sensor,beta,cfl,nx,mode,t_max,status,reason,solution_time
+run_0001,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,rho,0.25,0.2,201,1,0.2,completed,completed,0.2
+run_0002,visc_on_sensor_rho_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,rho,0.25,0.2,501,1,0.2,completed,completed,0.2
+run_0003,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,rho,0.25,0.5,201,1,0.2,failed,solver returned 1,
+run_0004,visc_on_sensor_rho_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,rho,0.25,0.5,501,1,0.2,failed,solver returned 1,
+run_0005,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,u,0.25,0.2,201,1,0.2,completed,completed,0.2
+run_0006,visc_on_sensor_u_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,u,0.25,0.2,501,1,0.2,completed,completed,0.2
+run_0007,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,u,0.25,0.5,201,1,0.2,failed,solver returned 1,
+run_0008,visc_on_sensor_u_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,u,0.25,0.5,501,1,0.2,failed,solver returned 1,
+run_0009,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_201_mode_1,1,on,p,0.25,0.2,201,1,0.2,completed,completed,0.2
+run_0010,visc_on_sensor_p_beta_0p25_cfl_0p2_nx_501_mode_1,1,on,p,0.25,0.2,501,1,0.2,completed,completed,0.2
+run_0011,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_201_mode_1,1,on,p,0.25,0.5,201,1,0.2,failed,solver returned 1,
+run_0012,visc_on_sensor_p_beta_0p25_cfl_0p5_nx_501_mode_1,1,on,p,0.25,0.5,501,1,0.2,failed,solver returned 1,
+run_0013,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,rho,0.5,0.2,201,1,0.2,completed,completed,0.2
+run_0014,visc_on_sensor_rho_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,rho,0.5,0.2,501,1,0.2,completed,completed,0.2
+run_0015,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,rho,0.5,0.5,201,1,0.2,completed,completed,0.2
+run_0016,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,rho,0.5,0.5,501,1,0.2,completed,completed,0.2
+run_0017,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,u,0.5,0.2,201,1,0.2,completed,completed,0.2
+run_0018,visc_on_sensor_u_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,u,0.5,0.2,501,1,0.2,completed,completed,0.2
+run_0019,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,u,0.5,0.5,201,1,0.2,failed,solver returned 1,
+run_0020,visc_on_sensor_u_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,u,0.5,0.5,501,1,0.2,failed,solver returned 1,
+run_0021,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_201_mode_1,1,on,p,0.5,0.2,201,1,0.2,completed,completed,0.2
+run_0022,visc_on_sensor_p_beta_0p5_cfl_0p2_nx_501_mode_1,1,on,p,0.5,0.2,501,1,0.2,completed,completed,0.2
+run_0023,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_201_mode_1,1,on,p,0.5,0.5,201,1,0.2,completed,completed,0.2
+run_0024,visc_on_sensor_p_beta_0p5_cfl_0p5_nx_501_mode_1,1,on,p,0.5,0.5,501,1,0.2,completed,completed,0.2
+run_0025,visc_on_sensor_rho_beta_1_cfl_0p2_nx_201_mode_1,1,on,rho,1.0,0.2,201,1,0.2,completed,completed,0.2
+run_0026,visc_on_sensor_rho_beta_1_cfl_0p2_nx_501_mode_1,1,on,rho,1.0,0.2,501,1,0.2,completed,completed,0.2
+run_0027,visc_on_sensor_rho_beta_1_cfl_0p5_nx_201_mode_1,1,on,rho,1.0,0.5,201,1,0.2,completed,completed,0.2
+run_0028,visc_on_sensor_rho_beta_1_cfl_0p5_nx_501_mode_1,1,on,rho,1.0,0.5,501,1,0.2,completed,completed,0.2
+run_0029,visc_on_sensor_u_beta_1_cfl_0p2_nx_201_mode_1,1,on,u,1.0,0.2,201,1,0.2,completed,completed,0.2
+run_0030,visc_on_sensor_u_beta_1_cfl_0p2_nx_501_mode_1,1,on,u,1.0,0.2,501,1,0.2,completed,completed,0.2
+run_0031,visc_on_sensor_u_beta_1_cfl_0p5_nx_201_mode_1,1,on,u,1.0,0.5,201,1,0.2,failed,solver returned 1,
+run_0032,visc_on_sensor_u_beta_1_cfl_0p5_nx_501_mode_1,1,on,u,1.0,0.5,501,1,0.2,failed,solver returned 1,
+run_0033,visc_on_sensor_p_beta_1_cfl_0p2_nx_201_mode_1,1,on,p,1.0,0.2,201,1,0.2,completed,completed,0.2
+run_0034,visc_on_sensor_p_beta_1_cfl_0p2_nx_501_mode_1,1,on,p,1.0,0.2,501,1,0.2,completed,completed,0.2
+run_0035,visc_on_sensor_p_beta_1_cfl_0p5_nx_201_mode_1,1,on,p,1.0,0.5,201,1,0.2,completed,completed,0.2
+run_0036,visc_on_sensor_p_beta_1_cfl_0p5_nx_501_mode_1,1,on,p,1.0,0.5,501,1,0.2,completed,completed,0.2
+run_0037,visc_off_sensor_none_beta_0_cfl_0p2_nx_201_mode_1,1,off,none,0.0,0.2,201,1,0.2,failed,solver returned 1,
+run_0038,visc_off_sensor_none_beta_0_cfl_0p2_nx_501_mode_1,1,off,none,0.0,0.2,501,1,0.2,failed,solver returned 1,
+run_0039,visc_off_sensor_none_beta_0_cfl_0p5_nx_201_mode_1,1,off,none,0.0,0.5,201,1,0.2,failed,solver returned 1,
+run_0040,visc_off_sensor_none_beta_0_cfl_0p5_nx_501_mode_1,1,off,none,0.0,0.5,501,1,0.2,failed,solver returned 1,

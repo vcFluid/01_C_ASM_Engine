@@ -1,0 +1,13 @@
+{
+  "case": 1,
+  "beta": 1.5,
+  "sensor": "rho",
+  "mode": 1,
+  "xmin": 0.0,
+  "xmax": 1.0,
+  "x0": 0.5,
+  "nx": 501,
+  "gamma": 1.4,
+  "cfl": 0.5,
+  "t_max": 0.2
+}

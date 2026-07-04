@@ -1,0 +1,16 @@
+{
+  "run_id": "run_0181",
+  "case_name": "visc_off_sensor_none_beta_0_cfl_0p2_nx_101_mode_1",
+  "case": 5,
+  "viscosity": "off",
+  "sensor": "none",
+  "beta": 0.0,
+  "cfl": 0.2,
+  "nx": 101,
+  "mode": 1,
+  "t_max": 0.2,
+  "xmin": 0.0,
+  "xmax": 1.0,
+  "x0": 0.5,
+  "gamma": 1.4
+}

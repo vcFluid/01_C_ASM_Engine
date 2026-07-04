@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}计算方法}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}MacCormack 格式与人工粘性}{4}{subsection.1.1}%
+\contentsline {section}{\numberline {2}算例与批量实验设置}{4}{section.2}%
+\contentsline {section}{\numberline {3}基准结果对比}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Case 1：Sod 激波管}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Case 2：LAX 问题}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Case 3：亚声速双膨胀问题}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Case 4：Sjogreen 超声速膨胀问题}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Case 5：接触间断双膨胀问题}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Case 6：双激波间断问题}{10}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Case 7：纯接触间断问题}{11}{subsection.3.7}%
+\contentsline {section}{\numberline {4}MacCormack 方向模式对比}{12}{section.4}%
+\contentsline {section}{\numberline {5}人工粘性影响}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}有无人工粘性}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}$\beta $ 的影响}{13}{subsection.5.2}%
+\contentsline {section}{\numberline {6}CFL、开关变量与网格影响}{14}{section.6}%
+\contentsline {subsection}{\numberline {6.1}CFL 的影响}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}开关变量的影响}{14}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}网格加密的影响}{15}{subsection.6.3}%
+\contentsline {section}{\numberline {7}综合讨论}{15}{section.7}%
+\contentsline {section}{\numberline {8}结论}{15}{section.8}%

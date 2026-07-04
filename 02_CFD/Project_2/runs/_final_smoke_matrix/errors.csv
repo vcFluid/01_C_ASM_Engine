@@ -1,0 +1,7 @@
+run_id,case_name,case,viscosity,sensor,beta,cfl,nx,t_max,status,reason,solution_time,variable,L1,L2,Linf,TV,undershoot,overshoot
+run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_101,1,on,rho,0.5,0.5,101,0.2,completed,completed,0.2,rho,0.010796019773432001,0.022568001309164365,0.12054541461929,0.9121831138000002,0.0,0.0
+run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_101,1,on,rho,0.5,0.5,101,0.2,completed,completed,0.2,u,0.021063077672555563,0.08957867589922869,0.7564975715092029,2.0204267448000004,0.0,0.05744293569079706
+run_0001,visc_on_sensor_rho_beta_0p5_cfl_0p5_nx_101,1,on,rho,0.5,0.5,101,0.2,completed,completed,0.2,p,0.008899497126337755,0.024791310543858188,0.1784624506930504,0.9602452750000001,0.0,0.0
+run_0002,visc_off_sensor_none_beta_0_cfl_0p5_nx_101,1,off,none,0.0,0.5,101,0.2,failed,solver returned 1,,rho,,,,,,
+run_0002,visc_off_sensor_none_beta_0_cfl_0p5_nx_101,1,off,none,0.0,0.5,101,0.2,failed,solver returned 1,,u,,,,,,
+run_0002,visc_off_sensor_none_beta_0_cfl_0p5_nx_101,1,off,none,0.0,0.5,101,0.2,failed,solver returned 1,,p,,,,,,
