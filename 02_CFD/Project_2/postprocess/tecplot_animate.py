@@ -24,7 +24,7 @@ TIME_PATTERN = re.compile(r'ZONE\s+T="t=([0-9Ee+\-.]+)"', re.IGNORECASE)
 
 def parse_args() -> argparse.Namespace:
     project_dir = Path(__file__).resolve().parents[1]
-    default_run = project_dir / "runs" / "case_01"
+    default_run = project_dir / "runs" / "Solution_01_Sod"
 
     parser = argparse.ArgumentParser(
         description="Combine paired snapshots and export Tecplot AVI animations."

@@ -1,13 +1,116 @@
 # README - Project 2 描述：
 # 问题模型：1-D Riemann Prb
 
-# 具体初值条件见ppt，控制方程就是1-D Euler PDEs.
+## 目录
 
-# 可能的汇报时间节点，后续再讲，课时不够了
+- [Riemann问题控制方程_1-D Euler PDEs](#riemann问题控制方程_1-d-euler-pdes)
+- [具体初值条件](#具体初值条件)
+- [目标](#目标)
+  - [用MacCormack格式算1-D黎曼问题的数值解](#用maccormack格式算1-d黎曼问题的数值解)
+  - [将数值解与半解析解（精确解）对比](#将数值解与半解析解精确解对比)
+  - [具体细节（采用MacCormack格式）](#具体细节采用maccormack格式)
+- [我对自己(Code)的期望](#我对自己code的期望)
+- [当前代码进度](#当前代码进度)
+- [结果集目录命名约定](#结果集目录命名约定)
+
+# Riemann问题控制方程_1-D Euler PDEs
+
+本文求解一维无粘可压缩 Euler equations 的守恒形式：
+
+$$
+\frac{\partial \mathbf{Q}}{\partial t}
++
+\frac{\partial \mathbf{F}(\mathbf{Q})}{\partial x}
+=0,
+$$
+
+其中守恒变量和通量分别为
+
+$$
+\mathbf{Q}
+=
+\begin{bmatrix}
+\rho\\
+\rho u\\
+\rho E
+\end{bmatrix},
+\qquad
+\mathbf{F}(\mathbf{Q})
+=
+\begin{bmatrix}
+\rho u\\
+\rho u^2+p\\
+u(\rho E+p)
+\end{bmatrix}.
+$$
+
+展开成分量形式为
+
+$$
+\left\{
+\begin{aligned}
+\frac{\partial \rho}{\partial t}
+&+
+\frac{\partial(\rho u)}{\partial x}
+=0,\\[4pt]
+\frac{\partial(\rho u)}{\partial t}
+&+
+\frac{\partial(\rho u^2+p)}{\partial x}
+=0,\\[4pt]
+\frac{\partial(\rho E)}{\partial t}
+&+
+\frac{\partial\left[u(\rho E+p)\right]}{\partial x}
+=0.
+\end{aligned}
+\right.
+$$
+
+理想气体状态方程给出总能量闭合关系：
+
+$$
+E=e+\frac{u^2}{2}
+=
+\frac{p}{\rho(\gamma-1)}
++
+\frac{u^2}{2},
+\qquad
+p=(\gamma-1)\left(\rho E-\frac{1}{2}\rho u^2\right).
+$$
+
+# 具体初值条件.
+
+Riemann initial condition 采用分段常数 primitive variables：
+
+$$
+\mathbf{W}(x,0)
+=
+\begin{bmatrix}
+\rho\\
+u\\
+p
+\end{bmatrix}
+=
+\begin{cases}
+\mathbf{W}_L=(\rho_L,u_L,p_L)^{\mathrm T}, & x<x_0,\\
+\mathbf{W}_R=(\rho_R,u_R,p_R)^{\mathrm T}, & x\ge x_0.
+\end{cases}
+$$
+
+当前 code 内置的 7 组 Riemann 初值条件如下：
+
+| Case | 问题类型 | $\mathbf{W}_L=(\rho_L,u_L,p_L)$ | $\mathbf{W}_R=(\rho_R,u_R,p_R)$ |
+|---:|---|---:|---:|
+| 1 | Sod shock tube | $(1,\ 0,\ 1)$ | $(0.125,\ 0,\ 0.1)$ |
+| 2 | Lax shock tube | $(0.445,\ 0.698,\ 3.528)$ | $(0.5,\ 0,\ 0.571)$ |
+| 3 | Subsonic double expansion | $(1,\ -2,\ 4)$ | $(1,\ 2,\ 4)$ |
+| 4 | Sjogreen supersonic expansion | $(1,\ -2,\ 0.4)$ | $(1,\ 2,\ 0.4)$ |
+| 5 | Contact discontinuity with double expansion | $(1,\ -0.2,\ 0.5)$ | $(0.5,\ 0.5,\ 0.5)$ |
+| 6 | Contact discontinuity with double shock | $(0.4,\ 0.5,\ 1.0)$ | $(1,\ -0.5,\ 0.9)$ |
+| 7 | Pure contact discontinuity | $(10,\ 1.0,\ 2.0)$ | $(1.0,\ 1.0,\ 2.0)$ |
 
 # 目标：
 此前我们用特征线理论，结合数值计算方法求解了其半解析解（Project_0）,学了MacCormack格式后
-## 用Macama格式算1-D黎曼问题的数值解
+## 用MacCormack格式算1-D黎曼问题的数值解
 ## 将数值解与半解析解（精确解）对比
 ## 具体细节（采用MacCormack格式）
  - 1-Sod问题数值解 + 对比精确解 + 讨论人工粘性的有无对解的影响 + 讨论人工粘性经验参数β对解的影响 + CFL数对解的影响（尤其是注意到人工粘性系数并非CFL的单调函数）
@@ -27,7 +130,7 @@
  - 7-纯接触间断问题（注意到反而是有些高级格式在这个问题上比不过MacCormark格式，可以拓展对比一下）=> 不同格式优秀的点还是有差异的
 
 
-## 我对自己的期望（Code的期望）
+## 我对自己(Code)的期望
 1、将7种问题内置相应的初值条件内置到Code中（暂时不考虑用户自己输入边界条件，但由于我的Code是OOP，所以未来非常便捷地优化（只需要新建一个输入函数，后续main中利用指针修改初值变量）
 2、提供一个选择，选择是否添加人工粘性，如果是，人工粘性系数用什么解（rho? p? u?）
 3、用户自定义输入网格（同时设置一个默认值以便于结果对比）
@@ -36,8 +139,28 @@
 6、让图像动起来（动态地展示从t=0到t=t_max的全过程）
 7、程序需要能够递归地输出不同人工粘性经验参数（我猜测实际工程中需要多尝试几次β以便找到最恰当的解？）
 
-tecplot是否支持滑动按钮以实时渲染图像（用于对比人工粘性经验参数β）
+8、最重要的，抽象出一种通用流程，以便未来应对任意情况下的代码编译
 
+## 当前代码进度
+
+项目当前已经完成主要代码链路，后续重点转向运行7组初值条件（分别对应7个黎曼初值问题）的数据、筛选图像并撰写结果分析。
+
+已完成：
+
+1. `1-D_Riemann_NM_MacC.c` 已内置 7 种 Riemann 初值条件。
+2. MacCormack solver 以守恒量 `Q = [rho, rho*u, rho*E]` 为主推进变量，并同步更新原始量 `W = [rho, u, p]`。
+3. 程序已支持用户设置计算域、间断位置、网格数、`gamma`、CFL、终止时间。
+4. 程序已支持 artificial viscosity on/off、经验系数 `beta`、sensor=`rho/u/p`。
+5. Project 0 已作为外部 exact solver 接入；Project 2 通过 OS process 调用它，并传递相同左右状态、计算域、网格、`x0`、`gamma` 和输出时刻。
+6. 后处理脚本已能读取 numerical/exact Tecplot ASCII 数据，完成对齐、误差计算和 Tecplot macro 生成。
+7. Tecplot `.mcr` batch mode 已作为正式出图方案；不依赖 TecPLUS/PyTecplot connection。
+8. snapshot + exact snapshot + Tecplot transient dataset 已支持时间动画。
+9. `postprocess/beta_sweep.py` 用于固定其它参数时扫描 `beta`。
+10. `postprocess/targeted_matrix.py` 用于围绕 Sod 自动组织目标实验：viscosity on/off、`beta`、sensor、CFL、Nx。
+11. `beta_slider.py` 用于读取已有 beta sweep 数据，并用 Python slider 快速观察 `beta` 对曲线的影响。
+
+
+Code关键细节：
 
 ```bash
  /*
@@ -195,3 +318,12 @@ tecplot是否支持滑动按钮以实时渲染图像（用于对比人工粘性�
    int main(void){}
 */
 ```
+## 结果集目录命名约定
+
+正式结果集统一放在 `runs/Solution_XX_CaseName/` 下，例如：
+
+- `runs/Solution_01_Sod/`
+- `runs/Solution_02_LAX/`
+- `runs/Solution_03_Subsonic_Double_Expansion/`
+
+后续新增算例也沿用该格式，以便未来查找.

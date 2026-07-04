@@ -16,3 +16,6 @@ Thumbs.db
 **/__pycache__/
 *.pyc
 batch.log
+
+# CFD course review slides
+/02_CFD/Rieview_for_Examination/

@@ -35,6 +35,15 @@ CASE_FINAL_TIMES = {
     6: 0.20,
     7: 0.20,
 }
+CASE_NAMES = {
+    1: "Sod",
+    2: "LAX",
+    3: "Subsonic_Double_Expansion",
+    4: "Sjogreen_Supersonic_Expansion",
+    5: "Contact_Double_Expansion",
+    6: "Contact_Double_Shock",
+    7: "Pure_Contact",
+}
 LINE_COLORS = ("RED", "BLUE", "GREEN", "PURPLE", "CYAN", "YELLOW")
 
 
@@ -75,7 +84,7 @@ def parse_args() -> argparse.Namespace:
         "--output-dir",
         type=Path,
         default=None,
-        help="defaults to runs/case_XX/beta_sweep",
+        help="defaults to runs/Solution_XX_CaseName/beta_sweep",
     )
     parser.add_argument(
         "--backend",
@@ -108,6 +117,11 @@ def beta_text(beta: float) -> str:
 def beta_directory_name(beta: float) -> str:
     token = beta_text(beta).replace("-", "m").replace(".", "p")
     return f"beta_{token}"
+
+
+def solution_directory(project_dir: Path, case_id: int) -> Path:
+    case_name = CASE_NAMES[case_id]
+    return project_dir / "runs" / f"Solution_{case_id:02d}_{case_name}"
 
 
 def compile_program(
@@ -150,7 +164,7 @@ def build_solver_input(
         f"{beta:.17g}",
         str(sensor_index),
         "0",
-        os.fspath(output_path.resolve()),
+        os.fspath(output_path),
     ]
     return "\n".join(lines) + "\n"
 
@@ -165,7 +179,11 @@ def run_case(
     case_dir.mkdir(parents=True, exist_ok=True)
     numerical_path = case_dir / "numerical.dat"
     exact_path = case_dir / "numerical_exact.dat"
-    input_text = build_solver_input(args, beta, numerical_path)
+    try:
+        solver_numerical_path = numerical_path.relative_to(project_dir)
+    except ValueError:
+        solver_numerical_path = numerical_path
+    input_text = build_solver_input(args, beta, solver_numerical_path)
 
     print(f"[run] beta={beta_text(beta)}")
     result = subprocess.run(
@@ -478,7 +496,8 @@ def write_tecplot_macro(
         "$!LINEMAP [1] ASSIGN{ZONE = 1}",
         "$!LINEMAP [1] ASSIGN{XAXISVAR = 1}",
         "$!LINEMAP [1] LINES{COLOR = BLACK}",
-        "$!LINEMAP [1] LINES{LINETHICKNESS = 0.6}",
+        "$!LINEMAP [1] LINES{LINETHICKNESS = 0.35}",
+        "$!LINEMAP [1] SYMBOLS{SHOW = NO}",
     ]
 
     for index, beta in enumerate(betas, start=2):
@@ -490,8 +509,10 @@ def write_tecplot_macro(
                 f"$!LINEMAP [{index}] ASSIGN{{ZONE = {index}}}",
                 f"$!LINEMAP [{index}] ASSIGN{{XAXISVAR = 1}}",
                 f"$!LINEMAP [{index}] LINES{{COLOR = {color}}}",
-                f"$!LINEMAP [{index}] LINES{{LINETHICKNESS = 0.35}}",
-                f"$!LINEMAP [{index}] SYMBOLS{{SHOW = NO}}",
+                f"$!LINEMAP [{index}] LINES{{LINETHICKNESS = 0.28}}",
+                f"$!LINEMAP [{index}] SYMBOLS{{SHOW = YES}}",
+                f"$!LINEMAP [{index}] SYMBOLS{{COLOR = {color}}}",
+                f"$!LINEMAP [{index}] SYMBOLS{{SIZE = 0.55}}",
             ]
         )
 
@@ -501,7 +522,7 @@ def write_tecplot_macro(
             f"$!ACTIVELINEMAPS = [1-{last_map}]",
             "$!GLOBALLINEPLOT LEGEND{SHOW = YES}",
             "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{SIZEUNITS = POINT}}",
-            "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{HEIGHT = 9}}",
+            "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{HEIGHT = 8}}",
             "$!XYLINEAXIS XDETAIL 1 {TITLE{TITLEMODE = USETEXT}}",
             "$!XYLINEAXIS XDETAIL 1 {TITLE{TEXT = 'x'}}",
             "$!EXPORTSETUP EXPORTFORMAT = PNG",
@@ -556,10 +577,10 @@ def write_tecplot_macro(
                 f"$!LINEMAP [{index}] ASSIGN{{ZONE = {index}}}",
                 f"$!LINEMAP [{index}] ASSIGN{{XAXISVAR = 1}}",
                 f"$!LINEMAP [{index}] LINES{{COLOR = {color}}}",
-                f"$!LINEMAP [{index}] LINES{{LINETHICKNESS = 0.6}}",
+                f"$!LINEMAP [{index}] LINES{{LINETHICKNESS = 0.45}}",
                 f"$!LINEMAP [{index}] SYMBOLS{{SHOW = YES}}",
                 f"$!LINEMAP [{index}] SYMBOLS{{COLOR = {color}}}",
-                f"$!LINEMAP [{index}] SYMBOLS{{SIZE = 1.2}}",
+                f"$!LINEMAP [{index}] SYMBOLS{{SIZE = 0.9}}",
             ]
         )
 
@@ -574,6 +595,8 @@ def write_tecplot_macro(
         [
             "$!ACTIVELINEMAPS = [1-3]",
             "$!GLOBALLINEPLOT LEGEND{SHOW = YES}",
+            "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{SIZEUNITS = POINT}}",
+            "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{HEIGHT = 8}}",
             "$!XYLINEAXIS XDETAIL 1 {TITLE{TITLEMODE = USETEXT}}",
             "$!XYLINEAXIS XDETAIL 1 {TITLE{TEXT = 'Artificial viscosity beta'}}",
         ]
@@ -669,9 +692,7 @@ def main() -> int:
     args = parse_args()
     project_dir = Path(__file__).resolve().parents[1]
     if args.output_dir is None:
-        args.output_dir = (
-            project_dir / "runs" / f"case_{args.case:02d}" / "beta_sweep"
-        )
+        args.output_dir = solution_directory(project_dir, args.case) / "beta_sweep"
     args.output_dir = args.output_dir.resolve()
     args.t_max = (
         CASE_FINAL_TIMES[args.case]

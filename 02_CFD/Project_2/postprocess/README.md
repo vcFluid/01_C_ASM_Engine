@@ -158,27 +158,27 @@ tecplot_animate.py
 例如，最终数值文件为：
 
 ```text
-runs/case_01_numerical.dat
+runs/Solution_01_Sod/numerical.dat
 ```
 
 则快照文件形如：
 
 ```text
-case_01_numerical_step_000000.dat
-case_01_numerical_step_000000_exact.dat
-case_01_numerical_step_000100.dat
-case_01_numerical_step_000100_exact.dat
+numerical_step_000000.dat
+numerical_step_000000_exact.dat
+numerical_step_000100.dat
+numerical_step_000100_exact.dat
 ...
-case_01_numerical.dat
-case_01_numerical_exact.dat
+numerical.dat
+numerical_exact.dat
 ```
 
 随后执行：
 
 ```powershell
 python .\postprocess\tecplot_animate.py `
-  --numerical .\runs\case_01_numerical.dat `
-  --output-dir .\runs\case_01_animation
+  --numerical .\runs\Solution_01_Sod\numerical.dat `
+  --output-dir .\runs\Solution_01_Sod\animation
 ```
 
 程序将：
@@ -216,7 +216,7 @@ Transient dataset 中 numerical 和 exact 分别使用两个 time strand。因�
 
 ```powershell
 python .\postprocess\beta_sweep.py `
-  --output-dir .\runs\case_01\beta_sweep
+  --output-dir .\runs\Solution_01_Sod\beta_sweep
 ```
 
 也可以自定义扫描点：
@@ -228,7 +228,7 @@ python .\postprocess\beta_sweep.py `
   --nx 501 `
   --cfl 0.5 `
   --sensor rho `
-  --output-dir .\runs\case_01\beta_sweep_custom
+  --output-dir .\runs\Solution_01_Sod\beta_sweep_custom
 ```
 
 脚本会自动：
@@ -244,7 +244,7 @@ python .\postprocess\beta_sweep.py `
 主要汇总文件：
 
 ```text
-runs/case_01/beta_sweep/
+runs/Solution_01_Sod/beta_sweep/
   errors.csv
   sweep_config.json
   beta_profiles.dat
@@ -272,3 +272,42 @@ Linf = max |q_num - q_exact|
 
 当前 Sod baseline 中，`beta=0` 在 `CFL=0.5, Nx=501` 时未能推进到 `t=0.2`；
 因此不能把“无人工粘性”的结果解释为普通的高误差解。
+
+## Targeted matrix
+
+`targeted_matrix.py` 用于组织正式结果集中的 targeted matrix：viscosity on/off、
+sensor=`rho/u/p`、CFL 和 Nx 对比。
+
+正式 Sod 运行命令：
+
+```powershell
+python .\postprocess\targeted_matrix.py `
+  --case 1 `
+  --output-dir .\runs\Solution_01_Sod\targeted_matrix
+```
+
+如果只生成 CSV 而暂不调用 Tecplot：
+
+```powershell
+python .\postprocess\targeted_matrix.py `
+  --case 1 `
+  --backend none `
+  --output-dir .\runs\Solution_01_Sod\targeted_matrix
+```
+
+主要汇总文件：
+
+```text
+runs/Solution_01_Sod/targeted_matrix/
+  targeted_matrix_config.json
+  matrix_cases.csv
+  errors.csv
+  best.csv
+  export_targeted_matrix_with_tecplot.mcr
+  slices/
+    beta_by_sensor.dat
+    cfl_reference.dat
+    grid_reference.dat
+```
+
+旧入口 `parameter_matrix.py` 保留为兼容 wrapper；新文档见 `TARGETED_MATRIX.md`。

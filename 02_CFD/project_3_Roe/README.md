@@ -1,54 +1,81 @@
 # Project 3 Roe Solver Skeleton
 
-## 核心判断
+## Core Judgment
 
-Project 3 可以和 Project 2 同构，但数值格式层不能同构地照抄 MacCormack。
+Project 3 should stay isomorphic to the current Project 2 architecture, but the numerical-method core must change.
 
-可以继承的骨架是：
+The reusable Project 2 architecture is:
 
-- `solver` struct 管理全局参数、数组和方法指针；
-- 主变量仍然使用守恒量 `Q = [rho, rho*u, rho*E]`；
-- 每一步由 `Q -> W` 更新原始量；
-- CFL 时间步仍然取决于最大特征速度 `|u| + a`；
-- 初值、边界、Tecplot 输出、exact solution 对比流程可以沿用；
-- 主循环仍然是 `init -> while(t < t_max) step -> write -> exact -> compare`。
+- `solver` struct owns global parameters, arrays, and method pointers.
+- Conservative variables `Q = [rho, rho*u, rho*E]` are the primary state.
+- Primitive variables `W = [rho, u, p]` are synchronized from `Q` every step.
+- CFL uses the spectral radius `|u| + a`.
+- Seven built-in Riemann cases are selected before allocation.
+- The solver writes Tecplot ASCII data with `x, rho, u, p, E, q1, q2, q3`.
+- Project 0 exact solver is called as an external batch process with the same state, domain, grid, gamma, and time.
+- Snapshots and exact snapshots can be paired for animation.
+- Postprocess scripts read numerical/exact Tecplot files and compute `L1/L2/Linf`.
 
-必须替换的核心是：
-
-- Project 2: cell physical flux `F_i = F(Q_i)` + MacCormack predictor/corrector；
-- Project 3: interface numerical flux `Fhat_{i+1/2}` + finite-volume conservative update。
-
-所以 Project 3 的“血肉”主要集中在三个函数：
+The non-reusable Project 2 core is:
 
 ```text
-compute_physical_flux()
-compute_roe_flux()
+MacCormack:
+    cell physical flux F_i = F(Q_i)
+    predictor Q_bar
+    corrector Q_next
+    optional artificial viscosity
+
+Roe:
+    interface numerical flux Fhat_{i+1/2}
+    direct finite-volume update Q_next
+    entropy fix and positivity diagnostics
+```
+
+So Project 3's real work is concentrated in:
+
+```text
+physical_flux_from_q()
+roe_flux()
+compute_all_roe_fluxes()
 step_roe()
+check_physical_state()
 ```
 
-## 和 Project 2 的对应关系
+## Current Project 2 To Project 3 Map
 
 ```text
-Project 2 MacCormack                  Project 3 Roe
----------------------------------------------------------------
-struct Riemann_1D_MacC_solver          struct Riemann_1D_Roe_solver
-q1/q2/q3                               q1/q2/q3
-q1_bar/q2_bar/q3_bar                   not needed
-q1_next/q2_next/q3_next                q1_next/q2_next/q3_next
-f1/f2/f3 cell flux                     optional physical flux helper
-f1_bar/f2_bar/f3_bar                   not needed
-                                       fhat1/fhat2/fhat3 interface flux
-compute_flux(Q_i)                      compute_physical_flux(Q)
-step_maccormack()                      step_roe()
-artificial viscosity                   usually off for Roe baseline
-exact solver process                   reusable
-Tecplot output                         reusable
-postprocess scripts                    reusable after path/name update
+Project 2 current feature                  Project 3 Roe pseudocode mapping
+--------------------------------------------------------------------------------
+Riemann_1D_MacC_solver                     Riemann_1D_Roe_solver
+q1/q2/q3                                   same
+q1_bar/q2_bar/q3_bar                       remove; MacCormack-only
+q1_next/q2_next/q3_next                    same
+f1/f2/f3 cell flux                         physical_flux_from_q helper only
+f1_bar/f2_bar/f3_bar                       remove; MacCormack-only
+fhat1/fhat2/fhat3                          add; Roe interface flux
+compute_flux(Q arrays)                     physical_flux_from_q(Q)
+step_maccormack()                          step_roe()
+artificial viscosity beta/sensor           replace by entropy fix controls
+rho_floor/p_floor                          keep as physical-state diagnostics
+7 built-in cases                           keep
+ask_int_range/ask_double_min/ask_yes_no     keep pattern
+ask_output_filename                         keep
+make_exact_filename                         keep
+make_snapshot_filename                      keep
+run_exact_solver                            keep
+write_tecplot variables                     keep exact variable contract
+output_interval snapshots                   keep
+step limit 200000                           keep initially
+beta_sweep.py                               map to entropy_fix_sweep.py
+parameter_matrix.py                         map axes to entropy/CFL/Nx/case
+beta_slider.py                              map to entropy-fix slider if useful
+tecplot_compare.py                          reusable if output names match
+tecplot_animate.py                          reusable if snapshot names match
 ```
 
-## Roe update formula
+## Roe Formula
 
-For 1-D Euler equations:
+For 1-D Euler:
 
 ```text
 dQ/dt + dF(Q)/dx = 0
@@ -70,28 +97,49 @@ Fhat_{i+1/2}
   - 0.5 * sum_k abs(lambda_tilde_k) * alpha_k * r_tilde_k
 ```
 
-where the Roe-averaged quantities are computed from the left and right states.
+## Recommended Implementation Order
 
-## 推荐实现顺序
+1. Port the Project 2 skeleton without MacCormack predictor arrays.
+2. Keep the same input/output contract first.
+3. Implement `pressure_from_q`, `total_energy_density`, `primitive_from_q`, and `physical_flux_from_q`.
+4. Implement Roe averages, eigenvalues, wave strengths, and right eigenvectors inside `roe_flux`.
+5. Implement `compute_all_roe_fluxes`.
+6. Implement `step_roe`.
+7. Add entropy fix.
+8. Add physical-state diagnostics for `rho <= 0`, `p <= 0`, `NaN`, and `Inf`.
+9. Reuse exact comparison and Tecplot output.
+10. Only after Sod is stable, create Roe versions of sweep/matrix scripts.
 
-1. 先完成 `pressure_from_q()`、`total_energy_density()`、`compute_physical_flux()`。
-2. 完成 `compute_dt()`，确认 `dt = CFL * dx / max(|u| + a)`。
-3. 写 `compute_roe_flux()`，只处理一个 interface。
-4. 写 `compute_all_roe_fluxes()`，循环处理所有 `i+1/2`。
-5. 写 `step_roe()`，用左右界面通量更新 cell average。
-6. 加 `entropy_fix()`，避免 transonic rarefaction 里的 entropy violation。
-7. 加 positivity check，至少检测 `rho <= 0` 或 `p <= 0` 后停止并输出诊断。
-8. 先跑 Sod，再跑 Lax，再考虑双膨胀、近真空等更难算例。
+## Roe-Specific Experiment Axes
 
-## 常见风险
+Project 2's formal parameter study is about artificial viscosity:
 
-- Roe 格式不是简单把 `compute_flux()` 换成 Roe。Roe flux 位于 interface，不位于 cell center。
-- Roe 本身有 upwind dissipation，baseline 不建议再叠 Project 2 的人工粘性，否则讨论不干净。
-- Roe 不保证 positivity。强膨胀或近真空问题可能出现负密度/负压强。
-- 不加 entropy fix 时，跨声速稀疏波可能出现非物理解。
-- 精确解对比时要保证 `xmin/xmax/x0/t/gamma/nx` 完全一致。
+```text
+viscosity on/off, beta, sensor, CFL, Nx
+```
 
-## 文件说明
+For Project 3 Roe, the cleaner parameter study is:
+
+```text
+entropy_fix on/off
+entropy_delta or entropy_factor
+CFL
+Nx
+case_id
+positivity failure/stability status
+```
+
+Do not call Roe's entropy fix "artificial viscosity beta" in the report. They are both stabilizing/dissipative devices, but they enter the scheme differently.
+
+## Risks
+
+- Roe flux is an interface flux. It cannot be implemented by simply replacing Project 2's `compute_flux()`.
+- Roe without entropy fix can produce entropy-violating expansion shocks in transonic rarefactions.
+- Roe does not guarantee positivity. Strong expansion and near-vacuum cases may fail even if Sod works.
+- `Linf` near shocks and contacts is sensitive to grid alignment. Use `L1` for overall trend discussion first.
+- If output variables or file naming drift from Project 2, the postprocess pipeline will break.
+
+## Files
 
 ```text
 project_3_Roe/
@@ -101,4 +149,4 @@ project_3_Roe/
   runs/.gitignore
 ```
 
-当前 C 文件是伪代码骨架，不是最终可编译版本。你可以按里面的 `TODO(Project 3)` 逐段填实。
+The C file is still pseudocode. It is a map from current Project 2 into a Roe implementation plan, not a compilable solver.

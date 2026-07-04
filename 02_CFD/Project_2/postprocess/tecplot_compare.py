@@ -367,7 +367,7 @@ def render_plots_matplotlib(
 
     dpi = 140
     figure_width = max(args.width / dpi, 6.0)
-    figure_height = figure_width * 0.58
+    figure_height = figure_width * 0.50
 
     for variable_name in ("rho", "u", "p"):
         index = column_indices[variable_name]
@@ -382,7 +382,7 @@ def render_plots_matplotlib(
             exact_x,
             exact_y,
             color="black",
-            linewidth=1.8,
+            linewidth=0.9,
             label="Exact",
             zorder=2,
         )
@@ -390,12 +390,12 @@ def render_plots_matplotlib(
             numerical_x,
             numerical_y,
             color="#c43c39",
-            linewidth=1.0,
+            linewidth=0.8,
             marker="o",
-            markersize=2.0,
+            markersize=1.8,
             markerfacecolor="white",
             markeredgewidth=0.55,
-            markevery=max(1, len(numerical_x) // 100),
+            markevery=max(1, len(numerical_x) // 120),
             label="MacCormack",
             zorder=3,
         )
@@ -404,8 +404,8 @@ def render_plots_matplotlib(
         axis.set_ylim(*ranges[variable_name])
         axis.set_xlabel("x")
         axis.set_ylabel(Y_LABELS[variable_name])
-        axis.grid(True, color="#d8d8d8", linewidth=0.6, alpha=0.8)
-        axis.legend(frameon=False, loc="best")
+        axis.grid(True, color="#e2e2e2", linewidth=0.5, alpha=0.8)
+        axis.legend(frameon=False, loc="best", fontsize=9)
         axis.tick_params(direction="in", top=True, right=True)
 
         for spine in axis.spines.values():
@@ -451,17 +451,22 @@ def write_tecplot_macro(
         "$!LINEMAP [1] ASSIGN{ZONE = 1}",
         "$!LINEMAP [1] ASSIGN{XAXISVAR = 1}",
         "$!LINEMAP [1] LINES{COLOR = RED}",
-        "$!LINEMAP [1] LINES{LINETHICKNESS = 0.4}",
+        "$!LINEMAP [1] LINES{LINETHICKNESS = 0.28}",
+        "$!LINEMAP [1] SYMBOLS{SHOW = YES}",
+        "$!LINEMAP [1] SYMBOLS{COLOR = RED}",
+        "$!LINEMAP [1] SYMBOLS{SIZE = 0.65}",
         "$!CREATELINEMAP",
         "$!LINEMAP [2] NAME = 'Exact'",
         "$!LINEMAP [2] ASSIGN{ZONE = 2}",
         "$!LINEMAP [2] ASSIGN{XAXISVAR = 1}",
         "$!LINEMAP [2] LINES{COLOR = BLACK}",
-        "$!LINEMAP [2] LINES{LINETHICKNESS = 0.8}",
+        "$!LINEMAP [2] LINES{LINETHICKNESS = 0.35}",
+        "$!LINEMAP [2] SYMBOLS{SHOW = NO}",
         "$!ACTIVELINEMAPS = [1-2]",
         "$!GLOBALLINEPLOT LEGEND{SHOW = YES}",
+        "$!GLOBALLINEPLOT LEGEND{XYPOS{X = 34 Y = 91}}",
         "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{SIZEUNITS = POINT}}",
-        "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{HEIGHT = 10}}",
+        "$!GLOBALLINEPLOT LEGEND{TEXTSHAPE{HEIGHT = 8}}",
         "$!XYLINEAXIS XDETAIL 1 {TITLE{TITLEMODE = USETEXT}}",
         "$!XYLINEAXIS XDETAIL 1 {TITLE{TEXT = 'x'}}",
         "$!EXPORTSETUP EXPORTFORMAT = PNG",
