@@ -1,0 +1,206 @@
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{left=2.4cm,right=2.4cm,top=2.4cm,bottom=2.4cm}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\setlength{\parskip}{0.35em}
+\setlength{\parindent}{2em}
+
+\newcommand{\figfile}[1]{\detokenize{#1}}
+\newcommand{\caseplot}[2]{
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.32\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{\figfile{../runs/ppt_formula_exact_only/#1/roe_cfl_0p5_nx_501/plots/rho.png}}
+      \caption{density}
+    \end{subfigure}
+    \begin{subfigure}{0.32\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{\figfile{../runs/ppt_formula_exact_only/#1/roe_cfl_0p5_nx_501/plots/u.png}}
+      \caption{velocity}
+    \end{subfigure}
+    \begin{subfigure}{0.32\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{\figfile{../runs/ppt_formula_exact_only/#1/roe_cfl_0p5_nx_501/plots/p.png}}
+      \caption{pressure}
+    \end{subfigure}
+    \caption{#2: Roe 数值解与精确 Riemann 解对比。}
+  \end{figure}
+}
+
+\title{Project 3 结果报告：Roe 格式求解一维 Euler 方程 Riemann 问题}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{目标}
+
+本报告只讨论课件 Roe 原式的一维 Euler 方程 Riemann 问题数值结果。核心目标是将 Roe finite-volume 数值解与精确 Riemann 解对比，检查典型激波管、膨胀波、接触间断和双激波问题中的波形、误差和失稳情况。
+
+\section{数值方法}
+
+一维 Euler 方程写成守恒形式：
+\begin{equation}
+    \frac{\partial \bm Q}{\partial t}
+    +
+    \frac{\partial \bm F(\bm Q)}{\partial x}
+    =0,
+    \qquad
+    \bm Q=
+    \begin{bmatrix}
+        \rho\\ \rho u\\ \rho E
+    \end{bmatrix},
+    \quad
+    \bm F=
+    \begin{bmatrix}
+        \rho u\\ \rho u^2+p\\ u(\rho E+p)
+    \end{bmatrix}.
+\end{equation}
+
+离散格式采用 cell-centered finite volume 守恒更新：
+\begin{equation}
+    \bm Q_j^{n+1}
+    =
+    \bm Q_j^n
+    -
+    \frac{\Delta t}{\Delta x}
+    \left(
+        \hat{\bm F}_{j+1/2}
+        -
+        \hat{\bm F}_{j-1/2}
+    \right).
+\end{equation}
+
+界面数值通量按课件 Roe 公式实现：
+\begin{equation}
+    \hat{\bm F}_{j+1/2}
+    =
+    \frac12
+    \left[
+        \bm F(\bm Q_{L,j+1/2})
+        +
+        \bm F(\bm Q_{R,j+1/2})
+    \right]
+    -
+    \frac12
+    |\tilde{\bm A}|_{j+1/2}
+    \left(
+        \bm Q_{R,j+1/2}
+        -
+        \bm Q_{L,j+1/2}
+    \right).
+\end{equation}
+
+当前程序是一阶格式，界面左右状态直接取相邻控制体：
+\begin{equation}
+    \bm Q_{L,j+1/2}=\bm Q_j,
+    \qquad
+    \bm Q_{R,j+1/2}=\bm Q_{j+1}.
+\end{equation}
+程序显式构造 Roe 平均量和课件中的 \(\alpha_1,\ldots,\alpha_5\)，并按
+\begin{equation}
+    |\tilde{\bm A}|\Delta \bm Q
+    =
+    \begin{bmatrix}
+        \alpha_4\\
+        \tilde u\alpha_4+\alpha_5\\
+        \tilde H\alpha_4+\tilde u\alpha_5
+        -\tilde c^2\alpha_1/(\gamma-1)
+    \end{bmatrix}
+\end{equation}
+组装耗散项。
+
+\section{基本设置与后处理}
+
+主线计算参数为：
+\begin{itemize}
+    \item 计算域：\([0,1]\)，初始间断位置 \(x_0=0.5\)；
+    \item 网格：\(N_x=501\) 个 cell-centered 控制体；
+    \item 气体参数：\(\gamma=1.4\)；
+    \item CFL：0.5；
+    \item 对比基准：已有 exact Riemann solver 生成的精确解。
+\end{itemize}
+
+后处理脚本读取 numerical 和 exact 的 Tecplot ASCII 文件。误差统计时先将 exact 解插值到 numerical cell-center 网格，再计算
+\begin{equation}
+    L_1=\int |q_{\mathrm{num}}-q_{\mathrm{exact}}|\,dx,
+    \quad
+    L_2=\left[\int (q_{\mathrm{num}}-q_{\mathrm{exact}})^2\,dx\right]^{1/2},
+    \quad
+    L_\infty=\max |q_{\mathrm{num}}-q_{\mathrm{exact}}|.
+\end{equation}
+
+\section{七组算例结果}
+
+表 \ref{tab:baseline} 给出 Roe 原式与精确解的主线误差统计。case 04 在推进过程中产生非物理压力，因此没有最终 numerical/exact 曲线；该问题在讨论部分单独说明。
+
+\begin{table}[H]
+\centering
+\caption{Roe 原式与精确解对比，\(N_x=501\), CFL=0.5。}
+\label{tab:baseline}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{clrrrrrr}
+\toprule
+case & 名称 & \(\rho L_1\) & \(u L_1\) & \(p L_1\) & \(\rho L_\infty\) & \(u L_\infty\) & \(p L_\infty\)\\
+\midrule
+01 & Sod & \(5.897{\times}10^{-3}\) & \(7.402{\times}10^{-3}\) & \(4.441{\times}10^{-3}\) & \(8.175{\times}10^{-2}\) & \(3.282{\times}10^{-1}\) & \(5.827{\times}10^{-2}\)\\
+02 & Lax & \(1.828{\times}10^{-2}\) & \(1.321{\times}10^{-2}\) & \(1.575{\times}10^{-2}\) & \(4.440{\times}10^{-1}\) & \(7.969{\times}10^{-1}\) & \(7.085{\times}10^{-1}\)\\
+03 & Subsonic double expansion & \(7.375{\times}10^{-3}\) & \(2.422{\times}10^{-2}\) & \(2.452{\times}10^{-2}\) & \(1.114{\times}10^{-1}\) & \(1.011{\times}10^{-1}\) & \(8.145{\times}10^{-2}\)\\
+04 & Sjogreen supersonic expansion & \multicolumn{6}{c}{unstable: nonpositive pressure}\\
+05 & Contact double expansion & \(5.806{\times}10^{-3}\) & \(6.326{\times}10^{-3}\) & \(3.516{\times}10^{-3}\) & \(1.540{\times}10^{-1}\) & \(5.390{\times}10^{-2}\) & \(3.066{\times}10^{-2}\)\\
+06 & Contact double shock & \(6.002{\times}10^{-3}\) & \(3.788{\times}10^{-3}\) & \(4.172{\times}10^{-3}\) & \(3.861{\times}10^{-1}\) & \(2.027{\times}10^{-1}\) & \(2.421{\times}10^{-1}\)\\
+07 & Pure contact & \(1.261{\times}10^{-1}\) & \(6.150{\times}10^{-10}\) & \(3.010{\times}10^{-9}\) & \(4.142{\times}10^{0}\) & \(1.522{\times}10^{-9}\) & \(7.451{\times}10^{-9}\)\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{\figfile{../runs/ppt_formula_exact_only/report_figures/baseline_l1_errors.png}}
+        \caption{\(L_1\) 误差}
+    \end{subfigure}
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{\figfile{../runs/ppt_formula_exact_only/report_figures/baseline_linf_errors.png}}
+        \caption{\(L_\infty\) 误差}
+    \end{subfigure}
+    \caption{Roe 原式与精确解的误差总览。case 04 因失稳未进入误差图。}
+    \label{fig:error_overview}
+\end{figure}
+
+\caseplot{case_01}{case 01 Sod}
+\caseplot{case_02}{case 02 Lax}
+\caseplot{case_03}{case 03 Subsonic double expansion}
+\caseplot{case_05}{case 05 Contact double expansion}
+\caseplot{case_06}{case 06 Contact double shock}
+\caseplot{case_07}{case 07 Pure contact}
+
+\section{结果讨论}
+
+整体来看，Roe 原式在 case 01、02、03、05、06 中能够捕捉主要波系结构，包括激波、膨胀波和接触间断。由于当前实现是一阶 Godunov 型格式，间断附近不可避免有数值扩散，因此 \(L_\infty\) 误差明显大于 \(L_1\) 误差。这个现象在 Lax 和 Contact shock 等含强间断的算例中尤为明显。
+
+case 07 是纯接触间断。速度和压力在精确解中几乎保持常值，因此程序给出的 \(u\) 和 \(p\) 误差接近机器精度；但密度间断被一阶格式明显扩散，导致 \(\rho L_1\) 和 \(\rho L_\infty\) 较大。这说明 Roe 格式能保持接触波的速度和压力关系，但一阶重构仍会扩散密度跳跃。
+
+case 04 在推进中出现非物理压力。这不是后处理错误，而是 Roe 原式对强膨胀、近真空问题不满足 positivity preservation 的典型表现。程序没有强行截断密度或压力，因此这个失败应作为方法局限写入报告。
+
+\section{结论}
+
+本实验按课件 Roe 公式显式实现了一阶 cell-centered FVM，并完成了七组 Riemann 问题与精确解的对比。结果表明，Roe 格式能够较好捕捉多数典型波系；但在一阶格式下，激波和接触间断附近存在明显数值扩散，\(L_\infty\) 误差主要由间断位置附近贡献。
+
+case 04 的强膨胀问题暴露了 Roe 原式不保正性的缺陷。若后续课程允许进一步改进，应优先考虑保正的近似 Riemann solver 或 limiter，而不是在本报告中额外加入课件未要求的修正项。
+
+\end{document}

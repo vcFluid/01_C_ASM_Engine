@@ -33,7 +33,7 @@
 }
 
 \newcommand{\ReportTitle}{一维 Riemann 问题 MacCormack 格式：方法说明}
-\newcommand{\ReportAuthor}{邵桂博、杨振宇}
+\newcommand{\ReportAuthor}{邵桂博、杨镇宇}
 \newcommand{\ReportCourse}{计算流体力学(Project 2)}
 \newcommand{\ReportDate}{\today}
 
@@ -47,7 +47,7 @@
 \begin{abstract}
 本文说明一维 Riemann 问题中 MacCormack 格式的基本求解思路。内容主要包括控制方程、守恒量与原始量的关系、滚动时间层存储、人工粘性构造，以及“滤波--预测--校正”的时间推进流程。具体的 C 语言实现细节放在代码报告中讨论，本文只保留与数值方法直接相关的部分。
 
-\textbf{关键词：} Riemann 问题；MacCormack 格式；守恒量；人工粘性
+\textbf{关键词：} 关于守恒量与原始量的核心变量选择；时间变量如何存储；CFL的几何意义与物理意义；
 \end{abstract}
 
 \tableofcontents

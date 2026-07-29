@@ -49,7 +49,7 @@
 }
 
 \title{一维 Riemann 问题的 MacCormack 数值结果与讨论}
-\author{邵桂博、杨振宇}
+\author{邵桂博、杨镇宇}
 \date{\today}
 
 \begin{document}
@@ -59,7 +59,7 @@
 \begin{abstract}
 本文用 MacCormack 格式计算一维 Euler 方程的七组 Riemann 问题，并与精确 Riemann 解进行对比。分别考察人工粘性的有无、经验系数 $\beta$、CFL 数、开关变量以及网格加密对结果的影响。计算结果表明，MacCormack 格式在光滑区域和接触间断问题上可以得到较好的结果，但在激波、强膨胀和近真空区域中会出现明显的色散振荡，甚至产生非物理状态。人工粘性可以提高间断附近的稳定性，但过大的人工粘性会抹宽波系，因此它不是单纯提高精度的手段，而是在稳定性和分辨率之间作折中。
 
-\textbf{关键词：} Riemann 问题；MacCormack 格式；人工粘性；Euler 方程；
+\textbf{额外的内容：} 脚本实现批量重复实验；数值误差范数$L_1$$L_2$$L_\infty$；MacCormack双向交替迭代结果对比；
 \end{abstract}
 
 \tableofcontents
@@ -172,7 +172,7 @@
 
 这里的失败不是程序没有运行，而是计算过程中出现负密度、负压力或 NaN 等非物理状态。对于激波和强膨胀问题，这些失败本身也反映了格式的稳定性限制。
 
-\section{基准结果对比}
+\section{Baseline结果对比}
 
 \subsection{Case 1：Sod 激波管}
 

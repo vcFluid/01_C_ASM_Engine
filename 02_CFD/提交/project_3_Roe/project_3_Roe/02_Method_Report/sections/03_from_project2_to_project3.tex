@@ -1,0 +1,80 @@
+\section{Project 2 到 Project 3 的结构映射}
+
+\subsection{保留的外层框架}
+
+Project 3 保留 Project 2 的以下外层设计。
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Riemann case 配置。} 程序仍在内存分配前选择七组内置初值之一，同时设置默认终止时间。
+    \item \textbf{均匀网格。} 计算域为 \([x_{\min},x_{\max}]\)，网格间距
+    \[
+        \Delta x=\frac{x_{\max}-x_{\min}}{N_x}.
+    \]
+    \item \textbf{CFL 时间步。} 每一步由当前最大波速确定
+    \[
+        \Delta t
+        =
+        \mathrm{CFL}
+        \frac{\Delta x}{\max_i(|u_i|+a_i)}.
+    \]
+    \item \textbf{守恒量主推进，原始量同步。} 程序推进单元平均意义下的 \(\bm Q\)，输出和诊断使用由 \(\bm Q\) 反算得到的 \(\bm W\)。
+    \item \textbf{零梯度边界。} 两端边界通过复制相邻内点实现。
+    \item \textbf{Project 0 exact solver。} 数值解输出后，程序调用同一 exact solver 生成精确解文件。
+    \item \textbf{Tecplot ASCII 输出。} 输出变量仍包含 \(x,\rho,u,p,E,\rho,\rho u,\rho E\)，后处理脚本只依赖前四个变量。
+\end{enumerate}
+
+这些部分不依赖 MacCormack 或 Roe 的具体离散形式，因此可以直接从 Project 2 迁移到 Project 3。需要注意的是，迁移后的 Roe 核心不再是 finite difference stencil，而是 finite volume flux balance。
+
+\subsection{替换的数值核心}
+
+Project 2 的核心推进流程为
+\begin{equation}
+    \bm Q^n
+    \longrightarrow
+    \bar{\bm Q}^n
+    \longrightarrow
+    \widetilde{\bm Q}^{n+1}
+    \longrightarrow
+    \bm Q^{n+1},
+\end{equation}
+其中 \(\bar{\bm Q}^n\) 来自人工粘性滤波，\(\widetilde{\bm Q}^{n+1}\) 来自 MacCormack 预测步，最后由校正步得到 \(\bm Q^{n+1}\)。
+
+Project 3 的核心推进流程改为有限体积意义下的
+\begin{equation}
+    \bm Q^n
+    \longrightarrow
+    \hat{\bm F}_{i+1/2}
+    \longrightarrow
+    \bm Q^{n+1}.
+\end{equation}
+
+也就是说，Project 3 不再需要 MacCormack 的中间时间层，也不再需要人工粘性滤波层。它需要新增的是每个控制体界面的 Roe 数值通量。
+
+\subsection{概念映射表}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+模块 & Project 2 & Project 3 Roe\\
+\midrule
+主变量 & \(\bm Q=[\rho,\rho u,\rho E]\) & 相同\\
+派生变量 & \(\bm W=[\rho,u,p]\) & 相同\\
+单元通量 & \(\bm F(\bm Q_i)\) & 仅作为 Roe flux 的局部物理通量\\
+界面通量 & 不显式构造 & 构造 \(\hat{\bm F}_{i+1/2}\)\\
+推进方式 & MacCormack 预测校正有限差分 & Godunov 型有限体积守恒更新\\
+稳定化参数 & artificial viscosity \(\beta\), sensor & 不设置额外稳定化参数\\
+失稳诊断 & 负密度、负压、NaN/Inf & 相同，并重点记录 positivity failure\\
+后处理 & numerical vs exact & 相同\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{为什么不能只替换 \texorpdfstring{\(\bm F_i\)}{Fi}}
+
+Roe 格式不是把 Project 2 中的物理通量函数 \(\bm F(\bm Q_i)\) 简单换成另一个单元中心通量，也不是普通有限差分格式。Roe 在本项目中的正确位置是有限体积方法的界面 Riemann solver，其本质映射是：
+\[
+    (\bm Q_i,\bm Q_{i+1})
+    \longrightarrow
+    \hat{\bm F}_{i+1/2}.
+\]
+因此每一个界面通量同时依赖左右两个状态。若仍按单元中心通量差分，就没有体现 Lesson 11 中 Godunov/Roe 方法的局部 Riemann 问题思想，也不能称为严格的 Roe FVM。

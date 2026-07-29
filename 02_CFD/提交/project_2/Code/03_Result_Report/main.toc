@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}定义说明}{3}{section.1}%
 \contentsline {section}{\numberline {2}算例与批量实验设置}{3}{section.2}%
-\contentsline {section}{\numberline {3}基准结果对比}{5}{section.3}%
+\contentsline {section}{\numberline {3}Baseline结果对比}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Case 1：Sod 激波管}{5}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Case 2：LAX 问题}{5}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Case 3：亚声速双膨胀问题}{6}{subsection.3.3}%

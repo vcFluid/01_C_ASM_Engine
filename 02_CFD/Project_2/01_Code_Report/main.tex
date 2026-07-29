@@ -10,6 +10,8 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{needspace}
 
 \hypersetup{
     colorlinks=true,
@@ -32,8 +34,10 @@
     showstringspaces=false
 }
 
+\BeforeBeginEnvironment{lstlisting}{\par\Needspace{18\baselineskip}}
+
 \title{一维 Riemann 问题 MacCormack 格式：代码细节}
-\author{邵桂博、杨振宇\\计算流体力学 Project 2}
+\author{邵桂博、杨镇宇\\计算流体力学 Project 2}
 \date{\today}
 
 \begin{document}
@@ -41,21 +45,27 @@
 \maketitle
 
 \begin{abstract}
-本文记录 \texttt{1-D\_Riemann\_NM\_MacC\_02.c} 的主要代码逻辑。
+这部分报告主要介绍 \texttt{1-D\_Riemann\_NM\_MacC\_02.c} 的关键代码逻辑。
 报告重点说明三件事：一是程序中各类变量怎样保存；二是 MacCormack
 格式、滚动存储、快照输出和人工粘性在代码中怎样实现；三是数值解怎样与 Project 0 的精确解文件进行对比。
 
-\textbf{关键词：} C 语言；MacCormack 格式；人工粘性；Riemann 问题；Tecplot 输出
+\textbf{关键词：} 变量struct分组整理；滚动存储节省CPU；快照输出"Snapshot"；调用已有project\_0
 \end{abstract}
 
 \tableofcontents
 \newpage
+
+\section{当前版本与旧版本代码的区别}
+旧代码位于\texttt{Project\_2\textbackslash old\_code\_and\_data}。
+
+本程序最开始的 old 版本主要目标是先把 MacCormack 格式跑通，因此变量命名和数组组织方式比较直接。程序中大量使用 q1、q2、q3、f1、f2、f3 这类数组名，其中 q1、q2、q3 分别表示守恒量中的密度、动量和总能量。这样的写法和数学推导中的分量形式比较接近，初期实现较快，但当程序加入人工粘性、不同算例、不同 CFL 数和不同差分方向之后，代码的维护和阅读变得非常痛苦，变量数量明显增加，阅读和检查代码时容易混淆不同数组的物理意义。
+
+在 02 版本中，程序的主要改动不是更换数值格式，而是重新整理变量的组织方式。让Code读起来不那么痛苦（尽管变量名和方法 Method 很多）
 
 \input{sections/01_architecture}
 \input{sections/02_solver_state}
 \input{sections/03_time_marching}
 \input{sections/04_process_coupling}
 \input{sections/05_postprocess}
-\input{sections/06_limitations}
 
 \end{document}

@@ -22,6 +22,9 @@ Project 2 也会停止当前计算。
 
 \subsection{为什么要传同一个网格}
 
+在对比精确解和数值解时，如果直接用过去project\_0跑的数据，那么为了匹配x轴而插值，也会带来误差，这样就没法很好的对比数值解和精确解了。
+如果每次要手动去project\_0对齐数据,显著增加不必要的工作量。
+
 Project 2 会把自己的
 \[
 x_{\min},\quad x_{\max},\quad x_0,\quad N_x,\quad \gamma
@@ -31,6 +34,7 @@ x_{\min},\quad x_{\max},\quad x_0,\quad N_x,\quad \gamma
 x_i=x_{\min}+i\frac{x_{\max}-x_{\min}}{N_x-1}
 \]
 上取值。后面比较误差时就可以直接逐点比较，不需要再做插值。
+
 
 \subsection{路径和引号}
 

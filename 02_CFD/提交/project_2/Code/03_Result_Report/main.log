@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.5)  5 JUL 2026 05:44
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.5)  5 JUL 2026 12:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -853,15 +853,8 @@ Overfull \hbox (22.87527pt too wide) in paragraph at lines 286--299
 LaTeX2e <2026-06-01>
 L3 programming layer <2022/07/14>
  ***********
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: ABD0B2EB717317043E2CA97995DCDBBC;2452
-(rerunfilecheck)             After:  8B2FFF7853C182B94EFB8BAE1120E034;2452.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 2A83FE124834C9909025E7D01347BD71;2476.
  ) 
 Here is how much of TeX's memory you used:
  18663 strings out of 467813

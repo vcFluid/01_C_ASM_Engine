@@ -1,0 +1,74 @@
+\section{控制方程与变量关系}
+
+\subsection{一维 Euler 方程}
+
+一维无粘可压缩流动的守恒型 Euler 方程为
+\begin{equation}
+    \frac{\partial \bm Q}{\partial t}
+    +
+    \frac{\partial \bm F(\bm Q)}{\partial x}
+    =0,
+\end{equation}
+其中守恒量和物理通量分别为
+\begin{equation}
+    \bm Q=
+    \begin{bmatrix}
+        \rho\\
+        \rho u\\
+        \rho E
+    \end{bmatrix},
+    \qquad
+    \bm F(\bm Q)=
+    \begin{bmatrix}
+        \rho u\\
+        \rho u^2+p\\
+        u(\rho E+p)
+    \end{bmatrix}.
+\end{equation}
+
+理想气体状态方程给出压力与总能的关系：
+\begin{equation}
+    p=(\gamma-1)
+    \left(
+        \rho E-\frac{1}{2}\rho u^2
+    \right).
+\end{equation}
+反过来，由原始量构造总能密度为
+\begin{equation}
+    \rho E
+    =
+    \frac{p}{\gamma-1}
+    +
+    \frac{1}{2}\rho u^2.
+\end{equation}
+
+\subsection{Riemann 初值}
+
+一维 Riemann 问题的初值由左右两个常状态构成：
+\begin{equation}
+    \bm W(x,0)=
+    \begin{cases}
+        \bm W_L=(\rho_L,u_L,p_L)^{\mathrm T}, & x<x_0,\\
+        \bm W_R=(\rho_R,u_R,p_R)^{\mathrm T}, & x>x_0.
+    \end{cases}
+\end{equation}
+
+间断在 \(t>0\) 后分解为激波、膨胀波和接触间断等波系。精确 Riemann 解可以作为验证数值格式的基准。Project 3 沿用 Project 2 的七组 Riemann 算例，使 Roe 格式、MacCormack 格式和精确解之间具有可比性。
+
+\subsection{有限体积守恒更新的重要性}
+
+对含激波的双曲守恒律，守恒型有限体积离散是捕捉正确 Rankine-Hugoniot 跳跃关系的基本要求。Project 2 中 MacCormack 虽然写作有限差分形式，但程序推进的仍是守恒量 \(\bm Q\)。Project 3 中 Roe 格式必须明确表述为有限体积格式：未知量表示控制体内的单元平均守恒量，更新由左右两个界面数值通量之差给出：
+\begin{equation}
+    \bm Q_i^{n+1}
+    =
+    \bm Q_i^n
+    -
+    \frac{\Delta t}{\Delta x}
+    \left(
+        \hat{\bm F}_{i+1/2}
+        -
+        \hat{\bm F}_{i-1/2}
+    \right).
+\end{equation}
+
+这里 \(\hat{\bm F}_{i+1/2}\) 是有限体积界面数值通量，不再是单元中心的物理通量 \(\bm F_i\)。这是 Project 3 的核心方法变化。当前程序采用 cell-centered finite volume 布局：\(\bm Q_i\) 表示第 \(i\) 个控制体的单元平均守恒量，Tecplot 输出位置取单元中心，而不是用于普通中心差分的节点点值。

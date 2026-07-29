@@ -14,19 +14,7 @@
 - [结果集目录命名约定](#结果集目录命名约定)
 
 # MacCormack格式+人工粘性系数问题分析
-这个问题可以拆成两个子问题，第一是解决MacCormack格式的预测步（以及求解时需要在两种预测方式中交替），第二是解决如何引入人工粘性
-
-当前 code 内置的 7 组 Riemann 初值条件如下：
-
-| Case | 问题类型 | $\mathbf{W}_L=(\rho_L,u_L,p_L)$ | $\mathbf{W}_R=(\rho_R,u_R,p_R)$ |
-|---:|---|---:|---:|
-| 1 | Sod shock tube | $(1,\ 0,\ 1)$ | $(0.125,\ 0,\ 0.1)$ |
-| 2 | Lax shock tube | $(0.445,\ 0.698,\ 3.528)$ | $(0.5,\ 0,\ 0.571)$ |
-| 3 | Subsonic double expansion | $(1,\ -2,\ 4)$ | $(1,\ 2,\ 4)$ |
-| 4 | Sjogreen supersonic expansion | $(1,\ -2,\ 0.4)$ | $(1,\ 2,\ 0.4)$ |
-| 5 | Contact discontinuity with double expansion | $(1,\ -0.2,\ 0.5)$ | $(0.5,\ 0.5,\ 0.5)$ |
-| 6 | Contact discontinuity with double shock | $(0.4,\ 0.5,\ 1.0)$ | $(1,\ -0.5,\ 0.9)$ |
-| 7 | Pure contact discontinuity | $(10,\ 1.0,\ 2.0)$ | $(1.0,\ 1.0,\ 2.0)$ |
+这个问题可以拆成两个子问题，第一是解决MacCormack格式的预测步（以及求解时需要在两种预测方式中交替），第二是解决如何引入人工粘性(以及需要切换3种求人工粘性系数的方法)
 
 # 目标：
 ## 用MacCormack格式算1-D黎曼问题的数值解
@@ -71,8 +59,6 @@
 4. 程序已支持 artificial viscosity on/off、经验系数 `beta`、sensor=`rho/u/p`。
 5. Project 0 已作为外部 exact solver 接入；Project 2 通过 OS process 调用它，并传递相同左右状态、计算域、网格、`x0`、`gamma` 和输出时刻。
 6. 后处理脚本已能读取 numerical/exact Tecplot ASCII 数据，完成对齐、误差计算和 Tecplot macro 生成。
-7. Tecplot `.mcr` batch mode 已作为正式出图方案；不依赖 TecPLUS/PyTecplot connection。
-8. snapshot + exact snapshot + Tecplot transient dataset 已支持时间动画。
 9. `postprocess/beta_sweep.py` 用于固定其它参数时扫描 `beta`。
 10. `postprocess/targeted_matrix.py` 用于围绕 Sod 自动组织目标实验：viscosity on/off、`beta`、sensor、CFL、Nx。
 11. `beta_slider.py` 用于读取已有 beta sweep 数据，并用 Python slider 快速观察 `beta` 对曲线的影响。
@@ -189,51 +175,6 @@ Code关键细节：
    2. 读入其中的 Q 或 W
    3. 把它作为新的初始条件
    4. 从这个时间点继续跑
-*/
-```
-```bash
-/*  总结
-程序逻辑伪代码：
-
-   struct Riemann_1D_MacC_solver solver        // 结构体，定义对象和方法接口
-
-   // 定义几个小工具
-   static double pressure_from_q           // 用守恒量反算压强 利用公式 E = \frac{p}{rho(gamma - 1 )} + u*u/2
-   static double total_energy_density      // 算单位体积流体的总能量（E*rho）
-   static double *alloc_double_array(size_t n)     //连续开辟空间，具体功能联系solver_allocate看
-
-   // 定义具体的方法（struct中定义的是抽象的方法接口）
-   int solver_allocate(solver *self)            //给所有方法分配内存，记得绑定为allocate
-   void solver_update_primitives(solver *self)  //更新原始量
-   void solver_compute_flux                    //用每一步的Q求F
-   double solver_compute_dt(solver *self)  //根据条件数和步长算dt
-
-   void solver_apply_boundary
-   void solver_apply_artificial_viscosity(solver *self)  //算人工粘性
-   void solver_init_sod(solver *self)     //初值条件定义
-   void solver_step_maccormack(solver *self)  // 预测步算法
-   void solver_write_tecplot(solver *self, const char *filename)  // 输出结果为tecplot格式
-
-   void solver_destroy(solver *self)   // 释放堆上的内存
-   void solver_bind_methods(solver *self)    // 将具体的方法与struct中的抽象方法接口绑定
-
-   // 接下来处理一些杂事
-   static solver solver_create_default(void)    // 创建一个具有默认配置的 solver 结构体并返回，将对象+方法实例化
-   static void ask_output_filename(char *filename, size_t size)   // 用户输入决定最终输出文件名
-   static void make_snapshot_filename(    // 保存快照，
-    const char *final_filename,
-    int step,
-    char *snapshot_filename,
-    size_t size
-   ) {}
-   static void print_banner(void)   // 打印程序标题
-   static void configure_riemann_case(solver *self, int *case_id)    // 用户选择Riemann初始条件，程序同步修改solver 中的左右状态
-   static void configure_domain_and_grid(solver *self)      // 配置空间计算域和网格（自适应地计算需要
-   static void configure_numerics(solver *self)          // 配置全局的参数，包括比热比、CFL、t_max、人工粘性开关、人工粘性系数，快照输出间隔
-   static void print_run_summary(solver *self, int case_id, const char *filename)   // 计算开始前，打印最终参数并保存为log_YYYY_MM_DD_hh
-
-   // OK，写main函数
-   int main(void){}
 */
 ```
 ## 结果集目录命名约定

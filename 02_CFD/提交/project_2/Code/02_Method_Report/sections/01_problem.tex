@@ -2,138 +2,36 @@
 
 \subsection{一维 Riemann 问题}
 
-\subsubsection{坐标系与控制方程}
-对于一维问题，坐标取为以右为正方向的一维直线坐标系。
-在此坐标系下，无粘可压 Euler 方程为
-\begin{equation}
-\left\{
-\begin{aligned}
-\frac{\partial \rho}{\partial t}
-&+
-\frac{\partial (\rho u)}{\partial x}
-=0,\\[6pt]
-\frac{\partial (\rho u)}{\partial t}
-&+
-\frac{\partial (\rho u^2+p)}{\partial x}
-=0,\\[6pt]
-\frac{\partial (\rho E)}{\partial t}
-&+
-\frac{\partial (\rho E u+p u)}{\partial x}
-=0.
-\end{aligned}
-\right.
-\end{equation}
-
-其中，单位质量流体的总能量为
-\begin{equation}
-E=e+\frac{u^2}{2}
-=
-\frac{p}{\rho(\gamma-1)}
-+
-\frac{u^2}{2}.
-\end{equation}
-
-\subsubsection{左右初始状态}
-
-下面列出的左右状态均可理解为以间断位置为原点的局部写法。实际计算中，
-程序把间断放在 \(x=x_0\) 处，因此条件 \(x<0\) 和 \(x\geq0\) 分别对应
-\(x<x_0\) 和 \(x\geq x_0\)。
-
-\noindent 1. 激波间断--接触间断--膨胀波问题之 Sod 问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(1,\ 0,\ 1),\\
-x\geq 0: & (\rho,u,p)_R=(0.125,\ 0,\ 0.1).
-\end{cases}
-\end{equation}
-
-\noindent 2. 激波间断--接触间断--膨胀波问题之 Lax 问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(0.445,\ 0.698,\ 3.528),\\
-x\geq 0: & (\rho,u,p)_R=(0.5,\ 0,\ 0.571).
-\end{cases}
-\end{equation}
-
-\noindent 3. 双膨胀波问题之亚声速后退问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(1,\ -2,\ 4),\\
-x\geq 0: & (\rho,u,p)_R=(1,\ 2,\ 4).
-\end{cases}
-\end{equation}
-
-\noindent 4. 双膨胀波问题之 Sjogreen supersonic Expansion 问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(1,\ -2,\ 0.4),\\
-x\geq 0: & (\rho,u,p)_R=(1,\ 2,\ 0.4).
-\end{cases}
-\end{equation}
-
-\noindent 5. 接触间断--双膨胀波问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(1,\ -0.2,\ 0.5),\\
-x\geq 0: & (\rho,u,p)_R=(0.5,\ 0.5,\ 0.5).
-\end{cases}
-\end{equation}
-
-\noindent 6. 接触间断--双激波间断问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(0.4,\ 0.5,\ 1.0),\\
-x\geq 0: & (\rho,u,p)_R=(1,\ -0.5,\ 0.9).
-\end{cases}
-\end{equation}
-
-\noindent 7. 接触间断问题
-\begin{equation}
-\begin{cases}
-x<0: & (\rho,u,p)_L=(10,\ 1.0,\ 2.0),\\
-x\geq 0: & (\rho,u,p)_R=(1.0,\ 1.0,\ 2.0).
-\end{cases}
-\end{equation}
-
 \subsubsection{计算目标}
 
 本项目采用 MacCormack 格式求解一维 Riemann 问题的数值解，并将数值解与
 半解析解（精确解）进行对比。具体研究目标如下。
 
 \begin{enumerate}[leftmargin=2em]
-    \item 求解上面列出的几个 Riemann 初值问题，具体如下：
+    \item 用 MacCormack（带人工粘性版） 求解7个1D-Riemann初值问题：
     \begin{itemize}
-        \item 将 MacCormack 数值解与精确解进行对比；
-        \item 比较加入和不加入人工粘性时的计算结果；
-        \item 研究人工粘性经验参数 $\beta$ 对数值解的影响；
-        \item 研究 CFL 数对数值解的影响，并讨论人工粘性系数与 CFL 数之间
-        并非简单单调关系的现象；
-        \item 以密度作为人工粘性开关函数，并进一步比较采用压力或速度作为
-        开关函数时的差异；
-        \item 在不加入人工粘性的情况下，通过加密网格考察色散效应是否得到改善，
-        并分析 MacCormack 格式固有色散误差与网格分辨率之间的关系。
+        \item Sod
+        \item LAX
+        \item 亚声速后退
+        \item Sjogreen supersonic Expansion超声速后退
+        \item 接触间断 - 双膨胀激波
+        \item 双激波间断
+        \item 纯接触间断问题 - 注意到反而是有些高级格式在这个问题上比不过MacCormark格式，可以拓展对比一下）=> 不同格式优秀的点还是有差异的
     \end{itemize}
-
-    \item 对于 Sjogreen supersonic Expansion 超声速后退问题，重点考察真空区：
-    \begin{itemize}
-        \item MacCormack 格式能否稳定计算真空或近真空状态；
-        \item 真空区内密度、压力和速度应如何处理；
-        \item 数值保护、人工粘性和网格分辨率对结果的影响。
-    \end{itemize}
-
-    \item 对于接触间断--双膨胀波问题，分析接触间断和两侧膨胀波的捕捉效果。
-
-    \item 对于接触间断--双激波问题，分析激波位置、间断厚度及数值振荡。
-
-    \item 对于纯接触间断问题，考察 MacCormack 格式对接触间断的分辨能力，
-
-    并在条件允许时与其他高阶或高分辨率格式进行比较。通过该算例说明不同数值格式
-    各自擅长捕捉的波结构存在差异，不能仅依据格式阶数判断其在所有问题上的表现。
+    \item 将 MacCormack 数值解与精确解进行对比；
+    \item 讨论人工粘性的有无对解的影响；
+    \item 研究人工粘性经验参数 $\beta$ 对数值解的影响；
+    \item 研究 CFL 数对数值解的影响，并讨论人工粘性系数与 CFL 数之间
+    并非简单单调关系的现象；
+    \item 先以密度作为人工粘性开关函数，并进一步比较采用压力或速度作为
+    开关函数时的差异；
+    \item 在不加入人工粘性的情况下，通过加密网格考察色散效应是否得到改善，
+    并分析 MacCormack 格式固有色散误差与网格分辨率之间的关系。
 \end{enumerate}
 
 \subsubsection{Project 2 与 Project 0 精确解之间的关系}
-Project 0 给出同一 Riemann 问题的精确解程序。虽然程序内部在求解非线性方程时仍要用迭代方法，
-但它对应的是精确 Riemann 解，可以作为 Project 2 数值解的参考解。Project 2 采用 MacCormack 格式计算近似解，
+Project 0 给出同一 Riemann 问题的精确解程序。虽然程序内部在求解超越方程时仍要用数值迭代方法，
+但它对应的是精确 Riemann 解（与DNS的内涵完全不一样），可以作为 Project 2 数值解的参考解。Project 2 采用 MacCormack 格式计算近似解，
 再与 Project 0 的结果比较，用来检查误差、稳定性和间断位置。
 
 最终输出和比较时主要使用原始量 \(\bm W=(\rho,u,p)^{\mathrm T}\)。

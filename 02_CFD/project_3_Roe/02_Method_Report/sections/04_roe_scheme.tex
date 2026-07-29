@@ -1,0 +1,141 @@
+\section{Roe 有限体积格式}
+
+\subsection{Godunov 思想与 Roe 近似}
+
+Godunov 方法的基本思想是在每个单元界面求解局部 Riemann 问题，并用界面通量推进单元平均量。因此 Roe 格式在本报告中不是一个独立于离散框架的“点值差分公式”，而是 Godunov 型 FVM 中的一种 approximate Riemann solver。精确 Godunov 方法需要在每个界面求解非线性 Riemann 问题，代价较高。Roe 格式采用局部线性化，用满足一定一致性和可对角化性质的 Roe 矩阵 \(\tilde{\bm A}\) 近似真实 Jacobian：
+\begin{equation}
+    \frac{\partial \bm Q}{\partial t}
+    +
+    \tilde{\bm A}
+    \frac{\partial \bm Q}{\partial x}
+    =
+    0.
+\end{equation}
+
+对一维 Euler 方程，Roe 矩阵的形式与原 Jacobian 相同，只需将速度、总焓和声速替换为 Roe 平均量。
+
+\subsection{Roe 平均量}
+
+给定界面左右状态 \(L\) 和 \(R\)，定义
+\begin{equation}
+    H=\frac{\rho E+p}{\rho}.
+\end{equation}
+Roe 平均速度和总焓为
+\begin{equation}
+    \tilde u
+    =
+    \frac{\sqrt{\rho_L}u_L+\sqrt{\rho_R}u_R}
+    {\sqrt{\rho_L}+\sqrt{\rho_R}},
+\end{equation}
+\begin{equation}
+    \tilde H
+    =
+    \frac{\sqrt{\rho_L}H_L+\sqrt{\rho_R}H_R}
+    {\sqrt{\rho_L}+\sqrt{\rho_R}}.
+\end{equation}
+平均声速为
+\begin{equation}
+    \tilde a
+    =
+    \sqrt{
+        (\gamma-1)
+        \left(
+            \tilde H-\frac{1}{2}\tilde u^2
+        \right)
+    }.
+\end{equation}
+
+程序中还使用
+\begin{equation}
+    \tilde \rho = \sqrt{\rho_L\rho_R}
+\end{equation}
+辅助计算波强度。
+
+\subsection{特征值与右特征向量}
+
+一维 Euler 方程 Roe 矩阵的三个特征值为
+\begin{equation}
+    \tilde\lambda_1=\tilde u-\tilde a,
+    \qquad
+    \tilde\lambda_2=\tilde u,
+    \qquad
+    \tilde\lambda_3=\tilde u+\tilde a.
+\end{equation}
+
+对应右特征向量可写为
+\begin{equation}
+    \tilde{\bm r}_1
+    =
+    \begin{bmatrix}
+        1\\
+        \tilde u-\tilde a\\
+        \tilde H-\tilde u\tilde a
+    \end{bmatrix},
+    \quad
+    \tilde{\bm r}_2
+    =
+    \begin{bmatrix}
+        1\\
+        \tilde u\\
+        \frac{1}{2}\tilde u^2
+    \end{bmatrix},
+    \quad
+    \tilde{\bm r}_3
+    =
+    \begin{bmatrix}
+        1\\
+        \tilde u+\tilde a\\
+        \tilde H+\tilde u\tilde a
+    \end{bmatrix}.
+\end{equation}
+
+\subsection{波强度}
+
+令
+\begin{equation}
+    \Delta \rho = \rho_R-\rho_L,
+    \qquad
+    \Delta u = u_R-u_L,
+    \qquad
+    \Delta p = p_R-p_L.
+\end{equation}
+采用本程序中的一维 Euler Roe 分解，三个波强度为
+\begin{align}
+    \alpha_1
+    &=
+    \frac{1}{2}
+    \frac{
+        \Delta p-\tilde\rho\tilde a\Delta u
+    }{\tilde a^2},
+    \\
+    \alpha_2
+    &=
+    \Delta\rho-\frac{\Delta p}{\tilde a^2},
+    \\
+    \alpha_3
+    &=
+    \frac{1}{2}
+    \frac{
+        \Delta p+\tilde\rho\tilde a\Delta u
+    }{\tilde a^2}.
+\end{align}
+
+\subsection{Roe 界面数值通量}
+
+有限体积格式需要的是界面数值通量。Roe 界面通量写为
+\begin{equation}
+    \hat{\bm F}_{i+1/2}
+    =
+    \frac{1}{2}
+    \left[
+        \bm F(\bm Q_L)+\bm F(\bm Q_R)
+    \right]
+    -
+    \frac{1}{2}
+    \sum_{k=1}^{3}
+    |\tilde\lambda_k|
+    \alpha_k
+    \tilde{\bm r}_k.
+\end{equation}
+
+该公式由中心平均通量和迎风耗散项组成。耗散项的方向和强度由 Roe 平均矩阵的特征结构决定。与 Project 2 的人工粘性不同，Roe 耗散不是事后加在守恒量上的二阶滤波，而是直接包含在界面数值通量中。

@@ -1,0 +1,16 @@
+\section{小结}
+
+本报告说明了 Project 3 Roe FVM solver 的方法实现路线。Project 3 保留 Project 2 的整体求解哲学和工程接口：守恒量主推进、原始量同步、CFL 时间步、Riemann case 输入、Tecplot 输出和 exact solver 对比。真正改变的是数值推进核心。
+
+Project 2 使用 MacCormack 预测校正有限差分格式，并通过人工粘性控制间断附近的振荡。Project 3 改用 Godunov 型有限体积格式，其中 Roe approximate Riemann solver 负责在每个界面根据左右状态构造 Roe 平均量、特征值、波强度和右特征向量，得到界面通量 \(\hat{\bm F}_{i+1/2}\)，再通过通量差更新单元平均守恒量。
+
+这种改动使 Project 3 明确成为 Godunov 型 FVM 迎风方法，能够直接体现 Euler 方程的波传播结构。与此同时，Roe 原式也带来新的注意点：它不保证正性，强膨胀和近真空问题可能出现负压或负密度。因此，Project 3 的参数研究不再围绕人工粘性 \(\beta\) 和 sensor 展开，而应围绕 CFL、网格数和 positivity failure 展开。
+
+\section*{参考资料}
+
+\begin{enumerate}[leftmargin=2em]
+    \item S. K. Godunov, A difference method for numerical calculation of discontinuous solutions of the equations of hydrodynamics, 1959.
+    \item P. L. Roe, Approximate Riemann solvers, parameter vectors, and difference schemes, Journal of Computational Physics, 1981.
+    \item E. F. Toro, Riemann Solvers and Numerical Methods for Fluid Dynamics, Springer.
+    \item Lesson 11：迎风型格式之 Godunov 与 Roe.
+\end{enumerate}

@@ -18,15 +18,14 @@ compute_maccormack_corrector(solver, stencil);
 
 \subsection{CFL 时间步}
 
-显式格式的时间步按最大波速决定：
+显式格式的时间步的确定方法(以满足CFL条件)：
 \[
 \Delta t = CFL\frac{\Delta x}{\max_i(|u_i|+a_i)}.
 \]
 代码先从当前守恒量反算 \(\rho,u,p,E,a\)，然后扫描所有网格点求
-\(\max_i(|u_i|+a_i)\)。如果最后一步会超过给定的终止时间，
-就把 \(\Delta t\) 截短到刚好到达 \(t_{\max}\)。
+\(\max_i(|u_i|+a_i)\)。
 
-\subsection{人工粘性滤波}
+\subsection{人工粘性滤波(filter)}
 
 根据课堂给出的滤波公式，先对当前守恒量做一次平滑：
 \[
@@ -47,11 +46,11 @@ CFL_{\mathrm{actual}}
 \]
 
 老师要求保留三种人工粘性算法，所以 \(\theta_i\) 可以用
-\(\rho\)、\(u\) 或 \(p\) 来算。统一写成 \(s_i\)：
+\(\rho\)、\(u\) 或 \(p\) 来算。统一抽象写成 \(\phi_i\)：
 \[
 \theta_i=
-\frac{|s_{i+1}-2s_i+s_{i-1}|}
-{|s_{i+1}-s_i|+|s_i-s_{i-1}|+\epsilon}.
+\frac{|\phi_{i+1}-2\phi_i+\phi_{i-1}|}
+{|\phi_{i+1}-\phi_i|+|\phi_i-\phi_{i-1}|+\epsilon}.
 \]
 代码中通过输入选项选择 sensor：
 \begin{lstlisting}
@@ -111,6 +110,58 @@ VISCOSITY_SENSOR_P   = 3
 \[
 \lambda=\frac{\Delta t}{\Delta x}.
 \]
+
+\subsection{关键迭代代码}
+
+从代码实现上看，一个完整时间步的核心顺序如下。前面先根据 CFL 条件确定
+\(\Delta t\)，然后依次完成人工粘性滤波、预测步、校正步，最后把
+\texttt{corrected} 复制回 \texttt{current}，作为下一步的初值。
+\begin{lstlisting}
+stencil = stencil_for_current_step(solver);
+
+apply_artificial_viscosity_filter(solver);
+compute_flux_from_conserved(solver, &solver->state.filtered,
+                            &solver->flux.filtered);
+compute_maccormack_predictor(solver, stencil);
+
+compute_flux_from_conserved(solver, &solver->state.predicted,
+                            &solver->flux.predicted);
+compute_maccormack_corrector(solver, stencil);
+
+conserved_copy(solver, &solver->state.current,
+               &solver->state.corrected);
+solver->time.t += solver->time.dt;
+solver->time.step_count++;
+\end{lstlisting}
+
+以默认的 FTBS/FTFS 写法为例，预测步中守恒量的更新代码为：
+\begin{lstlisting}
+for (int i = 1; i < solver->grid.nx - 1; i++) {
+    predicted->rho[i] = filtered->rho[i]
+        - lambda * (flux->mass[i] - flux->mass[i - 1]);
+    predicted->rhou[i] = filtered->rhou[i]
+        - lambda * (flux->momentum[i] - flux->momentum[i - 1]);
+    predicted->rhoE[i] = filtered->rhoE[i]
+        - lambda * (flux->energy[i] - flux->energy[i - 1]);
+}
+\end{lstlisting}
+
+对应的校正步使用相反方向的通量差分：
+\begin{lstlisting}
+for (int i = 1; i < solver->grid.nx - 1; i++) {
+    corrected->rho[i] =
+        0.5 * (filtered->rho[i] + predicted->rho[i])
+        - 0.5 * lambda * (flux->mass[i + 1] - flux->mass[i]);
+    corrected->rhou[i] =
+        0.5 * (filtered->rhou[i] + predicted->rhou[i])
+        - 0.5 * lambda * (flux->momentum[i + 1] - flux->momentum[i]);
+    corrected->rhoE[i] =
+        0.5 * (filtered->rhoE[i] + predicted->rhoE[i])
+        - 0.5 * lambda * (flux->energy[i + 1] - flux->energy[i]);
+}
+\end{lstlisting}
+
+如果选择 FTFS/FTBS 写法，程序会进入另一个分支，预测步和校正步中的通量差分方向互换。
 
 \subsection{固定使用和交替使用}
 

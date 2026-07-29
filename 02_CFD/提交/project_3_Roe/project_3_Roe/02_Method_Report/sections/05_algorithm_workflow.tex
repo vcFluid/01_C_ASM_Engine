@@ -1,0 +1,93 @@
+\section{有限体积离散算法流程}
+
+\subsection{空间和时间离散}
+
+计算域采用均匀网格：
+\begin{equation}
+    x_i=x_{\min}+\left(i+\frac{1}{2}\right)\Delta x,
+    \qquad
+    \Delta x=\frac{x_{\max}-x_{\min}}{N_x}.
+\end{equation}
+
+时间步由 CFL 条件给出：
+\begin{equation}
+    \Delta t
+    =
+    \mathrm{CFL}
+    \frac{\Delta x}
+    {\max_i(|u_i|+a_i)},
+    \qquad
+    a_i=\sqrt{\frac{\gamma p_i}{\rho_i}}.
+\end{equation}
+
+这与 Project 2 完全一致。区别在于 Project 2 的 \(\Delta t\) 用于预测校正有限差分格式，Project 3 的 \(\Delta t\) 用于有限体积界面通量差更新。
+
+\subsection{一个时间步的计算过程}
+
+Project 3 的一个 Roe 时间步可以概括为：
+
+\begin{enumerate}[leftmargin=2em]
+    \item 已知当前控制体平均守恒量 \(\bm Q_i^n\)；
+    \item 由 \(\bm Q_i^n\) 反算 \(\rho_i,u_i,p_i,E_i,a_i\)；
+    \item 根据 \(\max_i(|u_i|+a_i)\) 计算 \(\Delta t\)；
+    \item 对当前守恒量施加零梯度边界；
+    \item 对每个控制体界面 \((i,i+1)\) 取左右状态 \(\bm Q_i^n,\bm Q_{i+1}^n\)；
+    \item 计算 Roe 平均量、特征值、波强度和右特征向量；
+    \item 组装 \(\hat{\bm F}_{i+1/2}\)；
+    \item 对内部控制体执行守恒更新
+    \[
+        \bm Q_i^{n+1}
+        =
+        \bm Q_i^n
+        -
+        \frac{\Delta t}{\Delta x}
+        \left(
+            \hat{\bm F}_{i+1/2}
+            -
+            \hat{\bm F}_{i-1/2}
+        \right);
+    \]
+    \item 对新状态施加边界条件；
+    \item 检查 \(\rho\)、\(p\) 和守恒量是否有限且为物理值；
+    \item 若状态物理，则进入下一时间步；若出现负密度、负压或 NaN/Inf，则停止并记录为失稳。
+\end{enumerate}
+
+\subsection{边界条件}
+
+当前程序采用一层 ghost cell 实现 Project 2 同型的零梯度边界：
+\begin{equation}
+    \bm Q_{\mathrm{ghost},L}=\bm Q_0,
+    \qquad
+    \bm Q_{\mathrm{ghost},R}=\bm Q_{N_x-1}.
+\end{equation}
+该边界适合激波管类测试问题，但要求计算域足够大，使主要波系在终止时间前不与边界发生显著相互作用。
+
+\subsection{物理状态诊断}
+
+Roe 格式不保证 positivity，因此 Project 3 比 Project 2 更需要明确记录非物理状态。程序检查：
+\begin{equation}
+    \rho_i > \rho_{\min},
+    \qquad
+    p_i > p_{\min},
+\end{equation}
+并检查 \(\rho,\rho u,\rho E,p\) 是否为有限数。若失败，则说明当前参数组合下 Roe baseline 无法稳定推进到目标时间。这类失败不是后处理错误，而是数值方法鲁棒性的一部分，应进入结果报告讨论。
+
+\subsection{与 Project 2 推进流程的对比}
+
+Project 2 的数值核心可以写成：
+\begin{equation}
+    \text{人工粘性滤波}
+    \longrightarrow
+    \text{MacCormack 预测}
+    \longrightarrow
+    \text{MacCormack 校正}.
+\end{equation}
+
+Project 3 的数值核心可以写成：
+\begin{equation}
+    \text{Roe 界面数值通量}
+    \longrightarrow
+    \text{守恒型有限体积更新}.
+\end{equation}
+
+因此二者的共同点是都以 \(\bm Q\) 为主状态，都通过 CFL 控制显式时间步，都输出 \(\rho,u,p\) 与精确解对比。二者的根本区别是离散框架和对间断传播的建模方式：Project 2 依赖预测校正有限差分格式和人工粘性稳定间断；Project 3 是 Godunov 型有限体积格式，直接在界面求解近似 Riemann 问题，将波传播方向和特征速度写入数值通量。

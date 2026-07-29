@@ -1,0 +1,46 @@
+\section{序言：从 Project 2 到 Project 3 的方法哲学}
+
+Project 2 与 Project 3 求解的是同一类物理问题：一维 Euler 方程的 Riemann 初值问题。不同之处不在控制方程，也不在精确解对比流程，而在离散格式如何处理间断传播。Project 2 采用 MacCormack 预测校正格式，本质上按有限差分思路使用单元中心物理通量差，并用人工粘性抑制间断附近的非物理振荡。Project 3 改用 Godunov-type finite volume method，Roe 方法在这里应理解为有限体积格式中的界面 numerical flux 或 approximate Riemann solver：每个网格界面被看成一个局部 Riemann 问题，再由左右状态构造 \(\hat{\bm F}_{i+1/2}\)。
+
+因此，Project 3 并不是重新写一个完全无关的程序，而是在 Project 2 已经形成的求解哲学上替换数值核心。这个哲学可以抽象为以下几点。
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{守恒量是主状态。} Euler 方程以守恒形式书写，时间推进应直接更新
+    \[
+        \bm Q = [\rho,\rho u,\rho E]^{\mathrm T}.
+    \]
+    原始量
+    \[
+        \bm W = [\rho,u,p]^{\mathrm T}
+    \]
+    不独立推进，而是由最新的守恒量反算得到。
+
+    \item \textbf{原始量是物理解释和辅助计算状态。} 声速、CFL 时间步、压力诊断、输出变量和精确解对比都更自然地使用 \(\rho,u,p\)。因此程序保留原始量数组，但它们始终是由 \(\bm Q\) 同步得到的派生量。
+
+    \item \textbf{数值方法只替换推进算子，不破坏外层工程流程。} Project 2 已经有 Riemann case 选择、网格配置、CFL 时间步、Tecplot ASCII 输出、snapshot 输出和 Project 0 exact solver 调用。Project 3 保留这些接口，只把
+    \[
+        \text{MacCormack predictor-corrector}
+    \]
+    替换为
+    \[
+        \text{Roe finite-volume interface flux + conservative update}.
+    \]
+
+    \item \textbf{结果评价沿用同一套 exact comparison。} Project 3 仍调用 Project 0 的精确 Riemann 解程序，输出同一时刻、同一网格范围内的 exact solution。这样 Project 2 与 Project 3 的误差、稳定性和间断分辨率可以在同一标准下比较。
+\end{enumerate}
+
+从课程内容看，Lesson 11 将 Roe 格式归入 Godunov 思想下的 FDS，即 flux difference splitting。这里的 FDS 不是普通有限差分的单元中心通量差分，而是有限体积更新中的通量差分分裂形式。其核心不是在单元中心直接差分物理通量，而是在单元界面构造数值通量 \(\hat{\bm F}_{i+1/2}\)，再用相邻界面通量差更新单元平均守恒量。这正是 Project 3 相对 Project 2 的方法变化。
+
+\section{问题目标}
+
+Project 3 的任务是采用 Roe 有限体积格式计算一维 Riemann 问题，并与精确解进行对比讨论。具体目标包括：
+
+\begin{enumerate}[leftmargin=2em]
+    \item 对七组内置 Riemann 初值问题计算数值解；
+    \item 在相同计算域、网格、终止时间和气体参数下调用精确解；
+    \item 对比密度、速度和压力分布；
+    \item 研究 CFL 数和网格数对 Roe 结果的影响；
+    \item 记录并讨论 Roe baseline 在强膨胀问题中可能出现的非正性失败。
+\end{enumerate}
+
+本报告只讨论方法实现，不展开具体代码函数和最终数值结果。

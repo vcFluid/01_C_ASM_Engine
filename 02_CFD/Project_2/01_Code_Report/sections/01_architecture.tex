@@ -1,6 +1,5 @@
 \section{程序总体思路}
-
-本程序对应的源文件是
+目前程序对应的源文件src是
 \[
 \texttt{1-D\_Riemann\_NM\_MacC\_02.c}.
 \]
@@ -18,7 +17,7 @@
 
 \subsection{一个时间步的大致流程}
 
-02 版使用的顺序是：
+顺序是：
 \[
 \bm Q^n
 \rightarrow
@@ -45,7 +44,7 @@ advance_one_maccormack_step(&solver);
 
 \subsection{主程序做了什么}
 
-\texttt{main()} 的执行顺序如下：
+\texttt{main ()} 的执行顺序如下：
 
 \begin{enumerate}[label=\arabic*.]
     \item 建立一个带默认参数的 \texttt{Solver}。
@@ -57,5 +56,6 @@ advance_one_maccormack_step(&solver);
     \item 输出 Tecplot 数据，并调用 Project 0 生成精确解。
 \end{enumerate}
 
-因此，这份代码最主要的整理工作是把 CFD 变量按物理意义和时间层次放好。
+这份代码最主要的整理工作是把 CFD 变量按物理意义和时间层次放好。
 这样后面检查程序时，不需要反复把 \texttt{q1/q2/q3} 和具体物理量对应起来。
+同时分配释放内存也更加有规矩，很好的防止内存误删或者过度分配内存

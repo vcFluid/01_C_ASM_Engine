@@ -1,0 +1,54 @@
+1-D_Riemann_NM_MacC_02.c：
+	主程序，用MacCormack格式求解1D黎曼问题，包含两种差分方向和课上提到的交替迭代模式、三种关于开关函数的sensor（rho、u、p）
+
+
+riemann_macc_02.exe：
+	gcc编译后可直接运行的程序
+
+
+README.md
+	项目说明的草稿，里面有一部分旧的内容，但我觉得比较有价值，保留下来以便自己未来复习
+
+
+TODO.md
+	早期的任务清单，现在里面的内容大都已经完成
+
+
+MacCormack格式流程图.png
+	用obsidian画的程序示意图，示意了MacCormack格式的核心迭代步骤
+
+
+01_Code_Report | 02_Method_Report | 03_Result_Report
+	编写Project报告的latex文件
+
+
+postprocess
+	python后处理脚本目录，主要是用于自动将结果导入tecplot，以及自动运行程序以便得到足够多的实验数据
+		①run_report_matrix.py - 目前最重要的自动跑数据脚本，用于生成报告需要的7个算例的大量参数结果
+		②tecplot_compare.py - 数值解和精确解对比绘图
+		③tecplot_animate.py - tecplot处理动画/演化图（这部分有bug，还未来得及修）
+		④parameter_matrix.py - 早期参数扫描脚本
+		⑤PARAMETER_MATRIX.md | TARGETED_MATIX.MD | README.md - 后处理脚本的说明文档，内容比较旧了还没来得及更新
+
+
+runs
+	所有数值实验输出数据目录，包括7个经典问题的运行结果
+
+
+_Analysical_Solution_Solver
+	Project_0精确解的程序存放目录，供Project_2的主程序调用； 名字Analysical拼写错了，但不影响程序运行，就没有临时改名
+
+
+_old_code_and_data
+	这是一些旧的代码和数据，我保留它们是为了提醒自己一些旧的写代码的坏习惯（例如把变量一股脑塞到一个结构体里，导致命名比较混乱），也便于未来复习
+
+
+_What_is_MacCormack
+	这是学习笔记目录，参考文献由于时间关系没来得及深究，目前主要疑惑的点是——如何从数学和物理意义角度理解 **预测步** 对精度提高的 **原理**
+
+
+_参考文献
+
+
+__pycache__
+	Python自动生成的缓存目录

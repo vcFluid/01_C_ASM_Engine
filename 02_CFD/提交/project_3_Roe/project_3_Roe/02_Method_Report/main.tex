@@ -1,0 +1,46 @@
+% !TEX program = xelatex
+\documentclass[UTF8,12pt,a4paper]{ctexart}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!55!black,
+    citecolor=blue!55!black,
+    urlcolor=blue!55!black
+}
+
+\newcommand{\ReportTitle}{一维 Riemann 问题 Roe 有限体积格式：方法实现报告}
+\newcommand{\ReportCourse}{计算流体力学 Project 3}
+\newcommand{\ReportDate}{\today}
+
+\title{\ReportTitle}
+\author{\ReportCourse}
+\date{\ReportDate}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本文说明 Project 3 中采用基于 Roe approximate Riemann solver 的一阶有限体积格式求解一维 Euler 方程 Riemann 问题的数值方法实现思路。报告首先抽象 Project 2 的基本求解哲学：以守恒量为主状态、以原始量为派生状态、以统一的输入输出和精确解对比流程组织程序。随后说明 Project 3 如何在保留 Project 2 外层框架的同时，将 MacCormack 预测校正的 FDM 替换为 Godunov - FVM 中的 Roe 界面数值通量更新。本文重点讨论控制方程、守恒量与原始量、Roe 平均、界面数值通量、CFL 时间步、边界条件和非物理状态诊断。代码函数级实现和数值结果分析分别放在代码报告与结果报告中。
+
+\textbf{关键词：} Riemann 问题；一维 Euler 方程；Roe 格式；Godunov 方法；通量差分分裂；守恒型有限体积格式
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/01_preface}
+\input{sections/02_governing_equations}
+\input{sections/03_from_project2_to_project3}
+\input{sections/04_roe_scheme}
+\input{sections/05_algorithm_workflow}
+\input{sections/06_summary}
+
+\end{document}

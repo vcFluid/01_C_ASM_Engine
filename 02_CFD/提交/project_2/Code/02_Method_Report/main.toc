@@ -1,22 +1,20 @@
 \contentsline {section}{\numberline {1}问题描述与控制方程}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}一维 Riemann 问题}{3}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}此问题的坐标系与控制方程}{3}{subsubsection.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}左右初始状态}{3}{subsubsection.1.1.2}%
-\contentsline {subsubsection}{\numberline {1.1.3}计算目标}{4}{subsubsection.1.1.3}%
-\contentsline {subsubsection}{\numberline {1.1.4}Project 2与Project 0 半解析解之间的关系}{5}{subsubsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.2}一维 Euler 方程}{5}{subsection.1.2}%
-\contentsline {section}{\numberline {2}数值求解方法}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}守恒量与原始量 - 未知变量储存的策略}{5}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}以守恒量 $\bm {Q}$ 为核心变量}{5}{subsubsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}以原始量 $\bm {W}$ 为核心变量}{6}{subsubsection.2.1.2}%
-\contentsline {subsubsection}{\numberline {2.1.3}本程序采用的储存方案}{6}{subsubsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.2}时间变量储存策略}{7}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}方案 A：全历史存储}{7}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}方案 B：滚动时间层存储}{7}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}滚动存储与快照输出}{7}{subsubsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.3}空间与时间离散}{8}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}CFL 时间步}{8}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}MacCormack 预测--校正格式}{8}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}人工粘性}{9}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}边界条件}{9}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {1.1.1}计算目标}{3}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Project 2 与 Project 0 精确解之间的关系}{3}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}一维 Euler 方程}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}数值求解方法}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}守恒量与原始量：变量储存策略}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}以守恒量 $\bm {Q}$ 为核心变量}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}以原始量 $\bm {W}$ 为核心变量}{5}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}本程序采用的储存方案}{5}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}时间变量储存策略}{6}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}方案 A：全历史存储}{6}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}方案 B：滚动时间层存储}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}滚动存储与快照输出}{6}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}空间与时间离散}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}CFL 时间步}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}MacCormack 预测--校正格式}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}人工粘性}{8}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}边界条件}{8}{subsection.2.7}%
 \contentsline {section}{\numberline {3}本部分小结}{9}{section.3}%
